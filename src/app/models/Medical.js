@@ -21,11 +21,11 @@
 // },{timestamps: true})
 
 // const Articleschema = new Schema({
-    
+
 //         title : String,
 //         content: String,
 //         article_status:Number,
-    
+
 // },{timestamps: true});
 
 // const Orderschema = new Schema ({
@@ -33,8 +33,6 @@
 // 			note : String,
 // 			delivery_address : String
 // },{timestamps:true})
-
-
 
 // const Reviewschema = new Schema({
 //   review_date: Date,
@@ -50,12 +48,11 @@
 //     full_name: String,
 //     email : String,
 //     phone_number : String,
-//     account_status:Number, 
+//     account_status:Number,
 //     account_type: Number,
 //     reviews : [Reviewschema],
 //     orders: [Orderschema],
 //     articles: [Articleschema]
-
 
 // },{timestamps:true});
 
@@ -76,12 +73,12 @@
 //   promotionDetails:[Promotion_detailschema],
 //   orderDetails:[Order_detailschema],
 //   reviews:[Reviewschema]
-   
+
 //  },{
 //    timestamps:true,
 //  }
 //  );
- 
+
 // const Listschema = new Schema({
 //  list_name : String,
 //  products: [Productschema1],
@@ -91,14 +88,13 @@
 // }
 // );//luoc do
 
-
-// const List=  mongoose.model('List', Listschema); 
-// const Product=  mongoose.model('Product', Productschema); 
-// const Account=  mongoose.model('Account', Accountschema); 
-// const Promotion=  mongoose.model('Promotion', Promotionschema); 
-// const Account_Type=  mongoose.model('Account_Type', Account_Typeschema); 
+// const List=  mongoose.model('List', Listschema);
+// const Product=  mongoose.model('Product', Productschema);
+// const Account=  mongoose.model('Account', Accountschema);
+// const Promotion=  mongoose.model('Promotion', Promotionschema);
+// const Account_Type=  mongoose.model('Account_Type', Account_Typeschema);
 // module.exports = {
-//     'List':  List,  
+//     'List':  List,
 //     'Product': Product,
 //     'Account': Account,
 //     'Promotion': Promotion,

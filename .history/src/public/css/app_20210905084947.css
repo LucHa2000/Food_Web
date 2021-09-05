@@ -1,0 +1,106 @@
+    .list-img{
+      width:40px;
+      height:40px;
+      
+    }
+    .product{
+        display:flex;
+      }
+     .slide-header {
+         background:url(https://images.unsplash.com/photo-1624906811841-3b22f9c06d29?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80);
+         background-size:cover;
+         background-position: center;
+         min-height: 800px;
+     }
+     body {
+    overflow-x: hidden; /* Hide scrollbars */
+    }
+     @media screen and (max-width: 670px) {
+         header{
+             min-height: 500px;
+         }
+     }
+     .main{
+   
+       margin:50px 0;
+     }
+     .section {
+       padding: 60px 0;
+     }
+     .content-nav{
+       line-height:30px;
+     }
+     .content-container{
+       margin-top:150px;
+
+      
+
+     }
+     .btn-home{
+     
+        border-radius: 30px;
+        border:1px solid #f57f17;
+     }
+     .img-tab{
+       border-radius: 30px;
+     }
+
+  
+   .list_product{
+      padding-left: 50px;
+   }
+   .card-image-detail{
+      width:30%;
+      height:20%;
+      display: flex;
+      margin: auto;
+   }
+   .create-container{
+     display: flex;
+   }
+   .nav-admin{
+     display: flex;
+     align-items: center;
+     justify-content: flex-start;
+     padding: 20px ;
+     height: 50px;
+     width: 100%;
+     background-color:#e57373 ;
+   }
+   .icon-while{
+    color: white;
+  }
+  .footer{
+    -ms-transform-origin-y : 22%;
+  }
+
+  /* Message Css*/
+   .message-info{
+     display:none;
+   }
+.isa_info, .isa_success, .isa_warning, .isa_error {
+  margin: 10px 0px;
+  padding:12px;
+   
+  }
+  .isa_info {
+      color: #00529B;
+      background-color: #BDE5F8;
+  }
+  .isa_success {
+      color: #4F8A10;
+      background-color: #DFF2BF;
+  }
+  .isa_warning {
+      color: #9F6000;
+      background-color: #FEEFB3;
+  }
+  .isa_error {
+      color: #D8000C;
+      background-color: #FFD2D2;
+  }
+  .isa_info i, .isa_success i, .isa_warning i, .isa_error i {
+      margin:10px 22px;
+      font-size:2em;
+      vertical-align:middle;
+  } 
