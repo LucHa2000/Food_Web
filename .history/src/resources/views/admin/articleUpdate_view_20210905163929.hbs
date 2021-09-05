@@ -1,0 +1,39 @@
+{{>header_admin}}
+
+ 
+<div class="container ">
+    <h5 class="center">Article update</h5>
+ <form class="col s12"  method="POST" action="/store/{{products._id}}/edit?_method=PATCH" enctype="multipart/form-data">
+  
+      <div class="row">
+        <div class="input-field col s12 ">
+          <input  id="content" type="content" class="validate" name="content" value="{{articles.title}}">
+          <label for="content">Content</label>
+        </div>
+      </div>
+    
+
+       <div class="row">
+        <div class="input-field col s12 ">
+        <input id="cost"type="number" class="validate" name="unit_price" value="{{products.unit_price}}"/>
+
+          <label for="cost">Price</label>
+        </div>
+      </div>
+    
+       <div class="row">
+        <div class="input-field col s12 ">
+          <input id="note" type="Text" class="validate" name="note" value="{{products.note}}">
+          <label for="note">Note</label>
+        </div>
+      </div>
+       <button onclick="" class="btn waves-effect waves-light" type="submit">Update
+    <i class="material-icons right">send</i>
+      </button>
+    </form> 
+   
+  </div>
+
+
+
+  

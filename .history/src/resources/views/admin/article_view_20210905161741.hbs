@@ -1,0 +1,85 @@
+{{>header_admin}}
+  <div class="create-container">
+<div class="table-foods container">
+      <div class="row">
+    <div class="col s12 push-l3">
+      <ul class="tabs ">
+        <li class="tab col s3"><a href="#addproduct">Add Article</a></li>
+        <li class="tab col s3"><a class="active" href="#listproduct">List Article</a></li>
+      </ul>
+    </div>
+    <div id="addproduct" class="">
+ <form class="col s12"  method="POST" action="/article/postNews" enctype="multipart/form-data">
+      <div class="row">
+        <div class="input-field col s12 ">
+          <input  id="title" type="text" class="validate" name="title">
+          <label for="title">Title</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s12">
+          <textarea id="textarea1" class="materialize-textarea" name="content"></textarea>
+          <label for="textarea1">Content</label>
+        </div>
+      </div>
+      <div class="row">
+       <div class="file-field input-field">
+      <div class="btn">
+        <span>File</span>
+        <input type="file" name="image">
+      </div>
+      <div class="file-path-wrapper">
+        <input class="file-path validate" type="text">
+      </div>
+    </div>
+    </div>
+       <button onclick="" class="btn waves-effect waves-light" type="submit">Add
+    <i class="material-icons right">send</i>
+      </button>
+    </form> 
+
+    </div>
+    <div id="listproduct" class=""><br>
+
+    <table class="centered responsive-table right highlight" >
+        <thead>
+          <tr>           
+            <th>No</th>   
+            <th>Title</th>
+            <th>Image</th>
+            <th>Status</th>
+            <th>Author</th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+          </tr>
+        </thead>
+
+        <tbody>
+     
+              {{#each articles}}
+          <tr>
+            <td>{{sum @index}}</td>
+             <td>{{{this.title}}}</td>
+            <td><img src="upda/{{{this.image}}}" alt=""></td>
+            <td>{{{ status this.article_status}}}</td>
+            <td>{{{ this.author}}}</td>   
+            <td><a href="" class="btn btn-small   blue-grey">Detail</a></td>
+            <td><a href="/article/{{{this.article_status}}}/{{{this._id}}}" class="btn btn-small  blue lighten-2 ">{{btnStatus this.article_status}}</a></td>
+            <td><a href="/article/{{{this._id}}}/update" class="btn btn-small yellow darken-3 ">Update</a> </td>
+             <td><a onclick="return confirm('Are You Sure Delete ?')" href="/article/{{{this._id}}}" class="btn btn-small red lighten-1 ">Delete</a> </td>
+            </tr>
+            {{/each}}
+          
+
+      
+          
+        </tbody>
+      </table> 
+    </div>
+   
+  </div>
+
+</div>
+</div>

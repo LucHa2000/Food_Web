@@ -1,0 +1,49 @@
+{{>header_admin}}
+
+ 
+<div class="container ">
+    <h5 class="center">Article update</h5>
+ <form class="col s12"  method="POST" action="/article/{{articles._id}}/edit?_method=PATCH" enctype="multipart/form-data">
+  
+      <div class="row">
+        <div class="input-field col s12 ">
+          <input  id="title" type="content" class="validate" name="content" value="{{articles.title}}">
+          <label for="content">Title</label>
+        </div>
+      </div>
+    
+  <div class="row">
+  <div class="file-field input-field col s12">
+       <img src="../uploads/{{products.image}}" alt="" class="responsive-img list-img">
+       <br>
+      <div class="btn">
+        <span>File</span>
+        <input type="file" name="image">
+      </div>
+      <div class="file-path-wrapper">
+        <input class="file-path validate" type="text" value="{{articles.image}}" name="img_old">
+      </div>
+    </div>     
+    </div>
+   <div class="row">
+        <div class="input-field col s12">
+          <textarea id="textarea1" class="materialize-textarea" name="content">{{{articles.content}}}</textarea>
+          <label for="textarea1">Content</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s12 ">
+          <input  id="author" type="text" class="validate" name="author" value="{{{articles.author}}}">
+          <label for="author">Author</label>
+        </div>
+      </div>
+       <button onclick="" class="btn waves-effect waves-light" type="submit">Update
+    <i class="material-icons right">send</i>
+      </button>
+    </form> 
+   
+  </div>
+
+
+
+  
