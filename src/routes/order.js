@@ -7,5 +7,5 @@ const upload = multer({
 const OrderController = require('../app/controllers/orderController');
 const authMiddlewares = require('../app/middlewares/AuthMiddlewares');
 router.get('/status/:order_status/:id', OrderController.statusOrder);
-router.get('/detail/:id', OrderController.detailOrder);
+router.get('/:id', OrderController.detailOrder);
 module.exports = router;

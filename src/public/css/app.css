@@ -213,7 +213,7 @@ table {
   bottom: 0;
   right: 0;
   left: 0;
-  background-image: url('https://pixinvent.com/materialize-material-design-admin-template/app-assets/images/gallery/flat-bg.jpg');
+  background-image: url("https://pixinvent.com/materialize-material-design-admin-template/app-assets/images/gallery/flat-bg.jpg");
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -234,4 +234,14 @@ table {
 }
 .Active {
   color: rgb(18, 233, 18);
+}
+/* remove background on input on autofill */
+.inside_auth input:-webkit-autofill,
+.inside_auth input:-webkit-autofill:hover,
+.inside_auth input:-webkit-autofill:focus,
+.inside_auth input:-webkit-autofill:active {
+  border: none !important;
+  -webkit-text-fill-color: inherit !important;
+  -webkit-box-shadow: none;
+  transition: background-color 5000s ease-in-out 0s;
 }

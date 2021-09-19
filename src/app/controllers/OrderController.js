@@ -32,7 +32,14 @@ class OrderController {
       .catch(next);
   }
   detailOrder(req, res, next) {
-
+    OrderDetail.find({
+        order_id: req.params.id
+      })
+      .then((ordersDetail) => {
+        res.render('admin/orderDetail_view', {
+          ordersDetail: mutipleMongooseToObject(ordersDetail),
+        })
+      })
   }
 
 }
