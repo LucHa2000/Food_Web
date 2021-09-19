@@ -2,7 +2,7 @@ var nodemailer = require('nodemailer'); //sendEmailConfirm
 const Account = require('../models/Account');
 class AuthMiddlewares {
   index(req, res, next) {
-    if (!req.cookies.userId) {
+    if (!req.cookies.userId || req.cookies.accountType == 1) {
       res.redirect('/auth');
       return;
     }
@@ -15,7 +15,5 @@ class AuthMiddlewares {
       next();
     });
   }
-
-  registerConfirmEmail(req, res, next) {}
 }
 module.exports = new AuthMiddlewares();

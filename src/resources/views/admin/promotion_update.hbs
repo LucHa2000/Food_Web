@@ -1,0 +1,70 @@
+{{>header_admin}}
+ 
+<div class="create-container">
+<div class="table-foods  container ">
+      <div class="row">
+  <h4 class="center">Update Promotion</h4>
+  <div class="paper_container z-depth-1">
+ <form class="col s12"  method="POST"  method="POST" action="/promotion/{{promotions._id}}/edit?_method=PATCH">
+      <div class="row">
+        <div class="input-field col s12 ">
+          <input  id="promotion_name" type="text" class="validate" name="promotion_name" value="{{{promotions.promotion_name}}}">
+          <label for="promotion_name">Name</label>
+        </div>
+      </div>
+    
+      <div class="row">
+        <div class="input-field col s12 ">
+          <input id="quantity" type="number" class="validate" name="promotion_rate" min="1" max="100"value="{{{promotions.promotion_rate}}}">
+          <label for="quantity">Rate</label>
+        </div>
+      </div>
+    <div class="row">
+        <div class="input-field col s3">
+                 <span class="helper-text">Start Date</span>
+    <input type="datetime-local" id="start_date" name="start_date" >
+     <p class="helper-text">{{{convertDate promotions.start_date}}}</p>
+        </div>
+      </div>
+          <div class="row">
+        <div class="input-field col s3">
+     <span class="helper-text">End date</span>
+  <input type="datetime-local" id="end_date" name="end_date">
+     <span class="helper-text">{{{convertDate promotions.end_date}}}</span>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s12 ">
+              <input type="text" id="note" name="note" value="{{{promotions.note}}}">
+          <label for="note">Note</label>
+        </div>
+      </div>
+       <button onclick="" class="btn waves-effect waves-light" type="submit">Update
+    <i class="material-icons right">send</i>
+      </button>
+    </form> 
+  <script>
+      var start_date = document.getElementById("start_date")
+      var end_date = document.getElementById("end_date");
+
+function validatePassword(){
+
+  if(start_date.value > end_date.value) {
+    end_date.setCustomValidity("The end date is greater than the start date");
+  }
+  else {
+      end_date.setCustomValidity("");
+  }
+
+}
+
+start_date.onchange = validatePassword;
+end_date.onchange = validatePassword;
+    </script>
+  </div>
+    </div>
+  </div>
+</div>
+
+
+     {{>footer_admin}}

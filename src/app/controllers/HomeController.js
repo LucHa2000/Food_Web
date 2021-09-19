@@ -9,7 +9,7 @@ class HomeController {
   index(req, res, next) {
     res.clearCookie('message');
     res.clearCookie('errorConfirm');
-   res.render('user/user_home')
+    res.render('user/user_home');
   }
 }
 module.exports = new HomeController();

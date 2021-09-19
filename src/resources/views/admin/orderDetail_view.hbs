@@ -1,0 +1,55 @@
+{{>header_admin}}
+ 
+<div class="create-container admin_main">
+    <div class="container ">
+      <div class="title_block">
+      <h5 class="">Order Detail</h5>
+      </div>
+ <a href="/admin/order" data-target="" class="sidenav-trigger btn-floating pulse cyan">
+     <i class="material-icons">arrow_back</i>
+   
+    </a>
+       
+ <div class="  paper_container z-depth-1">
+    
+      <table class="centered responsive-table right highlight " >
+        <thead>
+          <tr>           
+            <th>No</th>   
+            <th>Name{{{sortable 'product_name' _sort}}}</th>
+            <th>Quantity{{{sortable 'quantity' _sort}}}</th>
+            <th>Price{{{sortable 'unit_price' _sort}}}</th>
+            <th>Promotion Rate</th>
+            <th>Sale Price
+            </th>   
+       
+          </tr>
+        </thead>
+        <tbody id="myTable">
+              {{#each orderDetails}}
+            <tr>
+                <td>{{sum @index}}</td>
+                <td>{{{this.product_name}}}</td>
+                <td>{{{this.quantity}}}</td>
+                <td>{{{ this.unit_price}}}$</td>
+                <td>{{{ this.promotion_rate}}}%</td>
+                <td>2233</td>      
+           </tr>
+           
+             {{else}}
+                <tr>
+                  <td colspan="6" class="center text-center">
+                      Account Empty
+                  </td>
+                </tr>
+   
+            {{/each}}   
+        </tbody>
+         </table> 
+  <!-- Modal Trigger -->
+  {{>pagination}}
+ {{>footer_admin}}
+ </div>
+    </div>
+  </div>
+

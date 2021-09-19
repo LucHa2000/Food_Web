@@ -1,0 +1,25 @@
+{{>header_admin}}
+
+ 
+<div class="container ">
+    <h5 class="center">List update</h5>
+ <form class="col s12"  method="POST" action="/list/{{articles._id}}/edit?_method=PATCH" enctype="multipart/form-data">
+  
+      <div class="row">
+        <div class="input-field col s12 ">
+          <input  id="list_name" type="text" class="validate" name="title" value="{{lists.list_name}}">
+          <label for="list_name">List Name</label>
+        </div>
+      </div>
+       <button onclick="" class="btn waves-effect waves-light" type="submit">Update
+    <i class="material-icons right">send</i>
+      </button>
+    </form> 
+    <br>
+   
+  </div>
+     {{>footer_admin}}
+
+
+
+  

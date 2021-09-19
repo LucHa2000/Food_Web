@@ -15,5 +15,12 @@ const ListSchema = new Schema(
     timestamps: true,
   },
 );
-const List = mongoose.model('List', ListSchema);
-module.exports = List;
+ListSchema.query.sortable = function (req) {
+  if (req.query.hasOwnProperty('_sort')) {
+    return this.sort({
+      [req.query.column]: req.query.type,
+    });
+  }
+  return this;
+};
+module.exports = mongoose.model('List', ListSchema);

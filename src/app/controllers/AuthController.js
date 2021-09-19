@@ -8,15 +8,12 @@ nodemailer = require('nodemailer'); //sendEmailConfirm
 class AuthController {
   //render page Login
   index(req, res, next) {
-    
     res.clearCookie('email');
     res.clearCookie('code');
-    
-  
-
+    res.clearCookie('code');
     res.render('auth/login', {
-      message: req.cookies.message,
       errorConfirm: req.cookies.errorConfirm,
+      message: req.cookies.message,
     });
     res.clearCookie('message');
     res.clearCookie('errorConfirm');
@@ -27,21 +24,28 @@ class AuthController {
       email: req.body.email,
     })
       .then((accounts) => {
-        if (
-          accounts.password == req.body.password &&
-          accounts.account_status == 1
-        ) {
-          if (req.body['g-recaptcha-response']) {
-            res.cookie('userId', accounts._id);
-            res.cookie('userEmail', accounts.email);
-            res.cookie('userName', accounts.full_name);
-            if (accounts.accountType === 1) {
-              res.redirect('/');
+        if (accounts) {
+          if (
+            (accounts.password == req.body.password &&
+              accounts.account_status == 1) ||
+            accounts.deleted == true
+          ) {
+            if (req.body['g-recaptcha-response']) {
+              res.cookie('userId', accounts._id);
+              res.cookie('userEmail', accounts.email);
+              res.cookie('userName', accounts.full_name);
+              res.cookie('accountType', accounts.accountType);
+              if (accounts.accountType === 1) {
+                res.redirect('/');
+              } else {
+                res.redirect('/admin');
+              }
             } else {
-              res.redirect('/admin');
+              res.cookie('errorConfirm', 'Please check confirm');
+              res.redirect('back');
             }
           } else {
-            res.cookie('errorConfirm', 'Please check confirm');
+            res.cookie('errorConfirm', 'Wrong Password');
             res.redirect('back');
           }
         } else {
@@ -62,18 +66,23 @@ class AuthController {
   }
   //auth [put] / register
   register(req, res, next) {
-    req.body.account_status = 1;
-    req.body.accountType = 1;
-    req.body.email = req.cookies.email;
-    const newAccount = new Account(req.body);
-    newAccount.save();
-    res.clearCookie('email');
-    res.clearCookie('error');
-    res.cookie('message', 'Resister successful');
-    res.redirect('/auth/login');
+    if (req.body.password != '') {
+      req.body.address = '';
+      req.body.account_status = 1;
+      req.body.accountType = 1;
+      req.body.email = req.cookies.email;
+      const newAccount = new Account(req.body);
+      newAccount.save();
+
+      res.clearCookie('email');
+      res.clearCookie('error');
+      res.cookie('message', 'Resister successful');
+      res.redirect('/auth/login');
+    }
   }
 
   pageCode(req, res, next) {
+    res.clearCookie('error');
     res.render('auth/confirmEmail_view', {
       error: req.cookies.error,
       message: req.cookies.message,
@@ -81,7 +90,7 @@ class AuthController {
   }
   confirmCode(req, res, next) {
     if (req.body.code == req.cookies.code) {
-      res.redirect('/auth/signup');
+      res.render('auth/signup');
     } else {
       res.clearCookie('message');
       res.cookie('error', 'Verification codes is not correct');
@@ -108,13 +117,7 @@ class AuthController {
           subject: 'Confirm Email',
           text: Random,
         };
-        transporter.sendMail(mailMessage, function (error, data) {
-          if (error) {
-            console.log(error);
-          } else {
-            console.log('send success');
-          }
-        });
+        transporter.sendMail(mailMessage, function (error, data) {});
         res.cookie('code', Random);
         res.cookie('email', req.body.confirmEmail);
         res.cookie('message', 'Check your email');
@@ -159,13 +162,7 @@ class AuthController {
           subject: 'Forgot Email',
           text: `Your Email : ${accounts.email} \n Your Password : ${accounts.password}`,
         };
-        transporter.sendMail(mailMessage, function (error, data) {
-          if (error) {
-            console.log(error);
-          } else {
-            console.log('send forgot email success');
-          }
-        });
+        transporter.sendMail(mailMessage, function (error, data) {});
         res.cookie('message', 'Please check your email');
         res.redirect('/auth/login');
       } else {
@@ -180,6 +177,7 @@ class AuthController {
     res.clearCookie('userId');
     res.clearCookie('userEmail');
     res.clearCookie('userName');
+    res.clearCookie('accountType');
     res.redirect('/auth');
   }
 }

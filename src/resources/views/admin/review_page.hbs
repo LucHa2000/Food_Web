@@ -1,0 +1,84 @@
+{{>header_admin}}
+ 
+<div class="create-container">
+    <div class="container">
+      <div class="title_block">
+             <h4 class=""> Review Management</h4>
+      </div>
+
+      <div class="paper_container z-depth-1">
+
+           {{>search}}   
+         
+
+  <table class="centered responsive-table right highlight " >
+        <thead>
+          <tr>           
+            <th>No</th>   
+            <th>Star{{{sortable 'star_no' _sort}}}</th>
+            <th>Content{{{sortable 'content' _sort}}}</th>
+            <th>Product{{{sortable 'product_name' _sort}}}</th>
+            <th>User Email {{{sortable 'account_email' _sort}}}</th>
+            <th>Status</th>
+             <th>Created At
+              {{{sortable 'createdAt' _sort}}}
+            </th> 
+            <th></th>
+          
+          </tr>
+        </thead>
+        <tbody id="myTable">
+              {{#each reviews}}
+            <tr>
+                <td>{{sum @index}}</td>
+                <td>{{{this.star_no}}}</td>
+                <td>{{{this.content}}}</td>
+                <td>{{{this.product_name}}}</td>
+                <td>{{{this.account_email}}}</td>
+                <td class="{{{ status this.review_status}}}">{{{ status this.review_status}}}</td>
+                <td>{{{ convertDate this.createdAt}}}</td>     
+                <td>  
+                  <a href="" class="btn btn-small   blue-grey"><i class="material-icons">details</i></a> 
+                  <a href="/review/{{{this.review_status}}}/{{{this._id}}}" class="btn btn-small  blue lighten-2 "><i class="material-icons">{{btnStatus this.review_status}}</i></a>
+          
+                    <a  data-id="{{{this._id}}}" class="waves-effect waves-light btn  btn-small  modal-trigger btn_delete red" href="#modal1"><i class="material-icons">delete</i></a>
+                </td>
+            </tr>
+           
+             {{else}}
+                <tr>
+                  <td colspan="6" class="center text-center">
+                      Review Empty
+                  </td>
+                </tr>
+   
+            {{/each}}   
+        </tbody>
+      </table> 
+        {{>pagination}}
+           {{>footer_admin}}
+      </div>
+    </div>
+  </div>
+   <div id="modal1" class="modal">
+    <div class="modal-content">
+      <h4 class="center">Delete Review</h4>
+      <p class="center">Do you really want to delete these records ? This process cannot be undone</p>
+    </div>
+    <div class="modal-footer">
+      <a class="modal-close waves-effect waves-green btn-flat delete-agree text-darken-2 red-text">Yes, do it</a>
+      <a class="modal-close waves-effect waves-green btn-flat  grey-text">No, cancel </a>
+    </div>
+  </div>    
+<script>
+ $(document).ready(function(){
+    $(".btn_delete").on("click", function(){
+        var dataId = $(this).attr("data-id");
+          $(".delete-agree").attr("href", "/review/"+dataId); // Set herf value
+    });
+});
+</script>
+
+
+
+

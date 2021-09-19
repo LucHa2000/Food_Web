@@ -1,0 +1,52 @@
+{{>header_admin}}
+<div class="container ">
+    <h4 class="center">Account Update</h4>
+    <div class="paper_container z-depth-1">
+ <form class="col s12"  method="POST" action="/account/{{accounts._id}}/edit?_method=PATCH">
+  
+      <div class="row">
+        <div class="input-field col s12 ">
+          <input  id="full_name" type="text" class="validate" name="full_name" value="{{accounts.full_name}}">
+          <label for="full_name">Name</label>
+        </div>
+      </div>
+          <input type="Number"  hidden name="account_status" value="{{accounts.account_status}}">
+          <input type="Number"  hidden name="accountType" value="{{accounts.accountType}}">
+          <input type="email"  hidden name="email" value="{{accounts.email}}">
+    
+    
+    
+      <div class="row">
+        <div class="input-field col s12 ">
+          <input id="phone_number" type="tel" class="validate" name="phone_number" value="{{accounts.phone_number}}" required="required">
+          <label for="phone_number">Phone Number</label>
+            <span class="helper-text" data-error="This field must be phone number" data-success=""></span>
+        </div>
+      </div>
+       <div class="row">
+        <div class="input-field col s12 ">
+          <input id="address" type="Text" class="validate" name="address" value="{{accounts.address}}" required="required">
+          <label for="address">Address</label>
+           <span class="helper-text" data-error="This field cannot be left blank" data-success=""></span>
+        </div>
+      </div>
+       <div class="row">
+        <div class="input-field col s12 ">
+        <input id="password"type="Text" class="validate" name="password" value="{{accounts.password}} " required="required"/>
+          <label for="password">Password</label>
+            <span class="helper-text" data-error="This field cannot be left blank" data-success=""></span>
+        </div>
+      </div>
+       <button onclick="" class="btn waves-effect waves-light" type="submit">Update
+    <i class="material-icons right">send</i>
+      </button>
+    </form> 
+
+    </div>
+     <br>
+  </div>
+  {{>footer_admin}}
+
+
+
+  

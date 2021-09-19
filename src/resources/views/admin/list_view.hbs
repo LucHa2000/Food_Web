@@ -1,0 +1,98 @@
+{{>header_admin}}
+  <div class="create-container admin_main">
+<div class="table-foods container">
+      <div class="row">
+    <div class="col s12 push-l3">
+      <ul class="tabs ">
+        <li class="tab col s3"><a href="#addproduct">Add List</a></li>
+        <li class="tab col s3"><a class="active" href="#listproduct">List </a></li>
+      </ul>
+    </div>
+    <div id="addproduct" class="">
+      <div class="paper_container z-depth-1">
+ <form class="col s12"  method="POST" action="/list/create">
+      <div class="row">
+        <div class="input-field col s12 ">
+          <input  id="list_name" type="text" class="validate" name="list_name"  required="required">
+          <label for="list_name">List name</label>
+           <span class="helper-text" data-error="This field cannot be left blank" data-success=""></span>
+        </div>
+      </div>
+       <button onclick="" class="btn waves-effect waves-light" type="submit">Add
+    <i class="material-icons right">send</i>
+      </button>
+    </form> 
+
+      </div>
+    </div>
+    <div id="listproduct" class=""><br>
+    <div class="paper_container z-depth-1">
+
+    {{>search}}
+    <table class="centered responsive-table right highlight " >
+        <thead>
+          <tr>           
+            <th>No</th>   
+            <th>Name
+                {{{sortable 'list_name' _sort}}}
+            </th>
+            <th>
+            Created At
+                {{{sortable 'createdAt' _sort}}}
+            </th>
+            <th></th>
+          </tr>
+        </thead>
+
+        <tbody id="myTable">
+     
+              {{#each lists}}
+          <tr>
+            <td>{{sum @index}}</td>
+             <td>{{{this.list_name}}}</td>
+            <td>{{{convertDate this.createdAt}}}</td>   
+            <td>
+                <a href="" class="btn btn-small   blue-grey"><i class="material-icons">details</i></a>
+                <a href="/list/{{this._id}}" class="btn btn-small yellow darken-3 "><i class="material-icons">system_update_alt</i></a>
+               
+                 <a  data-id="{{{this._id}}}" class="waves-effect waves-light btn  btn-small  modal-trigger btn_delete red" href="#modal1"><i class="material-icons">delete</i></a>
+            </td>
+            </tr>
+              {{else}}
+                <tr>
+                  <td colspan="6" class="center text-center">
+                      List Empty
+                  </td>
+                </tr>
+            {{/each}}
+            
+        </tbody>
+      </table> 
+
+{{>pagination}}
+   {{>footer_admin}}
+    </div>
+
+    </div>
+   
+  </div>
+</div>
+</div>           
+ <div id="modal1" class="modal">
+    <div class="modal-content">
+      <h4 class="center">Delete List</h4>
+      <p class="center">Do you really want to delete these records ? This process cannot be undone</p>
+    </div>
+    <div class="modal-footer">
+      <a class="modal-close waves-effect waves-green btn-flat delete-agree text-darken-2 red-text">Yes, do it</a>
+      <a class="modal-close waves-effect waves-green btn-flat  grey-text">No, cancel </a>
+    </div>
+  </div>    
+<script>
+ $(document).ready(function(){
+    $(".btn_delete").on("click", function(){
+        var dataId = $(this).attr("data-id");
+          $(".delete-agree").attr("href", "/list/delete/"+dataId)
+    });
+});
+</script>

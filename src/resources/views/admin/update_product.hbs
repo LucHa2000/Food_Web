@@ -2,7 +2,8 @@
 
  
 <div class="container ">
-    <h8 class="center">Update Product</h8>
+    <h4 class="center">Update Product</h4>
+    <div class="paper_container z-depth-1">
  <form class="col s12"  method="POST" action="/store/{{products._id}}/edit?_method=PATCH" enctype="multipart/form-data">
   
       <div class="row">
@@ -50,9 +51,11 @@
     <i class="material-icons right">send</i>
       </button>
     </form> 
+
+    </div>
      <br>
   </div>
-
+   {{>footer_admin}}
 
 
   

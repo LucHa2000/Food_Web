@@ -1,0 +1,232 @@
+{{>header_admin}}
+ 
+<div class="create-container">
+
+
+<div class="table-foods container">
+      <div class="row">
+    <div class="col s12 push-l">
+      <ul class="tabs ">
+        <li class="tab col s3"><a class="active" href="#orderReady">Order Ready</a></li>
+        <li class="tab col s3"><a  href="#orderDelivery">Order Delivery</a></li>
+         <li class="tab col s3"><a  href="#orderFinished">Order Finished</a></li>
+          <li class="tab col s3"><a  href="#orderCancel">Order Cancelled</a></li>
+      
+      </ul>
+    </div>
+    <div id="orderReady" class=""><br>
+      <div class="paper_container z-depth-1">
+      {{>search}}
+  <table class="centered responsive-table highlight " >
+        <thead>
+          <tr>   
+              <th>No</th>    
+              <th>Email
+                  {{{sortable 'Email' _sort}}}
+              </th>
+              <th>Status</th>
+              <th>Order Date
+                  {{{sortable 'createdAt' _sort}}}
+              </th>
+              <th></th>
+          </tr>
+        </thead>
+
+        <tbody id="myTable">
+              {{#each readyOrders}}
+          <tr>
+             <td>{{sum @index }}</td>
+            <td>{{{this.email}}}</td>
+             <td>{{{order_status this.order_status}}}</td>
+              <td>{{{ convertDate this.createdAt}}}</td>
+             <td></td>
+             <td>
+               <a href="/order/status/{{this.order_status}}/{{this._id}}" class="btn btn-small  blue lighten-2 button-radius "><i class="material-icons">{{btnStatus this.product_status}}</i></a>
+                  <a  data-id="{{{this._id}}}" class="waves-effect waves-light btn  btn-small  modal-trigger btn_delete red" href="#modal1"><i class="material-icons">do_not_disturb_alt</i></a>
+             
+               </td>
+               
+             <td> </td>
+          </tr>  
+          {{else}}
+                <tr>
+                  <td colspan="7" class="center text-center">
+                      Order Empty
+                </tr>
+            {{/each}}
+ 
+          
+        </tbody>
+      </table>
+        {{>pagination}}
+      </div>
+
+    </div>
+      <div id="orderDelivery" class=""><br>
+     <div class="paper_container z-depth-1">
+      {{>search}}
+  <table class="centered responsive-table highlight " >
+        <thead>
+          <tr>   
+              <th>No</th>    
+              <th>Email
+                  {{{sortable 'Email' _sort}}}
+              </th>
+              <th>Status</th>
+              <th>Order Date
+                  {{{sortable 'createdAt' _sort}}}
+              </th>
+              <th></th>
+          </tr>
+        </thead>
+
+        <tbody id="myTable">
+              {{#each deliveryOrders}}
+          <tr>
+             <td>{{sum @index }}</td>
+            <td>{{{this.email}}}</td>
+             <td>{{{order_status this.order_status}}}</td>
+              <td>{{{ convertDate this.createdAt}}}</td>
+             <td></td>
+             <td>
+               <a href="/order/status/{{this.order_status}}/{{this._id}}" class="btn btn-small  blue lighten-2 button-radius "><i class="material-icons">{{btnStatus this.product_status}}</i></a>
+                  <a  data-id="{{{this._id}}}" class="waves-effect waves-light btn  btn-small  modal-trigger btn_delete red" href="#modal1"><i class="material-icons">do_not_disturb_alt</i></a>
+             
+               </td>
+               
+             <td> </td>
+          </tr>  
+          {{else}}
+                <tr>
+                  <td colspan="7" class="center text-center">
+                      Order Empty
+                </tr>
+            {{/each}}   
+        </tbody>
+      </table>
+        {{>pagination}}
+      </div>
+
+    </div>
+      <div id="orderFinished" class=""><br>
+    <div class="paper_container z-depth-1">
+      {{>search}}
+  <table class="centered responsive-table highlight " >
+        <thead>
+          <tr>   
+              <th>No</th>    
+              <th>Email
+                  {{{sortable 'Email' _sort}}}
+              </th>
+              <th>Status</th>
+              <th>Order Date
+                  {{{sortable 'createdAt' _sort}}}
+              </th>
+              <th></th>
+          </tr>
+        </thead>
+
+        <tbody id="myTable">
+              {{#each doneOrders}}
+          <tr>
+             <td>{{sum @index }}</td>
+            <td>{{{this.email}}}</td>
+             <td>{{{order_status this.order_status}}}</td>
+              <td>{{{ convertDate this.createdAt}}}</td>
+             <td></td>
+             <td>
+                 <a href="/order/status/{{this.order_status}}/{{this._id}}" class="btn btn-small  blue lighten-2 button-radius "><i class="material-icons">{{btnStatus this.product_status}}</i></a>
+                  <a  data-id="{{{this._id}}}" class="waves-effect waves-light btn  btn-small  modal-trigger btn_delete red" href="#modal1"><i class="material-icons">do_not_disturb_alt</i></a>
+             
+               </td>
+               
+             <td> </td>
+          </tr>  
+          {{else}}
+                <tr>
+                  <td colspan="7" class="center text-center">
+                      Order Empty
+                </tr>
+            {{/each}}
+ 
+          
+        </tbody>
+      </table>
+        {{>pagination}}
+           {{>footer_admin}}
+      </div>
+
+    </div>
+      <div id="orderCancel" class=""><br>
+      <div class="paper_container z-depth-1">
+      {{>search}}
+  <table class="centered responsive-table highlight " >
+        <thead>
+          <tr>   
+              <th>No</th>    
+              <th>Email
+                  {{{sortable 'Email' _sort}}}
+              </th>
+              <th>Status</th>
+              <th>Order Date
+                  {{{sortable 'createdAt' _sort}}}
+              </th>
+              <th></th>
+          </tr>
+        </thead>
+        <tbody id="myTable">
+              {{#each cancelOrders}}
+          <tr>
+             <td>{{sum @index }}</td>
+            <td>{{{this.email}}}</td>
+             <td>{{{order_status this.order_status}}}</td>
+              <td>{{{ convertDate this.createdAt}}}</td>
+             <td></td>
+             <td>
+                 <a href="/order/detail/{{{this._id}}}" class="btn btn-small   blue-grey"><i class="material-icons">details</i></a>
+                    <a href="" class="btn btn-small   blue-grey"><i class="material-icons">details</i></a>
+               <a href="/order/status/{{this.order_status}}/{{this._id}}" class="btn btn-small  blue lighten-2 button-radius "><i class="material-icons">{{btnStatus this.product_status}}</i></a>
+                  <a data-id="{{{this._id}}}" class="waves-effect waves-light btn  btn-small  modal-trigger btn_delete red" href="#modal1">
+                    <i class="material-icons">do_not_disturb_alt</i>
+                  </a>        
+               </td>
+               
+             <td> </td>
+          </tr>  
+          {{else}}
+                <tr>
+                  <td colspan="7" class="center text-center">
+                      Order Empty
+                </tr>
+            {{/each}}
+ 
+          
+        </tbody>
+      </table>
+        {{>pagination}}
+      </div>
+
+    </div>
+  </div>
+</div>
+</div>
+
+<div id="modal1" class="modal">
+    <div class="modal-content">
+      <h4 class="center">Cancel Order</h4>
+      <p class="center">Do you really want to cancel these order ? </p>
+    </div>
+    <div class="modal-footer">
+      <a class="modal-close waves-effect waves-green btn-flat delete-agree text-darken-2 red-text">Yes, do it</a>
+      <a class="modal-close waves-effect waves-green btn-flat  grey-text">No, cancel </a>
+    </div>
+  </div>    
+<script>
+ $(document).ready(function(){
+    $(".btn_delete").on("click", function(){
+        var dataId = $(this).attr("data-id");
+          $(".delete-agree").attr("href", "/promotion/"+dataId+"/delete")
+    });
+});
+</script>
+  

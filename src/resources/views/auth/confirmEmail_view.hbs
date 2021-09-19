@@ -1,39 +1,42 @@
 
-     {{>header}}
+<div class="auth_container">
 <div class="container">
   <div class="row">
+    <div class="col s12 m6 push-l3 z-depth-4 card-panel border-radius-6 login-card bg-opacity-8 inside_auth">
+
     <form class="col s12" method="POST" action="/auth/confirmCode">
-      <h2 class="center">Confirm Email</h2>
+      <h4 class="center">Confirm Email</h4>
       <div class="row">
-        <div class="input-field col s6 push-l3">
-          <input id="code" type="Text" class="validate" name="code"/>
+        <div class="input-field col s10 m10 push-l1">
+            <i class="material-icons prefix">verified_user</i>
+          <input id="code" type="Text" class="validate" name="code"  required="required"/>
           <label for="code">Code</label>
+     
         </div>
       </div>  
           <div class="row">
-        <div class="input-field col s6 push-l3">
+        <div class="input-field col s10 m10 push-l1">
          <div class="isa_info message-info">
                 <i class="fa fa-check"></i>
-          <span>{{ message}}</span> 
-      
+                <span>{{ message}}</span>     
             </div>
-      
-          <h6 class="red-text text-darken-1">{{error}}</h6> 
-            </div>
-          
-
-       
+          <h6 class="red-text text-darken-1 center mr-top" >{{error}}</h6> 
+            </div>    
         </div>
-      </div>
       <div class="row">
-        <div class="input-field col s6 push-l4">
+        <div class="input-field col s10 m10 push-l1 mr-bottom">
           <button
-            class="btn waves-effect waves-light center"
+            class="btn waves-effect waves-light center btn_login"
             type="submit">Send
             <i class="material-icons right">send</i>
           </button>
         </div>    
       </div>
     </form> 
+
+    </div>
+
+      </div>
   </div>
+</div>
 </div>

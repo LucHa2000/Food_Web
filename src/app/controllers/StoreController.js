@@ -15,7 +15,7 @@ class StoreController {
     req.body.product_status = 1;
     req.body.review_id = [];
     req.body.orderDetail_id = [];
-    req.body.promotionDetails_id = [];
+    req.body.promotion_id = 'aaacaaaaaaaaaaaaf2132e26';
     req.body.list_id = listID;
     const newProduct = new Product(req.body);
     // get dataProduct
@@ -44,24 +44,23 @@ class StoreController {
       { $pull: { product_id: req.params.id } },
     )
       .then(() => {
-        Product.deleteOne({ _id: req.params.id })
-        .then(() => {
+        Product.deleteOne({ _id: req.params.id }).then(() => {
           res.redirect('/admin');
         });
       })
 
       .catch(next);
   }
-  statusProduct(req,res,next){
+  statusProduct(req, res, next) {
     if (req.params.product_status == 1) {
-      req.body.product_status  = 0
+      req.body.product_status = 0;
     } else {
-      req.body.product_status  = 1
+      req.body.product_status = 1;
     }
-  Product.updateOne({_id:req.params.id},req.body)
-  .then((prodcuts)=>res.redirect('back') )
-  
-  .catch(next)
+    Product.updateOne({ _id: req.params.id }, req.body)
+      .then((prodcuts) => res.redirect('back'))
+
+      .catch(next);
   }
 }
 module.exports = new StoreController();

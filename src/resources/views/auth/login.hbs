@@ -1,65 +1,69 @@
 
 
 <script src="https://www.google.com/recaptcha/api.js?hl=en" async defer></script>
-     {{>header}}
-<div class="container">
+ <div class="auth_container">
+
+<div class="container ">
   <div class="row">
+
+    <div class="col s12 m6 push-l3 z-depth-4 card-panel border-radius-6 login-card bg-opacity-8 inside_auth">
+
     <form class="col s12" method="POST" action="/auth/user_Login">
-      <h2 class="center">Login</h2>
-      <h5 class=" blue-text text-lighten-1 center">{{ message}}</h5> 
-      <div class="row">
-        <div class="input-field col s6 push-l3">
-          <input id="email" type="email" class="validate" name="email" value="{{Email}}" />
+      <h4 class="center">Sign in</h4>
+      <h6 class=" blue-text text-lighten-1 center ">{{message}}</h6> 
+      <div class="row ">
+        <div class="input-field col  s10 m10 push-l1 ">
+          
+          <i class="material-icons prefix">email</i>
+          <input id="email" type="email" class="validate" name="email" value="{{Email}} " required />
           <label for="email">Email</label>
+            <span class="helper-text" data-error="This field must be email" data-success=""></span>
         </div>
       </div>
-      <div class="row">
-        <div class="input-field col s6 push-l3">
-          <input id="password" type="password" class="validate" name="password" />
+      <div class="row mr-top">
+        <div class="input-field col  s10 m10 push-l1 mr-top">
+          <i class="material-icons prefix">account_circle</i>
+          <input id="password" type="password" class="validate" name="password" required minlength="6"/>
           <label for="password">Password</label>
+           <span class="helper-text" data-error="Password minimum 6 characters" data-success=""></span>
         </div>
       </div>
-     <div class="row">
-        <div class="input-field col s6 push-l3">
+     <div class="row mr-top">
+        <div class="input-field col s6 push-l2">
    <div class="g-recaptcha" data-sitekey="6LcaRC0cAAAAAGZJCCINa2WiMLhJ8P1EfJ8O4SPs"></div>
-   
         </div>
       </div>
-       <div class="row">
-        <div class="input-field col s6 push-l3">
-               
+       <div class="row mr-top">
+        <div class="input-field col s10 m10 push-l1" style="transform: translateY(-33px);">
              <h6 class="red-text text-darken-1">{{error}}</h6> 
             <div class="isa_error message-info" style="">
                 <i class="fa fa-times-circle"></i>
           <span>{{errorConfirm}}</span> 
-      
             </div>
-
-       
         </div>
-      </div>
-
-        
-      </div>
-      <div class="row">
-        <div class="input-field col s6 push-l4">
+      </div>  
+        <div class="row">
+        <div class="input-field col s10 m10 push-l1 mr-top">
           <button
-            class="btn waves-effect waves-light center"
-            type="submit"
-            
-          >Login
-            <i class="material-icons right">send</i>
+            class="btn waves-effect waves-light btn_login "
+            type="submit">Login
           </button>
         </div>
-         <div class="input-field col s12 left push-l4">
-                   <h10>Don't Remember Your Account ? </h10>
-                   <a href="/auth/forgotPassword">Forgot Account</a>
-               </div>
-      </div>
+         <div class="input-field col s12 mr-top">
+           <a class="left text-purple" href="/auth/signup_email">Register Now !</a>
+           <a class="right text-purple" href="/auth/forgotPassword">Forgot Account ? </a>
+           </div>
+      </div>     
+     
+    
 
     </form>
+
+    </div>
+     </div>
     
   </div>
+ </div>
 
   
 </div>

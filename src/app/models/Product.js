@@ -12,12 +12,11 @@ const ProductSchema = new Schema(
       type: Schema.Types.ObjectId,
       ref: 'List',
     },
-    promotionDetails: [
-      {
-        type: Schema.Types.ObjectId,
-        ref: 'Promotion_detail',
-      },
-    ],
+    promotion_id: {
+      type: Schema.Types.ObjectId,
+      ref: 'Promotion',
+    },
+
     orderDetails: [
       {
         type: Schema.Types.ObjectId,
@@ -35,4 +34,12 @@ const ProductSchema = new Schema(
     timestamps: true,
   },
 );
+ProductSchema.query.sortable = function (req) {
+  if (req.query.hasOwnProperty('_sort')) {
+    return this.sort({
+      [req.query.column]: req.query.type,
+    });
+  }
+  return this;
+};
 module.exports = mongoose.model('Product', ProductSchema);

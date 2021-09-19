@@ -1,0 +1,97 @@
+{{>header_admin}}
+ 
+<div class="create-container admin_main">
+    <div class="container">
+      <h5 class="">Trash Account Management</h5>
+      <a href="/admin/account"> <i class="material-icons">arrow_back</i></a>  
+      <div class="paper_container z-depth-1">
+
+      {{>search}}
+  <table class="centered responsive-table right highlight display_table" >
+        <thead>
+          <tr>           
+            <th>No</th>   
+            <th>Name
+              {{{sortable 'full_name' _sort}}}
+            </th>
+            <th>Email
+              {{{sortable 'email' _sort}}}
+            </th>
+            <th>Type</th>
+            <th>Status</th>
+            <th>Delete At
+              {{{sortable 'deletedAt' _sort}}}
+            </th>
+              <th></th>
+              <th></th>
+          </tr>
+        </thead>
+        <tbody id="myTable">
+              {{#each accounts}}
+          <tr>
+            <td>{{sum @index}}</td>
+             <td>{{{this.full_name}}}</td>
+            <td>{{{this.email}}}</td>
+    
+            <td>{{{ accType this.accountType}}}</td>
+              <td>{{{ status this.account_status}}}</td>
+              <td>{{{ convertDate this.deletedAt}}}</td>
+             <td>
+                  <a href="" class="btn btn-small  blue lighten-2 btn-restore" data-id="{{this._id}}"><i class="material-icons">settings_backup_restore</i></a>
+                 <button data-target="modal1" data-id="{{{this._id}}}" class="btn red modal-trigger btn_delete"> <i class="material-icons">delete</i></button>
+             </td>
+
+          
+          
+          </tr>
+             {{else}}
+                <tr>
+                  <td colspan="6" class="center text-center">
+                      Account Trash Empty
+                  </td>
+                </tr>
+            {{/each}}
+         
+        </tbody>
+      </table> 
+      {{>pagination}}
+{{>footer_admin}}
+      </div>
+    </div>
+  </div>
+
+
+  <form name="restore-course-form" method="POST"></form>
+  <div id="modal1" class="modal">
+    <div class="modal-content">
+      <h4 class="center">Delete Forever Account </h4>
+      <p class="center">Do you really want to delete these records ? This process cannot be undone</p>
+    </div>
+    <div class="modal-footer">
+      <a class="modal-close waves-effect waves-green btn-flat delete-agree text-darken-2 red-text">Yes, do it</a>
+      <a class="modal-close waves-effect waves-green btn-flat  grey-text">No, cancel </a>
+    </div>
+  </div>    
+<script>
+ $(document).ready(function(){
+    $(".btn_delete").on("click", function(){
+        var dataId = $(this).attr("data-id");
+          $(".delete-agree").attr("href", "/account/"+dataId+"/destroy"); // Set herf value
+    });
+});
+</script>
+<script>
+  document.addEventListener('DOMContentLoaded',function(){
+//when dialog confirm clicked
+     var restoreForm = document.forms['restore-course-form'];
+   var restoreBtn = $('.btn-restore');//jquery select all btn
+  //restore btn click
+  restoreBtn.click(function(e){
+    e.preventDefault();//bo hanh vi mac dinh
+  var courseId= $(this).data('id')
+   restoreForm.action = '/account/'+courseId+'/restore?_method=PATCH' ;
+      restoreForm.submit();
+  } )
+  });
+ 
+</script>
