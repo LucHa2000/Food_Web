@@ -1,9 +1,13 @@
 var nodemailer = require('nodemailer'); //sendEmailConfirm
 const Account = require('../models/Account');
 let Random = Math.floor(Math.random() * 1000000 + 100).toString();
-const { mutipleMongooseToObject } = require('../../util/mongoose');
+const {
+  mutipleMongooseToObject
+} = require('../../util/mongoose');
 var nodemailer = require('nodemailer'); //sendEmailConfirm
-const { mongooseToObject } = require('../../util/mongoose');
+const {
+  mongooseToObject
+} = require('../../util/mongoose');
 nodemailer = require('nodemailer'); //sendEmailConfirm
 class AuthController {
   //render page Login
@@ -20,13 +24,14 @@ class AuthController {
   }
   //[post] auth/user_login
   login(req, res, next) {
+
     Account.findOne({
-      email: req.body.email,
-    })
+        email: req.body.email,
+      })
       .then((accounts) => {
         if (accounts) {
           if (
-            (accounts.password == req.body.password &&
+            (accounts.password.trim() == req.body.password &&
               accounts.account_status == 1) ||
             accounts.deleted == true
           ) {

@@ -1,5 +1,6 @@
 const List = require('../models/List');
 const Order = require('../models/Order');
+const OrderDetail = require('../models/OrderDetail');
 const {
   mutipleMongooseToObject
 } = require('../../util/mongoose');
@@ -29,6 +30,9 @@ class OrderController {
       }, req.body)
       .then((orders) => res.redirect('back'))
       .catch(next);
+  }
+  detailOrder(req, res, next) {
+
   }
 
 }

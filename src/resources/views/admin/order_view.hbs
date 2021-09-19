@@ -7,11 +7,10 @@
       <div class="row">
     <div class="col s12 push-l">
       <ul class="tabs ">
-        <li class="tab col s3"><a class="active" href="#orderReady">Order Ready</a></li>
-        <li class="tab col s3"><a  href="#orderDelivery">Order Delivery</a></li>
-         <li class="tab col s3"><a  href="#orderFinished">Order Finished</a></li>
-          <li class="tab col s3"><a  href="#orderCancel">Order Cancelled</a></li>
-      
+        <li class="tab col s3"><a class="active" href="#orderReady">Ready Order</a></li>
+        <li class="tab col s3"><a  href="#orderDelivery">Delivery Order</a></li>
+         <li class="tab col s3"><a  href="#orderFinished">Finished Order</a></li>
+          <li class="tab col s3"><a  href="#orderCancel">Cancelled Order </a></li>
       </ul>
     </div>
     <div id="orderReady" class=""><br>
@@ -31,7 +30,6 @@
               <th></th>
           </tr>
         </thead>
-
         <tbody id="myTable">
               {{#each readyOrders}}
           <tr>
@@ -41,11 +39,10 @@
               <td>{{{ convertDate this.createdAt}}}</td>
              <td></td>
              <td>
-               <a href="/order/status/{{this.order_status}}/{{this._id}}" class="btn btn-small  blue lighten-2 button-radius "><i class="material-icons">{{btnStatus this.product_status}}</i></a>
+                <a href="/order/detail/{{{this._id}}}" class="btn btn-small   blue-grey"><i class="material-icons">details</i></a>
+               <a href="/order/status/{{this.order_status}}/{{this._id}}" class="btn btn-small  blue lighten-2 button-radius "><i class="material-icons">check</i></a>
                   <a  data-id="{{{this._id}}}" class="waves-effect waves-light btn  btn-small  modal-trigger btn_delete red" href="#modal1"><i class="material-icons">do_not_disturb_alt</i></a>
-             
                </td>
-               
              <td> </td>
           </tr>  
           {{else}}
@@ -53,14 +50,11 @@
                   <td colspan="7" class="center text-center">
                       Order Empty
                 </tr>
-            {{/each}}
- 
-          
+            {{/each}}         
         </tbody>
       </table>
         {{>pagination}}
       </div>
-
     </div>
       <div id="orderDelivery" class=""><br>
      <div class="paper_container z-depth-1">
@@ -89,7 +83,8 @@
               <td>{{{ convertDate this.createdAt}}}</td>
              <td></td>
              <td>
-               <a href="/order/status/{{this.order_status}}/{{this._id}}" class="btn btn-small  blue lighten-2 button-radius "><i class="material-icons">{{btnStatus this.product_status}}</i></a>
+                <a href="/order/detail/{{{this._id}}}" class="btn btn-small   blue-grey"><i class="material-icons">details</i></a>
+               <a href="/order/status/{{this.order_status}}/{{this._id}}" class="btn btn-small  blue lighten-2 button-radius "><i class="material-icons">check</i></a>
                   <a  data-id="{{{this._id}}}" class="waves-effect waves-light btn  btn-small  modal-trigger btn_delete red" href="#modal1"><i class="material-icons">do_not_disturb_alt</i></a>
              
                </td>
@@ -135,7 +130,8 @@
               <td>{{{ convertDate this.createdAt}}}</td>
              <td></td>
              <td>
-                 <a href="/order/status/{{this.order_status}}/{{this._id}}" class="btn btn-small  blue lighten-2 button-radius "><i class="material-icons">{{btnStatus this.product_status}}</i></a>
+                <a href="/order/detail/{{{this._id}}}" class="btn btn-small   blue-grey"><i class="material-icons">details</i></a>
+                 <a href="/order/status/{{this.order_status}}/{{this._id}}" class="btn btn-small  blue lighten-2 button-radius "><i class="material-icons">check</i></a>
                   <a  data-id="{{{this._id}}}" class="waves-effect waves-light btn  btn-small  modal-trigger btn_delete red" href="#modal1"><i class="material-icons">do_not_disturb_alt</i></a>
              
                </td>
@@ -184,8 +180,8 @@
              <td></td>
              <td>
                  <a href="/order/detail/{{{this._id}}}" class="btn btn-small   blue-grey"><i class="material-icons">details</i></a>
-                    <a href="" class="btn btn-small   blue-grey"><i class="material-icons">details</i></a>
-               <a href="/order/status/{{this.order_status}}/{{this._id}}" class="btn btn-small  blue lighten-2 button-radius "><i class="material-icons">{{btnStatus this.product_status}}</i></a>
+              
+               <a href="/order/status/{{this.order_status}}/{{this._id}}" class="btn btn-small  blue lighten-2 button-radius "><i class="material-icons">check</i></a>
                   <a data-id="{{{this._id}}}" class="waves-effect waves-light btn  btn-small  modal-trigger btn_delete red" href="#modal1">
                     <i class="material-icons">do_not_disturb_alt</i>
                   </a>        
