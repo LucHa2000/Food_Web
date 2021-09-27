@@ -14,15 +14,27 @@ const { mongooseToObject } = require("../../util/mongoose");
 const Review = require("../models/Review");
 
 class AdminController {
-  //[GET] / create Form and food
+  //[GET] / create Form
   index(req, res, next) {
-    let ListQuery = List.find({});
+    // let ListQuery = List.find({});
     let ProductQuery = Product.find({}).sortable(req);
-    Promise.all([ProductQuery, ListQuery])
-      .then(([products, lists]) =>
+    let productWithListQuery = Product.aggregate([
+      // { $match: { _id: mongoose.Types.ObjectId(`${req.params.id}`) } },
+      {
+        $lookup: {
+          from: "lists",
+          localField: "list_id",
+          foreignField: "_id",
+          as: "list",
+        },
+      },
+      { $unwind: "$list" },
+    ]);
+    Promise.all([productWithListQuery])
+      .then(([products]) =>
         res.render("admin/product_manament", {
-          products: mutipleMongooseToObject(products),
-          lists: mutipleMongooseToObject(lists),
+          // products: mutipleMongooseToObject(products),
+          products: products,
         })
       )
       .catch(next);

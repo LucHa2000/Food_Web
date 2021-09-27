@@ -83,6 +83,9 @@
               <th>Name
                   {{{sortable 'product_name' _sort}}}
               </th>
+              <th>List
+                  {{{sortable 'list_name' _sort}}}
+              </th>
               <th>Image</th>
               <th>Price
                   {{{sortable 'unit_price' _sort}}}
@@ -106,6 +109,7 @@
           <tr>
              <td>{{sum @index }}</td>
             <td>{{{this.product_name}}}</td>
+            <td>{{{this.list.list_name}}}</td>
             <td><img src="../uploads/{{{this.image}}}" alt="" class="responsive-img list-img"></td>
             <td>{{{this.unit_price}}}</td>
             <td>{{{this.quantity}}}</td>
@@ -117,7 +121,6 @@
                <a href="/admin/{{this._id}}" class="btn btn-small  yellow darken-3 button-radius "><i class="material-icons">system_update_alt</i></a>
               <a data-list="{{this.list_id}}" data-id="{{{this._id}}}" class="waves-effect waves-light btn  btn-small  modal-trigger btn_delete red" href="#modal1"><i class="material-icons">delete</i></a>
                </td>
-               
              <td> </td>
           </tr>  
           {{else}}
