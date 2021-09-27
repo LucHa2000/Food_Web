@@ -17,6 +17,7 @@ class AdminController {
   //[GET] / create Form
   index(req, res, next) {
     // let ListQuery = List.find({});
+
     let ProductQuery = Product.find({}).sortable(req);
     let productWithListQuery = Product.aggregate([
       // { $match: { _id: mongoose.Types.ObjectId(`${req.params.id}`) } },
