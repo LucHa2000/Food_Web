@@ -32,13 +32,27 @@ class AdminController {
       { $unwind: "$list" },
     ]);
     Promise.all([ListQuery, productWithListQuery])
-      .then(([lists, products]) =>
+      .then(([lists, products]) => {
+        products.map((p) => {
+          p.unit_price = new Intl.NumberFormat("en-US", {
+            style: "currency",
+            currency: "USD",
+          }).format(Number(p.unit_price));
+          p.unit_price =
+            p.unit_price.length > 10
+              ? p.unit_price.slice(0, 9).concat("...")
+              : p.unit_price;
+          p.product_name =
+            p.product_name.length > 10
+              ? p.product_name.slice(0, 10).concat("...")
+              : p.product_name;
+        });
         res.render("admin/product_manament", {
           // products: mutipleMongooseToObject(products),
           products: products,
           lists: mutipleMongooseToObject(lists),
-        })
-      )
+        });
+      })
       .catch(next);
   }
   //[POST]
