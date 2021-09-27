@@ -16,7 +16,7 @@ const Review = require("../models/Review");
 class AdminController {
   //[GET] / create Form
   index(req, res, next) {
-    // let ListQuery = List.find({});
+    let ListQuery = List.find({});
 
     let ProductQuery = Product.find({}).sortable(req);
     let productWithListQuery = Product.aggregate([
@@ -31,11 +31,12 @@ class AdminController {
       },
       { $unwind: "$list" },
     ]);
-    Promise.all([productWithListQuery])
-      .then(([products]) =>
+    Promise.all([ListQuery, productWithListQuery])
+      .then(([lists, products]) =>
         res.render("admin/product_manament", {
           // products: mutipleMongooseToObject(products),
           products: products,
+          lists: mutipleMongooseToObject(lists),
         })
       )
       .catch(next);
