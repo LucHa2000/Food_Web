@@ -16,5 +16,13 @@ const OrderDetailSchema = new Schema({
 }, {
   timestamps: true,
 }, );
+OrderDetailSchema.query.sortable = function (req) {
+  if (req.query.hasOwnProperty('_sort')) {
+    return this.sort({
+      [req.query.column]: req.query.type,
+    });
+  }
+  return this;
+};
 
-module.exports = mongoose.model('OrderDetail', OrderDetailSchema);
+module.exports = mongoose.model('Order_Detail', OrderDetailSchema);

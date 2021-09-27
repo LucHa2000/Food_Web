@@ -39,7 +39,7 @@ class StoreController {
             newProduct.save();
             lists.product_id.push(newProduct._id);
             lists.save();
-            res.redirect('/admin');
+            res.redirect('/admin/product');
           });
         }
 
@@ -58,7 +58,7 @@ class StoreController {
     Product.updateOne({
         _id: req.params.id
       }, req.body)
-      .then(() => res.redirect('/admin'))
+      .then(() => res.redirect('/admin/product'))
       .catch(next);
   }
   deleteProduct(req, res, next) {
@@ -73,7 +73,7 @@ class StoreController {
         Product.deleteOne({
           _id: req.params.id
         }).then(() => {
-          res.redirect('/admin');
+          res.redirect('/admin/product');
         });
       })
 

@@ -3,7 +3,11 @@
 <div class="create-container admin_main">
     <div class="container">
       <h5 class="">Trash Account Management</h5>
-      <a href="/admin/account"> <i class="material-icons">arrow_back</i></a>  
+    
+       <a href="/admin/account" data-target="" class="sidenav-trigger btn-floating pulse cyan">
+     <i class="material-icons">arrow_back</i>
+   
+    </a>
       <div class="paper_container z-depth-1">
 
       {{>search}}
@@ -18,7 +22,7 @@
               {{{sortable 'email' _sort}}}
             </th>
             <th>Type</th>
-            <th>Status</th>
+            
             <th>Delete At
               {{{sortable 'deletedAt' _sort}}}
             </th>
@@ -34,10 +38,10 @@
             <td>{{{this.email}}}</td>
     
             <td>{{{ accType this.accountType}}}</td>
-              <td>{{{ status this.account_status}}}</td>
+            
               <td>{{{ convertDate this.deletedAt}}}</td>
              <td>
-                  <a href="" class="btn btn-small  blue lighten-2 btn-restore" data-id="{{this._id}}"><i class="material-icons">settings_backup_restore</i></a>
+                  <a href="" class="btn  blue lighten-2 btn-restore" data-id="{{this._id}}"><i class="material-icons">replay</i></a>
                  <button data-target="modal1" data-id="{{{this._id}}}" class="btn red modal-trigger btn_delete"> <i class="material-icons">delete</i></button>
              </td>
 

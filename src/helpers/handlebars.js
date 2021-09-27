@@ -4,7 +4,7 @@ module.exports = {
   convertDate: (a) => moment(a).format('MMMM Do YYYY, h:mm:ss a'),
   sum: (a) => (a == a ? a + 1 : a), //create helpers
   accType: (a) => (a == 1 ? 'User ' : 'Admin'),
-  status: (a) => (a == 1 ? 'Active' : 'Banned'),
+  status: (a) => (a == 1 ? 'Active' : 'Block'),
   order_status: (a) => {
     if (a == 1) return 'Ready';
     else if (a == 2) return 'Delivery';

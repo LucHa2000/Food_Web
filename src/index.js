@@ -10,7 +10,7 @@ const moment = require('moment');
 const SortMiddleware = require('./app/middlewares/SortMiddlewares');
 const schedule = require('node-schedule');
 const app = express();
-const port = 3000;
+const port = 8000;
 
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public'))); //read file static
@@ -21,7 +21,9 @@ const db = require('./config/db');
 db.connect();
 //up file image
 
-app.use(express.urlencoded({ extended: true })); //use req.body when post method
+app.use(express.urlencoded({
+  extended: true
+})); //use req.body when post method
 app.use(morgan('combined'));
 app.use(express.json());
 app.engine(

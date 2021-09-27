@@ -40,6 +40,7 @@ class ListController {
       .catch(next);
   }
   listUpdate(req, res, next) {
+
     List.updateOne({
         _id: req.params.id
       }, req.body)

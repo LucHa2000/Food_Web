@@ -3,11 +3,11 @@
  
 <div class="container ">
     <h5 class="center">List update</h5>
- <form class="col s12"  method="POST" action="/list/{{articles._id}}/edit?_method=PATCH" enctype="multipart/form-data">
-  
+ <form class="col s12"  method="POST" action="/list/{{lists._id}}/edit?_method=PATCH">
       <div class="row">
         <div class="input-field col s12 ">
-          <input  id="list_name" type="text" class="validate" name="title" value="{{lists.list_name}}">
+          <input  id="list_name" type="text" class="validate" name="list_name" value="{{lists.list_name}}" required=required> 
+           <span class="helper-text" data-error="This field cannot be left blank" ></span>
           <label for="list_name">List Name</label>
         </div>
       </div>

@@ -8,22 +8,25 @@
   
       <div class="row">
         <div class="input-field col s12 ">
-          <input  id="product_name" type="text" class="validate" name="product_name" value="{{products.product_name}}">
+          <input  id="product_name" type="text" required=required class="validate" name="product_name" value="{{products.product_name}}">
           <label for="product_name">Name</label>
+        
         </div>
       </div>
     
       <div class="row">
         <div class="input-field col s12 ">
-          <input id="quantity" type="number" class="validate" name="quantity" value="{{products.quantity}}">
+          <input id="quantity" type="number" required=required class="validate" min="0" max="1000"name="quantity" value="{{products.quantity}}">
           <label for="quantity">Quantity</label>
+      
         </div>
       </div>
        <div class="row">
         <div class="input-field col s12 ">
-        <input id="cost"type="number" class="validate" name="unit_price" value="{{products.unit_price}}"/>
+        <input id="cost"type="number" required=required class="validate" min="0" max="1000" name="unit_price" value="{{products.unit_price}}"/>
 
           <label for="cost">Price</label>
+                  
         </div>
       </div>
       <div class="row">
@@ -45,6 +48,7 @@
         <div class="input-field col s12 ">
           <input id="note" type="Text" class="validate" name="note" value="{{products.note}}">
           <label for="note">Note</label>
+
         </div>
       </div>
        <button onclick="" class="btn waves-effect waves-light" type="submit">Update

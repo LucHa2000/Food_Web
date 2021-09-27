@@ -1,13 +1,19 @@
 const multer = require('multer');
-const upload = multer({ dest: 'src/public/uploads/' });
+const upload = multer({
+  dest: 'src/public/uploads/'
+});
 const Account = require('../models/Account');
 const Product = require('../models/Product');
 const Promotion = require('../models/Promotion');
 const List = require('../models/List');
 const Article = require('../models/Article');
 const Order = require('../models/Order');
-const { mutipleMongooseToObject } = require('../../util/mongoose');
-const { mongooseToObject } = require('../../util/mongoose');
+const {
+  mutipleMongooseToObject
+} = require('../../util/mongoose');
+const {
+  mongooseToObject
+} = require('../../util/mongoose');
 const Review = require('../models/Review');
 
 class AdminController {
@@ -45,7 +51,9 @@ class AdminController {
     res.redirect('/admin');
   }
   updateProductPage(req, res, next) {
-    Product.findOne({ _id: req.params.id })
+    Product.findOne({
+        _id: req.params.id
+      })
       .then((products) => {
         res.render('admin/update_product', {
           products: mongooseToObject(products),
@@ -107,10 +115,18 @@ class AdminController {
     );
   }
   orderPage(req, res, next) {
-    let queryReadyOrder = Order.find({ order_status: 1 }).sortable(req);
-    let queryCancelOrder = Order.find({ order_status: 0 }).sortable(req);
-    let queryDeliveryOrder = Order.find({ order_status: 2 }).sortable(req);
-    let queryDoneOrder = Order.find({ order_status: 3 }).sortable(req);
+    let queryReadyOrder = Order.find({
+      order_status: 1
+    }).sortable(req);
+    let queryCancelOrder = Order.find({
+      order_status: 0
+    }).sortable(req);
+    let queryDeliveryOrder = Order.find({
+      order_status: 2
+    }).sortable(req);
+    let queryDoneOrder = Order.find({
+      order_status: 3
+    }).sortable(req);
     Promise.all([
       queryReadyOrder,
       queryCancelOrder,
@@ -124,6 +140,9 @@ class AdminController {
         cancelOrders: mutipleMongooseToObject(cancelOrders),
       });
     });
+  }
+  statisticsPage(req, res, next) {
+    res.render('admin/statistics_page')
   }
 }
 module.exports = new AdminController();

@@ -1,8 +1,6 @@
 {{>header_admin}}
  
 <div class="create-container">
-
-
 <div class="table-foods container">
       <div class="row">
     <div class="col s12 push-l3">
@@ -111,7 +109,6 @@
             <td><img src="../uploads/{{{this.image}}}" alt="" class="responsive-img list-img"></td>
             <td>{{{this.unit_price}}}</td>
             <td>{{{this.quantity}}}</td>
-
              <td class="{{{ status this.product_status}}}">{{{ status this.product_status}}}</td>
               <td>{{{ convertDate this.createdAt}}}</td>
              <td></td>
@@ -132,7 +129,7 @@
         </tbody>
       </table>
         {{>pagination}}
-           {{>footer_admin}}
+          
       </div>
 
     </div>
@@ -162,4 +159,4 @@
 </script>
 
 
-  
+   {{>footer_admin}}

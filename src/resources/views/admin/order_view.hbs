@@ -35,13 +35,13 @@
           <tr>
              <td>{{sum @index }}</td>
             <td>{{{this.email}}}</td>
-             <td>{{{order_status this.order_status}}}</td>
+             <td class="{{{ order_status this.order_status}}}">{{{order_status this.order_status}}}</td>
               <td>{{{ convertDate this.createdAt}}}</td>
              <td></td>
              <td>
                 <a href="/order/{{{this._id}}}" class="btn btn-small   blue-grey"><i class="material-icons">details</i></a>
                <a href="/order/status/{{this.order_status}}/{{this._id}}" class="btn btn-small  blue lighten-2 button-radius "><i class="material-icons">check</i></a>
-                  <a  data-id="{{{this._id}}}" class="waves-effect waves-light btn  btn-small  modal-trigger btn_delete red" href="#modal1"><i class="material-icons">do_not_disturb_alt</i></a>
+                  <a  data-id="{{{this._id}}}" class="waves-effect waves-light btn  btn-small  modal-trigger btn_cancel red" href="#modal1"><i class="material-icons">do_not_disturb_alt</i></a>
                </td>
              <td> </td>
           </tr>  
@@ -79,13 +79,13 @@
           <tr>
              <td>{{sum @index }}</td>
             <td>{{{this.email}}}</td>
-             <td>{{{order_status this.order_status}}}</td>
+             <td class="{{{ order_status this.order_status}}}">{{{order_status this.order_status}}}</td>
               <td>{{{ convertDate this.createdAt}}}</td>
              <td></td>
              <td>
-                <a href="/order/detail/{{{this._id}}}" class="btn btn-small   blue-grey"><i class="material-icons">details</i></a>
+               <a href="/order/status/{{this.order_status}}/{{this._id}}/back" class="btn btn-small  orange lighten-2 button-radius "><i class="material-icons">replay</i></a>
+              <a href="/order/{{{this._id}}}" class="btn btn-small   blue-grey"><i class="material-icons">details</i></a>
                <a href="/order/status/{{this.order_status}}/{{this._id}}" class="btn btn-small  blue lighten-2 button-radius "><i class="material-icons">check</i></a>
-                  <a  data-id="{{{this._id}}}" class="waves-effect waves-light btn  btn-small  modal-trigger btn_delete red" href="#modal1"><i class="material-icons">do_not_disturb_alt</i></a>
              
                </td>
                
@@ -126,13 +126,12 @@
           <tr>
              <td>{{sum @index }}</td>
             <td>{{{this.email}}}</td>
-             <td>{{{order_status this.order_status}}}</td>
+             <td class="{{{ order_status this.order_status}}}">{{{order_status this.order_status}}}</td>
               <td>{{{ convertDate this.createdAt}}}</td>
              <td></td>
              <td>
-                <a href="/order/detail/{{{this._id}}}" class="btn btn-small   blue-grey"><i class="material-icons">details</i></a>
-                 <a href="/order/status/{{this.order_status}}/{{this._id}}" class="btn btn-small  blue lighten-2 button-radius "><i class="material-icons">check</i></a>
-                  <a  data-id="{{{this._id}}}" class="waves-effect waves-light btn  btn-small  modal-trigger btn_delete red" href="#modal1"><i class="material-icons">do_not_disturb_alt</i></a>
+                <a href="/order/{{{this._id}}}" class="btn btn-small   blue-grey"><i class="material-icons">details</i></a>
+                  <a  data-id="{{{this._id}}}" class="waves-effect waves-light btn  btn-small  modal-trigger btn_delete red" href="#modal2"><i class="material-icons">delete</i></a>
              
                </td>
                
@@ -175,15 +174,16 @@
           <tr>
              <td>{{sum @index }}</td>
             <td>{{{this.email}}}</td>
-             <td>{{{order_status this.order_status}}}</td>
+             <td class="{{{order_status this.order_status}}}">{{{order_status this.order_status}}}</td>
               <td>{{{ convertDate this.createdAt}}}</td>
              <td></td>
              <td>
-                 <a href="/order/detail/{{{this._id}}}" class="btn btn-small   blue-grey"><i class="material-icons">details</i></a>
+                <a href="/order/status/{{this.order_status}}/{{this._id}}/back" class="btn btn-small  orange lighten-2 button-radius "><i class="material-icons">replay</i></a>
+             <a href="/order/{{{this._id}}}" class="btn btn-small   blue-grey"><i class="material-icons">details</i></a>
               
-               <a href="/order/status/{{this.order_status}}/{{this._id}}" class="btn btn-small  blue lighten-2 button-radius "><i class="material-icons">check</i></a>
-                  <a data-id="{{{this._id}}}" class="waves-effect waves-light btn  btn-small  modal-trigger btn_delete red" href="#modal1">
-                    <i class="material-icons">do_not_disturb_alt</i>
+              
+                  <a data-id="{{{this._id}}}" class="waves-effect waves-light btn  btn-small  modal-trigger btn_delete red" href="#modal">
+                    <i class="material-icons">delete</i>
                   </a>        
                </td>
                
@@ -206,7 +206,16 @@
   </div>
 </div>
 </div>
-
+<div id="modal2" class="modal">
+    <div class="modal-content">
+      <h4 class="center">Delete Order</h4>
+      <p class="center">Do you really want to delete these order ? </p>
+    </div>
+    <div class="modal-footer">
+      <a class="modal-close waves-effect waves-green btn-flat delete-agree text-darken-2 red-text">Yes, do it</a>
+      <a class="modal-close waves-effect waves-green btn-flat  grey-text">No, cancel </a>
+    </div>
+  </div>    
 <div id="modal1" class="modal">
     <div class="modal-content">
       <h4 class="center">Cancel Order</h4>
@@ -219,10 +228,14 @@
   </div>    
 <script>
  $(document).ready(function(){
-    $(".btn_delete").on("click", function(){
+    $(".btn_cancel").on("click", function(){
         var dataId = $(this).attr("data-id");
-          $(".delete-agree").attr("href", "/promotion/"+dataId+"/delete")
+          $(".delete-agree").attr("href", "/order/status/0/"+dataId)
+    });
+        $(".btn_delete").on("click", function(){
+        var dataId = $(this).attr("data-id");
+        $(".delete-agree").attr("href", "/order/delete/"+dataId); // Set herf value
     });
 });
 </script>
-  
+   {{>footer_admin}}
