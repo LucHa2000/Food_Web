@@ -1,45 +1,60 @@
- <div class="auth_container">
+<div class="auth_container">
 
-<div class="container ">
-   
-<div class="row">
-  <div class="col s12 m6 push-l3 z-depth-4 card-panel border-radius-6 login-card bg-opacity-8 inside_auth">
+  <div class="container">
 
-    <form class="col s12" action="/auth/sendMail" method="POST">   
-     <h4 class="center"> Register</h4>
-      <div class="row">
-        <div class="input-field col s10 m10 push-l1">
-             <i class="material-icons prefix">email</i>
-          <input id="confirmEmail" type="email" class="validate"  name="confirmEmail" required>
-          <label for="confirmEmail">Email</label>
-            <span class="helper-text" data-error="This field must be email" data-success=""></span>
-        </div>
-      </div>     
+    <div class="row">
+      <div
+        class="col s12 m6 push-l3 z-depth-4 card-panel border-radius-6 login-card bg-opacity-8 inside_auth"
+      >
 
-      <div class="row">
-      <div class="input-field col s10 m10 push-l1">
+        <form class="col s12" action="/auth/sendMail" method="POST">
+          <h4 class="center"> Register</h4>
+          <div class="row">
+            <div class="input-field col s10 m10 push-l1">
+              <i class="material-icons prefix">email</i>
+              <input
+                id="confirmEmail"
+                type="email"
+                class="validate"
+                name="confirmEmail"
+                required
+              />
+              <label for="confirmEmail">Email</label>
+              <span
+                class="helper-text"
+                data-error="This field must be email"
+                data-success=""
+              ></span>
+            </div>
+          </div>
 
-        <div class="isa_error message-info ">
+          <div class="row">
+            <div class="input-field col s10 m10 push-l1">
+
+              <div class="isa_error message-info">
                 <i class="fa fa-times-circle"></i>
-          <span>{{error}}</span> 
-      
-            </div>
-      </div>
-      </div>
-      <div class="row">
-               <div class="input-field col  col s10 m10 push-l1">
-                <button class="btn waves-effect waves-light btn_login" type="submit">Register
-                  <i class="material-icons right">send</i>
-                 </button>
-               </div>
-               <div class="input-field col s12 push-l center">
-                   <h10>Are you have Account ? </h10>
-                   <a href="/auth" class="text-purple">Login</a>
-            </div>
-      </div>
-    </form>
+                <span>{{error}}</span>
 
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="input-field col col s10 m10 push-l1">
+              <button
+                class="btn waves-effect waves-light btn_login"
+                type="submit"
+              >Register
+                <i class="material-icons right">send</i>
+              </button>
+            </div>
+            <div class="input-field col s12 push-l center">
+              <h10>You already have an account? </h10>
+              <a href="/auth" class="text-purple">Login</a>
+            </div>
+          </div>
+        </form>
+
+      </div>
+    </div>
   </div>
-  </div>    
 </div>
- </div>

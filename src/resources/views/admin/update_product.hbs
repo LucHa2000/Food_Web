@@ -23,7 +23,7 @@
       </div>
        <div class="row">
         <div class="input-field col s12 ">
-        <input id="cost"type="number" required=required class="validate" min="0" max="1000" name="unit_price" value="{{products.unit_price}}"/>
+        <input id="cost"type="number" required=required class="validate" min="0" name="unit_price" value="{{products.unit_price}}"/>
 
           <label for="cost">Price</label>
                   
@@ -41,7 +41,18 @@
         <input class="file-path validate" type="text" value="{{products.image}}" name="img_old">
       </div>
     </div>
-            
+
+    <div class="row">
+      <div class="input-field col s12">
+        <select name="list_id">
+          <option value="{{{currentList.list.list_name}}}" disabled selected>{{{currentList.list.list_name}}}</option>
+          {{#each lists}}
+            <option value="{{{this._id}}}" >{{{this.list_name}}} </option>
+          {{/each}}
+        </select>
+        <label>Select *</label>
+      </div>
+    </div>      
    
     </div>
        <div class="row">
