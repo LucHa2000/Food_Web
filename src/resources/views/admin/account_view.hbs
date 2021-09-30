@@ -111,11 +111,11 @@
                 <td class="{{{ status this.account_status}}}">{{{ status this.account_status}}}</td>
                 <td>0{{{ this.phone_number}}}</td>      
                 <td>   
-                  <a href="/account/{{{this.account_status}}}/{{{this._id}}}" class="btn btn-small  blue lighten-2 "><i class="material-icons">{{btnStatus this.account_status}}</i></a>
-                  <a href="/account/{{{this._id}}}" class="btn btn-small  yellow darken-3 button-radius "><i class="material-icons">system_update_alt</i></a>
+                  <a data-position="top" data-tooltip="Status" href="/account/{{{this.account_status}}}/{{{this._id}}}" class=" tooltipped btn btn-small  blue lighten-2 "><i class="material-icons">{{btnStatus this.account_status}}</i></a>
+                  <a data-position="top" data-tooltip="Update" href="/account/{{{this._id}}}" class="btn btn-small tooltipped  yellow darken-3 button-radius "><i class="material-icons">system_update_alt</i></a>
 
                 <!-- Modal Trigger -->
-                <a data-list="{{this.list_id}}" data-id="{{{this._id}}}" class="waves-effect waves-light btn modal-trigger btn_delete red  {{accType this.accountType}}" href="#modal1"><i class="material-icons">delete</i></a>
+                <a data-position="top" data-tooltip="Update"  data-list="{{this.list_id}}" data-id="{{{this._id}}}" class=" tooltipped waves-effect waves-light btn modal-trigger btn_delete red  {{accType this.accountType}}" href="#modal1"><i class="material-icons">delete</i></a>
                 </td>
                 </tr>
            
@@ -135,7 +135,6 @@
 
   
   {{>pagination}}
- 
  
           
       </div>

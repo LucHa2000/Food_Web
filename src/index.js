@@ -21,9 +21,11 @@ const db = require('./config/db');
 db.connect();
 //up file image
 
-app.use(express.urlencoded({
-  extended: true
-})); //use req.body when post method
+app.use(
+  express.urlencoded({
+    extended: true,
+  }),
+); //use req.body when post method
 app.use(morgan('combined'));
 app.use(express.json());
 app.engine(

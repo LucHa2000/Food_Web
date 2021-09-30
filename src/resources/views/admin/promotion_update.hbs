@@ -5,7 +5,7 @@
       <div class="row">
   <h4 class="center">Update Promotion</h4>
   <div class="paper_container z-depth-1">
- <form class="col s12"  method="POST"  method="POST" action="/promotion/{{promotions._id}}/edit?_method=PATCH">
+ <form class="col s12"  method="POST" action="/promotion/{{promotions._id}}/edit?_method=PATCH">
       <div class="row">
         <div class="input-field col s12 ">
           <input  id="promotion_name" type="text" class="validate" name="promotion_name" value="{{{promotions.promotion_name}}}">
@@ -13,12 +13,6 @@
         </div>
       </div>
     
-      <div class="row">
-        <div class="input-field col s12 ">
-          <input id="quantity" type="number" class="validate" name="promotion_rate" min="1" max="100"value="{{{promotions.promotion_rate}}}">
-          <label for="quantity">Rate</label>
-        </div>
-      </div>
     <div class="row">
         <div class="input-field col s3">
                  <span class="helper-text">Start Date</span>

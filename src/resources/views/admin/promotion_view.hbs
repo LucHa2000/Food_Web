@@ -23,23 +23,6 @@
           <span class="helper-text" data-error="This field cannot be left blank" data-success=""></span>
         </div>
       </div>
-      <div class="row">
-        <div class="input-field col s12 ">
-          <input id="quantity" type="number" class="validate" name="promotion_rate"  required="required"  min="1" max="100">
-          <label for="quantity">Rate*</label>
-            <span class="helper-text" data-error="This field must be greater than 0" data-success=""></span>
-        </div>
-      </div>
-    <div class="row">
-      <div class="input-field col s12">
-    <select name="product_name" required="required">
-      {{#each products}}
-      <option value="{{{this.product_name}}}">{{{this.product_name}}} </option>
-      {{/each}}
-    </select>
-    <label>Choose product option*</label>
-      </div>
-    </div>
     <div class="row">
         <div class="input-field col s3">
       <input type="datetime-local" id="start_date" name="start_date" required="required">
@@ -102,13 +85,7 @@ end_date.onchange = validatePassword;
           <tr>   
               <th>No</th>    
               <th> Name
-                  {{{sortable 'product_name' _sort}}}
-              </th>
-              <th> Rate
-                {{{sortable 'promotion_rate' _sort}}}
-              </th>
-              <th> Price
-                {{{sortable 'cost' _sort}}}
+                  {{{sortable 'promotion_name' _sort}}}
               </th>
               <th>Status</th>
               <th>Start Date
@@ -125,18 +102,17 @@ end_date.onchange = validatePassword;
               {{#each promotions}}
           <tr>
              <td>{{sum @index }}</td>
-            <td>{{{this.product_name}}}</td>
-            <td>{{{this.promotion_rate }}}%</td>
-            <td>{{{ discountCost this.cost this.promotion_rate}}}$</td>
+            <td>{{{this.promotion_name}}}</td>
+   
             <td class="{{{ status this.promotion_status}}}">{{{ status this.promotion_status}}}</td>
             <td>{{{ convertDate this.start_date}}}</td>
             <td>{{{ convertDate this.end_date}}}</td>
-            <td></td>
             <td>         
                {{!-- <a href="/promotion/status/{{this.promotion_status}}/{{this._id}}" class="btn btn-small  blue lighten-2 button-radius "><i class="material-icons">{{btnStatus this.promotion_status}}</i></a> --}}
-               <a href="/promotion/{{this._id}}" class="btn btn-small  yellow darken-3 button-radius "><i class="material-icons">system_update_alt</i></a>
-               
-                  <a  data-id="{{{this._id}}}" class="waves-effect waves-light btn  btn-small  modal-trigger btn_delete red" href="#modal1"><i class="material-icons">delete</i></a>
+                <a href="/promotionDetail/{{{this._id}}}" class="btn btn-small   blue tooltipped " data-position="top" data-tooltip="Add Product"><i class="material-icons" >add</i></a>
+                 <a href="/promotionDetail/{{{this._id}}}" class="btn btn-small   tooltipped blue-grey" data-position="top" data-tooltip="Detail"><i class="material-icons" >details</i></a>
+               <a href="/promotion/{{this._id}}" class="btn btn-small tooltipped yellow darken-3 button-radius " data-position="top" data-tooltip="Update"><i class="material-icons">system_update_alt</i></a>
+                  <a  data-id="{{{this._id}}}" class="waves-effect waves-light btn  btn-small  modal-trigger btn_delete red tooltipped" href="#modal1" data-position="top" data-tooltip="Delete"><i class="material-icons">delete</i></a>
             </td>
                
              <td> </td>

@@ -1,25 +1,24 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-const OrderDetailSchema = new Schema(
+const PromotionDetailSchema = new Schema(
   {
-    order_id: {
+    promotion_id: {
       type: Schema.Types.ObjectId,
-      ref: 'Order',
+      ref: 'Promotion',
     },
     product_name: {
       type: String,
       ref: 'Product',
     },
     quantity: Number,
-    unit_price: Number,
     promotion_rate: Number,
   },
   {
     timestamps: true,
   },
 );
-OrderDetailSchema.query.sortable = function (req) {
+PromotionDetailSchema.query.sortable = function (req) {
   if (req.query.hasOwnProperty('_sort')) {
     return this.sort({
       [req.query.column]: req.query.type,
@@ -28,4 +27,4 @@ OrderDetailSchema.query.sortable = function (req) {
   return this;
 };
 
-module.exports = mongoose.model('Order_Detail', OrderDetailSchema);
+module.exports = mongoose.model('Promotion_Detail', PromotionDetailSchema);

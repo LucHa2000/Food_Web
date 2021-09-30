@@ -2,7 +2,7 @@ var express = require('express');
 var router = express.Router();
 const multer = require('multer');
 const upload = multer({
-  dest: 'src/public/uploads/'
+  dest: 'src/public/uploads/',
 });
 const adminController = require('../app/controllers/AdminController');
 const authMiddlewares = require('../app/middlewares/AuthMiddlewares');
@@ -21,6 +21,5 @@ router.post(
 );
 
 router.get('/', authMiddlewares.index, adminController.statisticsPage);
-
 
 module.exports = router;

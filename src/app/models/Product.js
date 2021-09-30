@@ -12,10 +12,12 @@ const ProductSchema = new Schema(
       type: Schema.Types.ObjectId,
       ref: 'List',
     },
-    promotion_id: {
-      type: Schema.Types.ObjectId,
-      ref: 'Promotion',
-    },
+    promotionDetails: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: 'PromotionDetail',
+      },
+    ],
 
     orderDetails: [
       {

@@ -150,7 +150,6 @@ body {
   background-color: rgba(234, 236, 238, 0.75);
   border-radius: 12px;
   border: 1px solid rgba(255, 255, 255, 0.125);
-  height: 50%;
 }
 .inside_signup {
   backdrop-filter: blur(16px) saturate(180%);
@@ -218,7 +217,7 @@ table {
   bottom: 0;
   right: 0;
   left: 0;
-  background-image: url("https://pixinvent.com/materialize-material-design-admin-template/app-assets/images/gallery/flat-bg.jpg");
+  background-image: url('https://pixinvent.com/materialize-material-design-admin-template/app-assets/images/gallery/flat-bg.jpg');
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -237,7 +236,7 @@ table {
 .Block {
   color: rgb(238, 33, 5);
 }
-.Active {
+.Activity {
   color: rgb(18, 233, 18);
 }
 /* remove background on input on autofill */

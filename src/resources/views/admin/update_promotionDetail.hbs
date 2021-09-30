@@ -1,0 +1,46 @@
+{{>header_admin}}
+
+ 
+<div class="container ">
+  
+    <h4 class="center">Update Sale Product</h4>
+      <script>
+    document.write('<a class="sidenav-trigger btn-floating pulse cyan" href="' + document.referrer + '"> <i class="material-icons">arrow_back</i></a>');
+</script>
+<h1></h1>
+    <div class="paper_container z-depth-1">
+ <form class="col s12"  method="POST" action="/promotionDetailUpdate/{{promotionDetail._id}}/edit?_method=PATCH">
+  
+      <div class="row">
+        <div class="input-field col s12 ">
+          <h5>{{promotionDetail.product_name}}</h5>
+          <input hidden id="product_name" type="text" required=required class="validate" name="product_name" value="{{promotionDetail.product_name}}">
+          <label for="product_name">Name Product</label>
+        </div>
+      </div>
+    
+      <div class="row">
+        <div class="input-field col s12 ">
+          <input id="quantity" type="number" required=required class="validate" min="0" max="1000000"name="quantity" value="{{promotionDetail.quantity}}">
+          <label for="quantity">Quantity</label>
+      
+        </div>
+      </div>
+       <div class="row">
+        <div class="input-field col s12 ">
+        <input id="rate"type="number" required=required class="validate" min="0" name="promotion_rate" value="{{promotionDetail.promotion_rate}}"/>
+          <label for="rate">Rate</label>
+        </div>
+      </div>
+       <button onclick="" class="btn waves-effect waves-light" type="submit">Update
+    <i class="material-icons right">send</i>
+      </button>
+    </form> 
+
+    </div>
+     <br>
+  </div>
+   {{>footer_admin}}
+
+
+  

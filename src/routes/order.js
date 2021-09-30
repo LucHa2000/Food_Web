@@ -2,7 +2,7 @@ var express = require('express');
 var router = express.Router();
 const multer = require('multer');
 const upload = multer({
-    dest: 'src/public/uploads/'
+  dest: 'src/public/uploads/',
 });
 const orderController = require('../app/controllers/orderController');
 const authMiddlewares = require('../app/middlewares/AuthMiddlewares');
