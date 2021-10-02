@@ -11,6 +11,7 @@ const {
   mongo
 } = require('mongoose');
 var schedule = require('node-schedule');
+var schedule = require('node-schedule');
 class PromotionController {
   promotionAdd(req, res, next) {
     req.body.promotionDetail_id = [];
@@ -69,7 +70,7 @@ class PromotionController {
         });
       });
     }
-    res.redirect('back');
+    res.redirect('/admin/promotion');
   }
   promotionUpdatePage(req, res, next) {
     Promotion.findOne({
@@ -79,6 +80,7 @@ class PromotionController {
         promotions: mongooseToObject(promotions),
       });
     });
+
   }
   promotionDelete(req, res, next) {
     Promotion.deleteOne({

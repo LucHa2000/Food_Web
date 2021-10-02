@@ -52,10 +52,10 @@
              <td>{{{this.list_name}}}</td>
             <td>{{{convertDate this.createdAt}}}</td>   
             <td>
-                <a href="" class="btn btn-small   blue-grey"><i class="material-icons">details</i></a>
-                <a href="/list/{{this._id}}" class="btn btn-small yellow darken-3 "><i class="material-icons">system_update_alt</i></a>
+                <a data-position="top" data-tooltip="Detail" href="" class="btn tooltipped btn-small   blue-grey"><i class="material-icons">details</i></a>
+                <a data-position="top" data-tooltip="Update" href="/list/{{this._id}}" class="btn tooltipped btn-small yellow darken-3 "><i class="material-icons">system_update_alt</i></a>
                
-                 <a  data-id="{{{this._id}}}" class="waves-effect waves-light btn  btn-small  modal-trigger btn_delete red" href="#modal1"><i class="material-icons">delete</i></a>
+                 <a data-position="top" data-tooltip="Delete"  data-id="{{{this._id}}}" class="waves-effect waves-light btn tooltipped btn-small  modal-trigger btn_delete red" href="#modal1"><i class="material-icons">delete</i></a>
             </td>
             </tr>
               {{else}}

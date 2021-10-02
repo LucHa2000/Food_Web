@@ -39,9 +39,9 @@
               <td>{{{ convertDate this.createdAt}}}</td>
              <td></td>
              <td>
-                <a href="/order/{{{this._id}}}" class="btn btn-small   blue-grey"><i class="material-icons">details</i></a>
-               <a href="/order/status/{{this.order_status}}/{{this._id}}" class="btn btn-small  blue lighten-2 button-radius "><i class="material-icons">check</i></a>
-                  <a  data-id="{{{this._id}}}" class="waves-effect waves-light btn  btn-small  modal-trigger btn_cancel red" href="#modal1"><i class="material-icons">do_not_disturb_alt</i></a>
+                <a href="/order/{{{this._id}}}" class="tooltipped btn btn-small   blue-grey"data-position="top" data-tooltip="Detail"><i class="material-icons">details</i></a>
+               <a href="/order/status/{{this.order_status}}/{{this._id}}" class="tooltipped btn btn-small  blue lighten-2 button-radius " data-position="top" data-tooltip="Accept"><i class="material-icons">check</i></a>
+                  <a  data-id="{{{this._id}}}" class=" tooltipped waves-effect waves-light btn  btn-small  modal-trigger btn_cancel red" href="#modal1" data-position="top" data-tooltip="Cancel" ><i class="material-icons">do_not_disturb_alt</i></a>
                </td>
              <td> </td>
           </tr>  
@@ -83,9 +83,9 @@
               <td>{{{ convertDate this.createdAt}}}</td>
              <td></td>
              <td>
-               <a href="/order/status/{{this.order_status}}/{{this._id}}/back" class="btn btn-small  orange lighten-2 button-radius "><i class="material-icons">replay</i></a>
-              <a href="/order/{{{this._id}}}" class="btn btn-small   blue-grey"><i class="material-icons">details</i></a>
-               <a href="/order/status/{{this.order_status}}/{{this._id}}" class="btn btn-small  blue lighten-2 button-radius "><i class="material-icons">check</i></a>
+               <a data-position="top" data-tooltip="Revert" href="/order/status/{{this.order_status}}/{{this._id}}/back" class="btn btn-small  tooltipped orange lighten-2 button-radius "><i class="material-icons">replay</i></a>
+              <a data-position="top" data-tooltip="Detail" href="/order/{{{this._id}}}" class="btn btn-small  tooltipped  blue-grey"><i class="material-icons">details</i></a>
+               <a data-position="top" data-tooltip="Accept" href="/order/status/{{this.order_status}}/{{this._id}}" class=" tooltipped btn btn-small  blue lighten-2 button-radius "><i class="material-icons">check</i></a>
              
                </td>
                
@@ -130,8 +130,9 @@
               <td>{{{ convertDate this.createdAt}}}</td>
              <td></td>
              <td>
-                <a href="/order/{{{this._id}}}" class="btn btn-small   blue-grey"><i class="material-icons">details</i></a>
-                  <a  data-id="{{{this._id}}}" class="waves-effect waves-light btn  btn-small  modal-trigger btn_delete red" href="#modal2"><i class="material-icons">delete</i></a>
+                 <a data-position="top" data-tooltip="Revert" href="/order/status/{{this.order_status}}/{{this._id}}/back" class="btn btn-small  tooltipped orange lighten-2 button-radius "><i class="material-icons">replay</i></a>
+              <a data-position="top" data-tooltip="Detail" href="/order/{{{this._id}}}" class="btn btn-small  tooltipped  blue-grey"><i class="material-icons">details</i></a>
+                  <a data-position="top" data-tooltip="Delete" data-id="{{{this._id}}}" class="waves-effect waves-light btn tooltipped  btn-small  modal-trigger btn_delete red" href="#modal2"><i class="material-icons">delete</i></a>
              
                </td>
                
@@ -174,15 +175,15 @@
           <tr>
              <td>{{sum @index }}</td>
             <td>{{{this.email}}}</td>
+            
              <td class="{{{order_status this.order_status}}}">{{{order_status this.order_status}}}</td>
               <td>{{{ convertDate this.createdAt}}}</td>
              <td></td>
              <td>
-                <a href="/order/status/{{this.order_status}}/{{this._id}}/back" class="btn btn-small  orange lighten-2 button-radius "><i class="material-icons">replay</i></a>
-             <a href="/order/{{{this._id}}}" class="btn btn-small   blue-grey"><i class="material-icons">details</i></a>
-              
-              
-                  <a data-id="{{{this._id}}}" class="waves-effect waves-light btn  btn-small  modal-trigger btn_delete red" href="#modal">
+               
+              <a data-position="top" data-tooltip="Revert" href="/order/status/{{this.order_status}}/{{this._id}}/back" class="btn btn-small  tooltipped orange lighten-2 button-radius "><i class="material-icons">replay</i></a>
+              <a data-position="top" data-tooltip="Detail" href="/order/{{{this._id}}}" class="btn btn-small  tooltipped  blue-grey"><i class="material-icons">details</i></a>
+                  <a  data-position="top" data-tooltip="Delete" data-id="{{{this._id}}}" class="waves-effect waves-light btn  btn-small  tooltipped  modal-trigger btn_delete red" href="#modal">
                     <i class="material-icons">delete</i>
                   </a>        
                </td>
