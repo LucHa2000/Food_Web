@@ -108,10 +108,10 @@
               {{#each products}}
           <tr>
              <td>{{sum @index }}</td>
-            <td>{{{this.product_name}}}</td>
+            <td>{{{formatLongString this.product_name}}}</td>
             {{!-- <td>{{{this.list.list_name}}}</td> --}}
             <td><img src="../uploads/{{{this.image}}}" alt="" class="responsive-img list-img"></td>
-            <td class="product-unit-price">{{{this.unit_price}}}</td>
+            <td class="product-unit-price">{{{formatLongString (formatCurrency this.unit_price)}}}</td>
             <td>{{{this.quantity}}}</td>
              <td class="{{{ status this.product_status}}}">{{{ status this.product_status}}}</td>
               <td>{{{ convertDate this.createdAt}}}</td>
