@@ -1,17 +1,17 @@
-const multer = require('multer');
-const mongoose = require('mongoose');
+const multer = require("multer");
+const mongoose = require("mongoose");
 const upload = multer({
-  dest: 'src/public/uploads/',
+  dest: "src/public/uploads/",
 });
-const Account = require('../models/Account');
-const Product = require('../models/Product');
-const Promotion = require('../models/Promotion');
-const List = require('../models/List');
-const Article = require('../models/Article');
-const Order = require('../models/Order');
-const { mutipleMongooseToObject } = require('../../util/mongoose');
-const { mongooseToObject } = require('../../util/mongoose');
-const Review = require('../models/Review');
+const Account = require("../models/Account");
+const Product = require("../models/Product");
+const Promotion = require("../models/Promotion");
+const List = require("../models/List");
+const Article = require("../models/Article");
+const Order = require("../models/Order");
+const { mutipleMongooseToObject } = require("../../util/mongoose");
+const { mongooseToObject } = require("../../util/mongoose");
+const Review = require("../models/Review");
 
 class AdminController {
   //[GET] / create Form
@@ -19,39 +19,10 @@ class AdminController {
     let ListQuery = List.find({});
 
     let ProductQuery = Product.find({}).sortable(req);
-    let productWithListQuery = Product.aggregate([
-      // { $match: { _id: mongoose.Types.ObjectId(`${req.params.id}`) } },
-      {
-        $lookup: {
-          from: 'lists',
-          localField: 'list_id',
-          foreignField: '_id',
-          as: 'list',
-        },
-      },
-      {
-        $unwind: '$list',
-      },
-    ]);
-    Promise.all([ListQuery, productWithListQuery])
+    Promise.all([ListQuery, ProductQuery])
       .then(([lists, products]) => {
-        products.map((p) => {
-          p.unit_price = new Intl.NumberFormat('en-US', {
-            style: 'currency',
-            currency: 'USD',
-          }).format(Number(p.unit_price));
-          p.unit_price =
-            p.unit_price.length > 10
-              ? p.unit_price.slice(0, 9).concat('...')
-              : p.unit_price;
-          p.product_name =
-            p.product_name.length > 10
-              ? p.product_name.slice(0, 10).concat('...')
-              : p.product_name;
-        });
-        res.render('admin/product_manament', {
-          // products: mutipleMongooseToObject(products),
-          products: products,
+        res.render("admin/product_manament", {
+          products: mutipleMongooseToObject(products),
           lists: mutipleMongooseToObject(lists),
         });
       })
@@ -61,7 +32,7 @@ class AdminController {
   productStore(req, res, next) {
     var listID = req.body.list_id;
     // get listID
-    req.body.image = req.file.path.split('\\').slice(3).join();
+    req.body.image = req.file.path.split("\\").slice(3).join();
     req.body.product_status = 1;
     req.body.review_id = [];
     req.body.orderDetail_id = [];
@@ -73,9 +44,9 @@ class AdminController {
       newProduct.save();
       lists.product_id.push(newProduct._id);
       lists.save();
-      res.redirect('/admin');
+      res.redirect("/admin");
     });
-    res.redirect('/admin');
+    res.redirect("/admin");
   }
   updateProductPage(req, res, next) {
     let ListQuery = List.find();
@@ -90,20 +61,20 @@ class AdminController {
       },
       {
         $lookup: {
-          from: 'lists',
-          localField: 'list_id',
-          foreignField: '_id',
-          as: 'list',
+          from: "lists",
+          localField: "list_id",
+          foreignField: "_id",
+          as: "list",
         },
       },
       {
-        $unwind: '$list',
+        $unwind: "$list",
       },
     ]);
 
     Promise.all([ProductQuery, ListQuery, currentList])
       .then(([products, lists, currentList]) => {
-        res.render('admin/update_product', {
+        res.render("admin/update_product", {
           products: mongooseToObject(products),
           lists: mutipleMongooseToObject(lists),
           currentList: currentList[0],
@@ -125,7 +96,7 @@ class AdminController {
     let account = Account.find({}).sortable(req);
     let count = Account.countDeleted({});
     Promise.all([account, count]).then(([accounts, counts]) => {
-      res.render('admin/account_view', {
+      res.render("admin/account_view", {
         accounts: mutipleMongooseToObject(accounts),
         counts: counts,
       });
@@ -135,7 +106,7 @@ class AdminController {
     List.find({})
       .sortable(req)
       .then((lists) => {
-        res.render('admin/list_view', {
+        res.render("admin/list_view", {
           lists: mutipleMongooseToObject(lists),
         });
       })
@@ -145,7 +116,7 @@ class AdminController {
     Article.find({})
       .sortable(req)
       .then((articles) => {
-        res.render('admin/article_view', {
+        res.render("admin/article_view", {
           articles: mutipleMongooseToObject(articles),
         });
       });
@@ -154,23 +125,23 @@ class AdminController {
     Review.find({})
       .sortable(req)
       .then((reviews) => {
-        res.render('admin/review_page', {
+        res.render("admin/review_page", {
           reviews: mutipleMongooseToObject(reviews),
         });
       });
   }
   promotionPage(req, res, next) {
     let queryProduct = Product.find({
-      promotion_id: 'aaacaaaaaaaaaaaaf2132e26',
+      promotion_id: "aaacaaaaaaaaaaaaf2132e26",
     });
     let queryPromotion = Promotion.find({}).sortable(req);
     Promise.all([queryProduct, queryPromotion]).then(
       ([products, promotions]) => {
-        res.render('admin/promotion_view', {
+        res.render("admin/promotion_view", {
           products: mutipleMongooseToObject(products),
           promotions: mutipleMongooseToObject(promotions),
         });
-      },
+      }
     );
   }
   orderPage(req, res, next) {
@@ -192,7 +163,7 @@ class AdminController {
       queryDeliveryOrder,
       queryDoneOrder,
     ]).then(([readyOrders, cancelOrders, deliveryOrders, doneOrders]) => {
-      res.render('admin/order_view', {
+      res.render("admin/order_view", {
         readyOrders: mutipleMongooseToObject(readyOrders),
         deliveryOrders: mutipleMongooseToObject(deliveryOrders),
         doneOrders: mutipleMongooseToObject(doneOrders),
@@ -201,7 +172,7 @@ class AdminController {
     });
   }
   statisticsPage(req, res, next) {
-    res.render('admin/statistics_page');
+    res.render("admin/statistics_page");
   }
 }
 module.exports = new AdminController();
