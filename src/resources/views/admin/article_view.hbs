@@ -78,8 +78,8 @@
             <td>{{{ this.author}}}</td>   
                <td>{{{convertDate this.createdAt}}}</td>   
             <td>
-                <a href="" data-position="top" data-tooltip="Detail" class="btn  tooltipped btn-small   blue-grey"><i class="material-icons">details</i></a>
-                <a data-position="top" data-tooltip="Status" href="/article/{{{this.article_status}}}/{{{this._id}}}" class="btn tooltipped  btn-small  blue lighten-2 "><i class="material-icons">{{btnStatus this.article_status}}</i></a>
+                <a href="" data-position="top" data-tooltip="Detail" class="btn  tooltipped btn-small   yellow darken-4"><i class="material-icons">details</i></a>
+                <a data-position="top" data-tooltip="Status" href="/article/{{{this.article_status}}}/{{{this._id}}}" class="{{btnStatus this.article_status}} btn tooltipped  btn-small  blue-grey "><i class="material-icons">{{btnStatus this.article_status}}</i></a>
                 <a href="/article/{{this._id}}"  data-position="top" data-tooltip="Update" class="btn btn-small tooltipped  yellow darken-3 "><i class="material-icons">system_update_alt</i></a>    
                  <a  data-id="{{{this._id}}}" data-position="top" data-tooltip="Delete" class="waves-effect tooltipped  waves-light btn  btn-small  modal-trigger btn_delete red" href="#modal1"><i class="material-icons">delete</i></a>
             </td>

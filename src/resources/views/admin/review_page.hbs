@@ -38,8 +38,8 @@
                 <td class="{{{ status this.review_status}}}">{{{ status this.review_status}}}</td>
                 <td>{{{ convertDate this.createdAt}}}</td>     
                 <td>  
-                  <a href="" class="btn btn-small   blue-grey"><i class="material-icons">details</i></a> 
-                  <a href="/review/{{{this.review_status}}}/{{{this._id}}}" class="btn btn-small  blue lighten-2 "><i class="material-icons">{{btnStatus this.review_status}}</i></a>
+                  <a href="" class="btn btn-small  yellow darken-4  "><i class="material-icons">details</i></a> 
+                  <a href="/review/{{{this.review_status}}}/{{{this._id}}}" class="btn btn-small  blue lighten-2 blue-grey {{btnStatus this.review_status}} "><i class="material-icons">{{btnStatus this.review_status}}</i></a>
           
                     <a  data-id="{{{this._id}}}" class="waves-effect waves-light btn  btn-small  modal-trigger btn_delete red" href="#modal1"><i class="material-icons">delete</i></a>
                 </td>

@@ -21,11 +21,11 @@
           <tr>   
               <th>No</th>    
               <th>Email
-                  {{{sortable 'Email' _sort}}}
+                  {{!-- {{{sortable 'Email' _sort}}} --}}
               </th>
               <th>Status</th>
               <th>Order Date
-                  {{{sortable 'createdAt' _sort}}}
+                  {{!-- {{{sortable 'createdAt' _sort}}} --}}
               </th>
               <th></th>
           </tr>
@@ -39,8 +39,8 @@
               <td>{{{ convertDate this.createdAt}}}</td>
              <td></td>
              <td>
-                <a href="/order/{{{this._id}}}" class="tooltipped btn btn-small   blue-grey"data-position="top" data-tooltip="Detail"><i class="material-icons">details</i></a>
-               <a href="/order/status/{{this.order_status}}/{{this._id}}" class="tooltipped btn btn-small  blue lighten-2 button-radius " data-position="top" data-tooltip="Accept"><i class="material-icons">check</i></a>
+                <a href="/order/{{{this._id}}}?Page=1" class="tooltipped btn btn-small   yellow darken-4"data-position="top" data-tooltip="Detail"><i class="material-icons">details</i></a>
+               <a href="/order/status/{{this.order_status}}/{{this._id}}?Page=1" class="tooltipped btn btn-small  blue lighten-2 button-radius " data-position="top" data-tooltip="Accept"><i class="material-icons">check</i></a>
                   <a  data-id="{{{this._id}}}" class=" tooltipped waves-effect waves-light btn  btn-small  modal-trigger btn_cancel red" href="#modal1" data-position="top" data-tooltip="Cancel" ><i class="material-icons">do_not_disturb_alt</i></a>
                </td>
              <td> </td>
@@ -64,11 +64,11 @@
           <tr>   
               <th>No</th>    
               <th>Email
-                  {{{sortable 'Email' _sort}}}
+                  {{!-- {{{sortable 'Email' _sort}}} --}}
               </th>
               <th>Status</th>
               <th>Order Date
-                  {{{sortable 'createdAt' _sort}}}
+                  {{!-- {{{sortable 'createdAt' _sort}}} --}}
               </th>
               <th></th>
           </tr>
@@ -84,7 +84,7 @@
              <td></td>
              <td>
                <a data-position="top" data-tooltip="Revert" href="/order/status/{{this.order_status}}/{{this._id}}/back" class="btn btn-small  tooltipped orange lighten-2 button-radius "><i class="material-icons">replay</i></a>
-              <a data-position="top" data-tooltip="Detail" href="/order/{{{this._id}}}" class="btn btn-small  tooltipped  blue-grey"><i class="material-icons">details</i></a>
+              <a data-position="top" data-tooltip="Detail" href="/order/{{{this._id}}}?Page=1" class="btn btn-small  tooltipped  yellow darken-4"><i class="material-icons">details</i></a>
                <a data-position="top" data-tooltip="Accept" href="/order/status/{{this.order_status}}/{{this._id}}" class=" tooltipped btn btn-small  blue lighten-2 button-radius "><i class="material-icons">check</i></a>
              
                </td>
@@ -111,11 +111,11 @@
           <tr>   
               <th>No</th>    
               <th>Email
-                  {{{sortable 'Email' _sort}}}
+                  {{!-- {{{sortable 'Email' _sort}}} --}}
               </th>
               <th>Status</th>
               <th>Order Date
-                  {{{sortable 'createdAt' _sort}}}
+                  {{!-- {{{sortable 'createdAt' _sort}}} --}}
               </th>
               <th></th>
           </tr>
@@ -131,7 +131,7 @@
              <td></td>
              <td>
                  <a data-position="top" data-tooltip="Revert" href="/order/status/{{this.order_status}}/{{this._id}}/back" class="btn btn-small  tooltipped orange lighten-2 button-radius "><i class="material-icons">replay</i></a>
-              <a data-position="top" data-tooltip="Detail" href="/order/{{{this._id}}}" class="btn btn-small  tooltipped  blue-grey"><i class="material-icons">details</i></a>
+              <a data-position="top" data-tooltip="Detail" href="/order/{{{this._id}}}?Page=1" class="btn btn-small  tooltipped  yellow darken-4"><i class="material-icons">details</i></a>
                   <a data-position="top" data-tooltip="Delete" data-id="{{{this._id}}}" class="waves-effect waves-light btn tooltipped  btn-small  modal-trigger btn_delete red" href="#modal2"><i class="material-icons">delete</i></a>
              
                </td>
@@ -161,11 +161,11 @@
           <tr>   
               <th>No</th>    
               <th>Email
-                  {{{sortable 'Email' _sort}}}
+                  {{!-- {{{sortable 'Email' _sort}}} --}}
               </th>
               <th>Status</th>
               <th>Order Date
-                  {{{sortable 'createdAt' _sort}}}
+                  {{!-- {{{sortable 'createdAt' _sort}}} --}}
               </th>
               <th></th>
           </tr>
@@ -182,7 +182,7 @@
              <td>
                
               <a data-position="top" data-tooltip="Revert" href="/order/status/{{this.order_status}}/{{this._id}}/back" class="btn btn-small  tooltipped orange lighten-2 button-radius "><i class="material-icons">replay</i></a>
-              <a data-position="top" data-tooltip="Detail" href="/order/{{{this._id}}}" class="btn btn-small  tooltipped  blue-grey"><i class="material-icons">details</i></a>
+              <a data-position="top" data-tooltip="Detail" href="/order/{{{this._id}}}?Page=1" class="btn btn-small  tooltipped  yellow darken-4"><i class="material-icons">details</i></a>
                   <a  data-position="top" data-tooltip="Delete" data-id="{{{this._id}}}" class="waves-effect waves-light btn  btn-small  tooltipped  modal-trigger btn_delete red" href="#modal">
                     <i class="material-icons">delete</i>
                   </a>        

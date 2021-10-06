@@ -42,7 +42,7 @@ class ListController {
       },
       req.body,
     )
-      .then(() => res.redirect('/admin/list'))
+      .then(() => res.redirect('/admin/list?Page=1'))
       .catch(next);
   }
   create(req, res, next) {

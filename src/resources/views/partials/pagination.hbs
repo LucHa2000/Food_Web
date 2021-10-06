@@ -1,11 +1,23 @@
-      <div class="pagination_container">
-         <ul class="pagination right" >
+<div class="pagination_container">
+  <ul class="pagination right">
     <li class="disabled"><a href="#!"><i class="material-icons">chevron_left</i></a></li>
-    <li class="active"><a href="#!">1</a></li>
-    <li class="waves-effect"><a href="#!">2</a></li>
-    <li class="waves-effect"><a href="#!">3</a></li>
-    <li class="waves-effect"><a href="#!">4</a></li>
+    <li class="active"><a href="?Page=1">1</a></li>
+    <li class=""><a href="?Page=2">2</a></li>
+    <li class="waves-effect"><a href="?Page=3">3</a></li>
+    <li class="waves-effect"><a href="?Page=4">4</a></li>
     <li class="waves-effect"><a href="#!">5</a></li>
-    <li class="waves-effect"><a href="#!"><i class="material-icons">chevron_right</i></a></li>
-       </ul>
-        </div>
+    <li class="disabled"><a href="#!"><i class="material-icons">chevron_right</i></a></li>
+  </ul>
+</div>
+<script>
+  $(document).ready(function(){
+  var path = window.location.href
+   $('.pagination li a').each(function(){ if (this.href ===
+  path)
+  { 
+    $(this).parent('li').addClass('active')
+     } 
+  else
+  { $(this).parent('li').removeClass('active') } })
+  })
+</script>

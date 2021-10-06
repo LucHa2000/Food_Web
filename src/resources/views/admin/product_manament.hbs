@@ -109,7 +109,6 @@
           <tr>
              <td>{{sum @index }}</td>
             <td>{{{formatLongString this.product_name}}}</td>
-            {{!-- <td>{{{this.list.list_name}}}</td> --}}
             <td><img src="../uploads/{{{this.image}}}" alt="" class="responsive-img list-img"></td>
             <td class="product-unit-price">{{{formatLongString (formatCurrency this.unit_price)}}}</td>
             <td>{{{this.quantity}}}</td>
@@ -117,7 +116,7 @@
               <td>{{{ convertDate this.createdAt}}}</td>
              <td></td>
              <td>   
-               <a data-position="top" data-tooltip="Status" href="/store/status/{{this.product_status}}/{{this._id}}" class="btn btn-small  tooltipped  blue lighten-2 button-radius "><i class="material-icons">{{btnStatus this.product_status}}</i></a>&nbsp;
+               <a data-position="top" data-tooltip="Status" href="/store/status/{{this.product_status}}/{{this._id}}" class="btn btn-small  {{btnStatus this.product_status}} tooltipped   blue-grey button-radius "><i class="material-icons">{{btnStatus this.product_status}}</i></a>&nbsp;
                <a data-position="top" data-tooltip="Update" href="/admin/{{this._id}}" class="btn btn-small tooltipped  yellow darken-3 button-radius "><i class="material-icons">system_update_alt</i></a>&nbsp;
               <a data-position="top" data-tooltip="Delete" data-list="{{this.list_id}}" data-id="{{{this._id}}}" class="waves-effect waves-light btn  btn-small tooltipped   modal-trigger btn_delete red" href="#modal1"><i class="material-icons">delete</i></a>
                </td>

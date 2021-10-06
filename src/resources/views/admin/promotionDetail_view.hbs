@@ -15,7 +15,7 @@
       </ul>
     </div>
     
-       <a href="/admin/promotion" data-target="" class="sidenav-trigger btn-floating pulse cyan">
+       <a href="/admin/promotion?Page=1" data-target="" class="sidenav-trigger btn-floating pulse cyan">
          <i class="material-icons">arrow_back</i></a>
     <div id="addproduct" class="">
       <div class="paper_container z-depth-1">
@@ -28,7 +28,8 @@
     <select  name="product_name" required="required">
       <option value="" disabled selected>Choose your option</option>
        {{#each products}}
-      <option value="{{{this.product_name}}}">{{{this.product_name}}} </option>
+       
+      <option value="{{{this.product_name}}}">{{{this.product_name}}}</option>
       {{/each}}
     </select>
     <label> Select product</label>

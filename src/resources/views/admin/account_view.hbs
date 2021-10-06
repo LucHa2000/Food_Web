@@ -111,7 +111,8 @@
                 <td class="{{{ status this.account_status}}}">{{{ status this.account_status}}}</td>
                 <td>0{{{ this.phone_number}}}</td>      
                 <td>   
-                  <a data-position="top" data-tooltip="Status" href="/account/{{{this.account_status}}}/{{{this._id}}}" class=" tooltipped btn btn-small  blue lighten-2 "><i class="material-icons">{{btnStatus this.account_status}}</i></a>
+                <td>   
+                  <a data-position="top" data-tooltip="Status" href="/account/{{{this.account_status}}}/{{{this._id}}}" class="{{btnStatus this.account_status}} tooltipped btn btn-small   blue-grey "><i class="material-icons  ">{{btnStatus this.account_status}}</i></a>
                   <a data-position="top" data-tooltip="Update" href="/account/{{{this._id}}}" class="btn btn-small tooltipped  yellow darken-3 button-radius "><i class="material-icons">system_update_alt</i></a>
 
                 <!-- Modal Trigger -->

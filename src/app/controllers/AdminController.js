@@ -9,20 +9,29 @@ const Promotion = require("../models/Promotion");
 const List = require("../models/List");
 const Article = require("../models/Article");
 const Order = require("../models/Order");
-const { mutipleMongooseToObject } = require("../../util/mongoose");
-const { mongooseToObject } = require("../../util/mongoose");
+const {
+  mutipleMongooseToObject
+} = require("../../util/mongoose");
+const {
+  mongooseToObject
+} = require("../../util/mongoose");
+const {
+  pagination
+} = require("../../util/pagination");
 const Review = require("../models/Review");
+
+const quantityItem = 4
 
 class AdminController {
   //[GET] / create Form
   index(req, res, next) {
+    var numberPage = req.query.Page || 1
     let ListQuery = List.find({});
-
     let ProductQuery = Product.find({}).sortable(req);
     Promise.all([ListQuery, ProductQuery])
       .then(([lists, products]) => {
         res.render("admin/product_manament", {
-          products: mutipleMongooseToObject(products),
+          products: mutipleMongooseToObject(pagination(products, numberPage, quantityItem)),
           lists: mutipleMongooseToObject(lists),
         });
       })
@@ -53,8 +62,7 @@ class AdminController {
     let ProductQuery = Product.findOne({
       _id: req.params.id,
     });
-    let currentList = Product.aggregate([
-      {
+    let currentList = Product.aggregate([{
         $match: {
           _id: mongoose.Types.ObjectId(`${req.params.id}`),
         },
@@ -81,70 +89,63 @@ class AdminController {
         });
       })
       .catch(next);
-    // Product.findOne({
-    //     _id: req.params.id
-    //   })
-    //   .then((products) => {
-    //     res.render('admin/update_product', {
-    //       products: mongooseToObject(products),
-    //     });
-    //   })
-    //   .catch(next);
+
   }
   //[patch] admin/:id/update
   accountPage(req, res, next) {
+    var numberPage = req.query.Page || 1
     let account = Account.find({}).sortable(req);
     let count = Account.countDeleted({});
     Promise.all([account, count]).then(([accounts, counts]) => {
       res.render("admin/account_view", {
-        accounts: mutipleMongooseToObject(accounts),
+        accounts: mutipleMongooseToObject(pagination(accounts, numberPage, quantityItem)),
         counts: counts,
       });
     });
   }
   listPage(req, res, next) {
+    var numberPage = req.query.Page || 1
     List.find({})
       .sortable(req)
       .then((lists) => {
         res.render("admin/list_view", {
-          lists: mutipleMongooseToObject(lists),
+          lists: mutipleMongooseToObject(pagination(lists, numberPage, quantityItem)),
         });
       })
       .catch(next);
   }
   articlePage(req, res, next) {
+    var numberPage = req.query.Page || 1
     Article.find({})
       .sortable(req)
       .then((articles) => {
         res.render("admin/article_view", {
-          articles: mutipleMongooseToObject(articles),
+          articles: mutipleMongooseToObject(pagination(articles, numberPage, quantityItem)),
         });
       });
   }
   reviewPage(req, res, next) {
+    var numberPage = req.query.Page || 1
     Review.find({})
       .sortable(req)
       .then((reviews) => {
         res.render("admin/review_page", {
-          reviews: mutipleMongooseToObject(reviews),
+          reviews: mutipleMongooseToObject(pagination(reviews, numberPage, quantityItem)),
         });
       });
   }
   promotionPage(req, res, next) {
-    let queryProduct = Product.find({
-      promotion_id: "aaacaaaaaaaaaaaaf2132e26",
-    });
-    let queryPromotion = Promotion.find({}).sortable(req);
-    Promise.all([queryProduct, queryPromotion]).then(
-      ([products, promotions]) => {
+    var numberPage = req.query.Page || 1
+    Promotion.find({})
+      .sortable(req)
+      .then((promotions) => {
         res.render("admin/promotion_view", {
-          products: mutipleMongooseToObject(products),
-          promotions: mutipleMongooseToObject(promotions),
+          promotions: mutipleMongooseToObject(pagination(promotions, numberPage, quantityItem)),
         });
-      }
-    );
+      });
   }
   orderPage(req, res, next) {
+    var numberPage = req.query.Page || 1
     let queryReadyOrder = Order.find({
       order_status: 1,
     }).sortable(req);
@@ -164,10 +165,10 @@ class AdminController {
       queryDoneOrder,
     ]).then(([readyOrders, cancelOrders, deliveryOrders, doneOrders]) => {
       res.render("admin/order_view", {
-        readyOrders: mutipleMongooseToObject(readyOrders),
-        deliveryOrders: mutipleMongooseToObject(deliveryOrders),
-        doneOrders: mutipleMongooseToObject(doneOrders),
-        cancelOrders: mutipleMongooseToObject(cancelOrders),
+        readyOrders: mutipleMongooseToObject(pagination(readyOrders, numberPage, quantityItem)),
+        deliveryOrders: mutipleMongooseToObject(pagination(deliveryOrders, numberPage, quantityItem)),
+        doneOrders: mutipleMongooseToObject(pagination(doneOrders, numberPage, quantityItem)),
+        cancelOrders: mutipleMongooseToObject(pagination(cancelOrders, numberPage, quantityItem)),
       });
     });
   }

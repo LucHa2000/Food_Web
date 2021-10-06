@@ -108,13 +108,12 @@ end_date.onchange = validatePassword;
             <td>{{{ convertDate this.start_date}}}</td>
             <td>{{{ convertDate this.end_date}}}</td>
             <td>         
-               {{!-- <a href="/promotion/status/{{this.promotion_status}}/{{this._id}}" class="btn btn-small  blue lighten-2 button-radius "><i class="material-icons">{{btnStatus this.promotion_status}}</i></a> --}}
-                <a href="/promotionDetail/{{{this._id}}}" class="btn btn-small   blue tooltipped " data-position="top" data-tooltip="Add Product"><i class="material-icons" >add</i></a>
-                 <a href="/promotionDetail/{{{this._id}}}" class="btn btn-small   tooltipped blue-grey" data-position="top" data-tooltip="Detail"><i class="material-icons" >details</i></a>
+               <a href="/promotion/status/{{this.promotion_status}}/{{this._id}}" class="btn btn-small blue-grey {{btnStatus this.promotion_status}} button-radius "><i class="material-icons">{{btnStatus this.promotion_status}}</i></a>
+                {{!-- <a href="/promotionDetail/{{{this._id}}}?Page=1" class="btn btn-small   blue tooltipped " data-position="top" data-tooltip="Add Product"><i class="material-icons" >add</i></a> --}}
+                 <a href="/promotionDetail/{{{this._id}}}?Page=1" class="btn btn-small   tooltipped yellow darken-4" data-position="top" data-tooltip="Detail"><i class="material-icons" >details</i></a>
                <a href="/promotion/{{this._id}}" class="btn btn-small tooltipped yellow darken-3 button-radius " data-position="top" data-tooltip="Update"><i class="material-icons">system_update_alt</i></a>
                   <a  data-id="{{{this._id}}}" class="waves-effect waves-light btn  btn-small  modal-trigger btn_delete red tooltipped" href="#modal1" data-position="top" data-tooltip="Delete"><i class="material-icons">delete</i></a>
             </td>
-               
              <td> </td>
           </tr>
             {{/each}}

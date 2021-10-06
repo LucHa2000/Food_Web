@@ -5,7 +5,7 @@
       <div class="title_block">
       <h5 class="">Order Detail</h5>
       </div>
- <a href="/admin/order" data-target="" class="sidenav-trigger btn-floating pulse cyan">
+ <a href="/admin/order?Page=1" data-target="" class="sidenav-trigger btn-floating pulse cyan">
      <i class="material-icons">arrow_back</i>
    
     </a>
@@ -19,9 +19,8 @@
             <th>Name{{{sortable 'product_name' _sort}}}</th>
             <th>Quantity{{{sortable 'quantity' _sort}}}</th>
             <th>Price{{{sortable 'unit_price' _sort}}}</th>
-            <th>Promotion Rate</th>
-            <th>Sale Price
-            </th>   
+            <th>Promotion Rate{{{sortable 'promotion_rate' _sort}}}</th>
+            
        
           </tr>
         </thead>
@@ -31,9 +30,9 @@
                 <td>{{sum @index}}</td>
                 <td>{{{this.product_name}}}</td>
                 <td>{{{this.quantity}}}</td>
-                <td>{{{ this.unit_price}}}$</td>
+                <td>{{{formatLongString (formatCurrency this.unit_price)}}}</td>
                 <td>{{{ this.promotion_rate}}}%</td>
-                <td>2233</td>      
+                
            </tr>
            
              {{else}}

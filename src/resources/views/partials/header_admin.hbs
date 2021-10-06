@@ -36,23 +36,25 @@
       <li><a href="/admin"><i
             class="material-icons"
           >pie_chart</i>Statistics</a></li>
-      <li class=""><a class="while_text" href="/admin/product"><i
+      <li class=""><a class="while_text" href="/admin/product?Page=1"><i
             class="material-icons"
           >storage</i>Product management</a></li>
-      <li class=""><a class="while_text" href="/admin/list"><i
+      <li class=""><a class="while_text" href="/admin/list?Page=1"><i
             class="material-icons"
           >dvr</i>List management</a></li>
-      <li><a href="/admin/account"><i class="material-icons">person</i>Account
-          management</a></li>
-      <li><a href="/admin/review"><i class="material-icons">comment</i>Review
-          management</a></li>
-      <li><a href="/admin/order"><i
+      <li><a href="/admin/account?Page=1"><i
+            class="material-icons"
+          >person</i>Account management</a></li>
+      <li><a href="/admin/review?Page=1"><i
+            class="material-icons"
+          >comment</i>Review management</a></li>
+      <li><a href="/admin/order?Page=1"><i
             class="material-icons"
           >shopping_cart</i>Order management</a></li>
-      <li><a href="/admin/article"><i
+      <li><a href="/admin/article?Page=1"><i
             class="material-icons"
           >open_in_browser</i>Article management</a></li>
-      <li><a href="/admin/promotion"><i
+      <li><a href="/admin/promotion?Page=1"><i
             class="material-icons"
           >local_offer</i>Promotion management</a></li>
 
@@ -65,16 +67,12 @@
 
 </header>
 
-{{! <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script
+  src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"
+></script>
 <script>
- $(document).ready(function() {
-$("a").click(function (e) {
-
-    $("a").removeClass("active");
-    // $(".tab").addClass("active"); // instead of this do the below 
-    $(this).addClass("active"); 
- 
-    
-});
-});
-</script> }}
+  $(document).ready(function(){ var path = window.location.href $('.admin_nav li
+  a').each(function(){ if (this.href === path) {
+  $(this).parent('li').addClass('active') } else {
+  $(this).parent('li').removeClass('active') } }) })
+</script>
