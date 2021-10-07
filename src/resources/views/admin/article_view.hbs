@@ -72,7 +72,7 @@
               {{#each articles}}
           <tr>
             <td>{{sum @index}}</td>
-             <td>{{{this.title}}}</td>
+             <td>{{{formatLongString this.title}}}</td>
             <td><img src="../uploads/{{{this.image}}}" class="responsive-img list-img"></td>
             <td class="{{{ status this.article_status}}}">{{{ status this.article_status}}}</td>
             <td>{{{ this.author}}}</td>   

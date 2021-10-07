@@ -1,15 +1,55 @@
 const multer = require('multer');
-const upload = multer({ dest: 'src/public/uploads/' });
+const upload = multer({
+  dest: 'src/public/uploads/'
+});
 const Product = require('../models/Product');
+const Article = require('../models/Article');
 const List = require('../models/List');
-const { mutipleMongooseToObject } = require('../../util/mongoose');
-const { mongooseToObject } = require('../../util/mongoose');
+const {
+  mutipleMongooseToObject
+} = require('../../util/mongoose');
+const {
+  mongooseToObject
+} = require('../../util/mongoose');
 
 class HomeController {
   index(req, res, next) {
     res.clearCookie('message');
     res.clearCookie('errorConfirm');
-    res.render('user/user_home');
+    let queryArticle = Article.find({
+      article_status: 1
+    })
+    let queryProduct = Product.find({
+      product_status: 1
+    })
+    Promise.all([queryArticle, queryProduct]).then(
+      ([articles, products]) => {
+        res.render('user/user_home', {
+          articles: mutipleMongooseToObject(articles.slice(0, 3)),
+          products: mutipleMongooseToObject(products.slice(0, 6)),
+
+        }, );
+
+      })
+  }
+  productPage(req, res, next) {
+
+
+    let queryList = List.find({
+
+    })
+    let queryProduct = Product.find({
+      product_status: 1
+    })
+    Promise.all([queryList, queryProduct]).then(
+      ([articles, products]) => {
+        res.render('user/product_view', {
+          lists: mutipleMongooseToObject(articles),
+          products: mutipleMongooseToObject(products),
+
+        }, );
+
+      })
   }
 }
 module.exports = new HomeController();

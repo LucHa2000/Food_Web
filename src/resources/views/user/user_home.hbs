@@ -1,3 +1,179 @@
-<h1>
-    <a href="/auth">Logout</a>
-</h1>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./css/reset.css" />
+    <link rel="stylesheet" href="./css/main.css" />
+    <link rel="stylesheet" href="./css/products.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/flickity@2/dist/flickity.min.css"
+    />
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"
+    ></script>
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+    <script
+      src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"
+      defer
+    ></script>
+    <script
+      src="https://kit.fontawesome.com/655396e8e6.js"
+      crossorigin="anonymous"
+    ></script>
+
+    <title>Medical Equipment Supply</title>
+  </head>
+  <body>
+   {{>header}}
+    <div class="overlay">
+      <header class="main-header">
+        <div class="container">
+          <div class="left">
+            <span class="title">_</span><span
+              id="main-header-title"
+              class="title"
+            ></span><span id="cursor"></span>
+            <p>Together,we are working toward a healthier community.</p>
+            <div class="btns-container">
+              <a
+                href="./products.html"
+                id="btn--explore"
+                class="btn-active btn"
+              >Explore our products</a>
+              <a
+                href="./about-us.html"
+                id="btn--about"
+                class="btn-inactive btn"
+              >About us</a>
+            </div>
+            <div class="socials">
+              <a href=""><i class="fab fa-facebook"></i></a>
+              <a href=""><i class="fab fa-instagram"></i></a>
+              <a href=""><i class="fab fa-twitter"></i></a>
+              <a href=""><i class="fab fa-tiktok"></i></a>
+              <p class="copyright">&copy; Copyright by team 9 DTU</p>
+            </div>
+          </div>
+        </div>
+      </header>
+    </div>
+
+    <main id="main">
+      <div class="container">
+        <div class="slideshow-container">
+          <!-- Full-width images with number and caption text -->
+          <div class="mySlides fade">
+            <img src="./images/taylor-brandon-jYI7L4zLFkM-unsplash.jpg" />
+          </div>
+
+          <div class="mySlides fade">
+            <img src="./images/larm-rmah-AEaTUnvneik-unsplash.jpg" />
+          </div>
+
+          <div class="mySlides fade">
+            <img
+              src="./images/national-cancer-institute-yg1Zayn0Few-unsplash.jpg"
+            />
+          </div>
+
+          <!-- Next and previous buttons -->
+          <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+          <a class="next" onclick="plusSlides(1)">&#10095;</a>
+        </div>
+        <br />
+
+        <!-- The dots/circles -->
+        <div style="text-align: center">
+          <span class="dot" onclick="currentSlide(1)"></span>
+          <span class="dot" onclick="currentSlide(2)"></span>
+          <span class="dot" onclick="currentSlide(3)"></span>
+        </div>
+        <section class="products-section primary-color">
+          <h2 class="title">Best Sellers</h2>
+        
+           <section
+        class="carousel js-flickity section-grid"
+        data-flickity='{ "groupCells": true }'
+      >
+      {{#each products}}
+        <div class="carousel-cell card">
+             <a href="#" class="card-content">
+                    <div class="card-image" style="height :38%">
+                      <img src="../uploads/{{{this.image}}}" />
+                    </div>
+                    <span class="card-tag">NEW</span>
+                    <span class="card-title">{{this.product_name}}</span>
+                    <p>
+                      {{this.note}}
+                    </p>
+                    <span class="card-price">{{{formatLongString (formatCurrency this.unit_price)}}}</span>
+                  </a>
+
+                  <div class="btns-container">
+                    <a href="#" id="btn--add-to-cart" class="btn-active btn"
+                      >Add to cart</a
+                    >
+                    <a href="#" id="btn--view-details" class="btn-inactive btn"
+                      >Details</a
+                    >
+                  </div>
+        
+
+        </div>
+     {{/each}}
+     
+      </section>
+          <h6 class="more"><a href="./products.html">Browse more...</a></h6>
+        </section>
+        <section class="news-section primary-color">
+          <h2 class="title">Keep You up to date</h2>
+          <div class="section-grid">
+            <div class="row">
+              {{#each articles}}
+              <div class="col s12 m4">
+                <a href="#" class="card">
+                  <div class="card-image">
+                    <img src="../uploads/{{{this.image}}}" />
+                  </div>
+                  <div class="card-content">
+                    <span class="card-tag">NEW</span>
+                    <span class="card-title">{{{this.title}}}</span>
+                  </div>
+                </a>
+              </div>
+            {{/each}}
+            </div>
+          </div>
+          <h6 class="more"><a href="./news.html">Browse more...</a></h6>
+        </section>
+        <div class="embed-media">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3834.1068001805766!2d108.2075535141697!3d16.05994674395409!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x314219b4239d8e51%3A0x96e408c6b0419760!2sDuy%20Tan%20University!5e0!3m2!1sen!2s!4v1633367930899!5m2!1sen!2s"
+            width="100%"
+            height="350"
+            style="border: 0"
+            allowfullscreen=""
+            loading="lazy"
+          ></iframe>
+        </div>
+      </div>
+    </main>
+    <div id="cart-container" class="shopping-cart-container hidden">
+      <span id="close-btn">X</span>
+      <h1>Cart</h1>
+      <h4>Your cart is empty!</h4>
+    </div>
+  {{>footer}}
+
+    <script src="./script/main.js"></script>
+  </body>
+</html>

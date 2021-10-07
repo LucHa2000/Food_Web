@@ -1,0 +1,53 @@
+.products-container {
+  display: flex;
+}
+
+.products-container .left .card {
+  border-radius: 18px;
+  box-shadow: 2px 4px 12px rgb(0, 0, 0, 0.08) !important;
+  padding: 20px;
+}
+
+.products-outer-container {
+  /* background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.7) 0%,
+    rgba(245, 245, 247, 1) 30%
+  ); */
+  /* background: #000; */
+}
+
+@media only screen and (max-width: 1000px) {
+  .products-container {
+    display: inline-block;
+  }
+
+  .products-container .left {
+    width: 100%;
+  }
+
+  .products-container .right {
+    display: block;
+  }
+}
+
+.carousel-cell {
+  border-radius: 18px;
+  width: 28%;
+  height: 95%;
+  margin-right: 20px !important;
+  box-sizing: border-box;
+}
+
+.carousel {
+  display: block;
+  /* margin-bottom: 20px; */
+  height: 500px !important;
+}
+
+/* -------------- responsive --------------- */
+@media only screen and (max-width: 900px) {
+  .carousel-cell {
+    width: 100%;
+  }
+}

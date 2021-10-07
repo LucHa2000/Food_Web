@@ -1,0 +1,220 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./css/reset.css" />
+    <link rel="stylesheet" href="./css/main.css" />
+    <link rel="stylesheet" href="./css/products.css" />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/flickity@2/dist/flickity.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
+    />
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"
+      defer
+    ></script>
+    <script
+      src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"
+      defer
+    ></script>
+
+    <script
+      src="https://kit.fontawesome.com/655396e8e6.js"
+      defer
+      crossorigin="anonymous"
+    ></script>
+
+    <title>Medical Equipment Supply</title>
+  </head>
+  <body>
+    <nav id="navbar" class="navbar">
+      <a href="./index.html" class="navbar-brand">
+        <img src="./images/pills.svg" alt="" class="logo" />
+        medicale
+      </a>
+      <a href="#" data-target="mobile-demo" class="nav-link sidenav-trigger"><i
+          class="material-icons"
+        >menu</i></a>
+      <div id="nav-mobile" class="left hide-on-med-and-down">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a href="./products.html" class="nav-link is-active">Our Products</a>
+          </li>
+          <li class="nav-item">
+            <a href="./news.html" class="nav-link">News</a>
+          </li>
+          <li class="nav-item">
+            <a href="./about-us.html" class="nav-link">About Us</a>
+          </li>
+        </ul>
+      </div>
+      <div class="right">
+        <a href="#" class="nav-link material-icons"> search </a>
+        <a href="#" id="cart-btn" class="nav-link material-icons">
+          shopping_bag
+        </a>
+        <a href="#" class="nav-link material-icons"> person </a>
+      </div>
+    </nav>
+    <main id="main" class="subpage-main products-outer-container">
+
+      <div class="container">
+        <h2 class="title">
+          We offer high quality products for competitive prices.
+        </h2>
+        <div class="products-container">
+          <div class="left">
+            <div class="card">
+              <div href="#" class="card-content">
+                <span class="card-title">Categories</span>
+
+                <form action="#">
+                  <p>
+                    <label>
+                      <input name="group1" type="radio" checked />
+                      <span>Mask</span>
+                    </label>
+                  </p>
+                  <p>
+                    <label>
+                      <input name="group1" type="radio" />
+                      <span>Others</span>
+                    </label>
+                  </p>
+                  <p>
+                    <label>
+                      <input name="group1" type="radio" />
+                      <span>Hmm</span>
+                    </label>
+                  </p>
+                  <p>
+                    <label>
+                      <input name="group1" type="radio" />
+                      <span>Still here</span>
+                    </label>
+                  </p>
+                  <p>
+                    <label>
+                      <input name="group1" type="radio" />
+                      <span>Finally, got cha</span>
+                    </label>
+                  </p>
+                </form>
+              </div>
+
+              <div class="btns-container">
+                <a
+                  href="#"
+                  id="btn--add-to-cart"
+                  class="btn-active btn"
+                >Filter</a>
+                <a
+                  href="#"
+                  id="btn--view-details"
+                  class="btn-inactive btn"
+                >Reset</a>
+              </div>
+            </div>
+          </div>
+          <div class="right">
+            <section class="section-grid">
+              <div class="row">
+                {{#each products}}
+                  <div class="col s12 m4">
+                    <div class="card" style="">
+                      <a href="#" class="card-content">
+                        <div class="card-image">
+                          <img
+                            style="height:25%"
+                            src="../uploads/{{{this.image}}}"
+                          />
+                        </div>
+                        <span class="card-tag">NEW</span>
+                        <span class="card-title">{{{this.product_name}}}</span>
+                        <p>
+                          {{{this.note}}}
+                        </p>
+                        <span class="card-price">{{{formatLongString
+                            (formatCurrency this.unit_price)
+                          }}}</span>
+                      </a>
+
+                      <div class="btns-container">
+                        <a
+                          href="#"
+                          id="btn--add-to-cart"
+                          class="btn-active btn"
+                        >Add to cart</a>
+                        <a
+                          href="#"
+                          id="btn--view-details"
+                          class="btn-inactive btn"
+                        >Details</a>
+                      </div>
+                    </div>
+                  </div>
+                {{/each}}
+              </div>
+            </section>
+            <ul class="pagination center">
+              <li class="disabled">
+                <a href="#!"><i class="material-icons">chevron_left</i></a>
+              </li>
+              <li class="btn-active"><a href="#!" class="white-text">1</a></li>
+              <li class="waves-effect"><a href="#!">2</a></li>
+              <li class="waves-effect"><a href="#!">3</a></li>
+              <li class="waves-effect"><a href="#!">4</a></li>
+              <li class="waves-effect"><a href="#!">5</a></li>
+              <li class="waves-effect">
+                <a href="#!"><i class="material-icons">chevron_right</i></a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <footer class="page-footer">
+        <div class="container">
+          <div class="row">
+            <div class="col l4 s12">
+              <p class="footer-title">Shop</p>
+              <ul>
+                <li><a class="" href="#!">Mask</a></li>
+                <li><a class="" href="#!">Handwash</a></li>
+                <li><a class="" href="#!">Automation</a></li>
+              </ul>
+            </div>
+            <div class="col l4 s12">
+              <p class="footer-title">News</p>
+              <ul>
+                <li><a class="" href="#!">Lastest News</a></li>
+                <li><a class="" href="#!">Coronavirus</a></li>
+                <li><a class="" href="#!">Vaccine</a></li>
+              </ul>
+            </div>
+            <div class="col l4 s12">
+              <p class="footer-title">About Medicale</p>
+              <ul>
+                <li><a class="" href="#!">Our team</a></li>
+                <li><a class="" href="#!">Contact Us</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="footer-copyright">
+          <div class="container">© 2021 Copyright by Nhan Dang</div>
+        </div>
+      </footer>
+    </main>
+    <script src="./script/main.js"></script>
+  </body>
+</html>

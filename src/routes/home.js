@@ -6,5 +6,6 @@ const homeController = require('../app/controllers/HomeController');
 const authMiddlewares = require('../app/middlewares/AuthMiddlewares');
 
 router.get('/', homeController.index);
+router.get('/products',homeController.productPage);
 
 module.exports = router;
