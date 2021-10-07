@@ -42,14 +42,33 @@ class HomeController {
       product_status: 1
     })
     Promise.all([queryList, queryProduct]).then(
-      ([articles, products]) => {
+      ([lists, products]) => {
         res.render('user/product_view', {
-          lists: mutipleMongooseToObject(articles),
+          lists: mutipleMongooseToObject(lists),
           products: mutipleMongooseToObject(products),
 
         }, );
 
       })
+  }
+  productsFilterPage(req, res, next) {
+    let queryList = List.find({
+
+    })
+    let queryProduct = Product.find({
+      product_status: 1,
+      list_id: req.params.list_id
+    })
+    Promise.all([queryList, queryProduct]).then(
+      ([lists, products]) => {
+        res.render('user/product_view', {
+          lists: mutipleMongooseToObject(lists),
+          products: mutipleMongooseToObject(products),
+
+        }, );
+
+      })
+
   }
 }
 module.exports = new HomeController();

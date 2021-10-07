@@ -36,35 +36,7 @@
     <title>Medical Equipment Supply</title>
   </head>
   <body>
-    <nav id="navbar" class="navbar">
-      <a href="./index.html" class="navbar-brand">
-        <img src="./images/pills.svg" alt="" class="logo" />
-        medicale
-      </a>
-      <a href="#" data-target="mobile-demo" class="nav-link sidenav-trigger"><i
-          class="material-icons"
-        >menu</i></a>
-      <div id="nav-mobile" class="left hide-on-med-and-down">
-        <ul class="navbar-nav">
-          <li class="nav-item">
-            <a href="./products.html" class="nav-link is-active">Our Products</a>
-          </li>
-          <li class="nav-item">
-            <a href="./news.html" class="nav-link">News</a>
-          </li>
-          <li class="nav-item">
-            <a href="./about-us.html" class="nav-link">About Us</a>
-          </li>
-        </ul>
-      </div>
-      <div class="right">
-        <a href="#" class="nav-link material-icons"> search </a>
-        <a href="#" id="cart-btn" class="nav-link material-icons">
-          shopping_bag
-        </a>
-        <a href="#" class="nav-link material-icons"> person </a>
-      </div>
-    </nav>
+{{>header}}
     <main id="main" class="subpage-main products-outer-container">
 
       <div class="container">
@@ -76,51 +48,19 @@
             <div class="card">
               <div href="#" class="card-content">
                 <span class="card-title">Categories</span>
-
-                <form action="#">
+                {{#each lists}}
                   <p>
-                    <label>
-                      <input name="group1" type="radio" checked />
-                      <span>Mask</span>
-                    </label>
+                    <a href="/{{this._id}}"><h6>{{this.list_name}}</h6></a>
                   </p>
-                  <p>
-                    <label>
-                      <input name="group1" type="radio" />
-                      <span>Others</span>
-                    </label>
-                  </p>
-                  <p>
-                    <label>
-                      <input name="group1" type="radio" />
-                      <span>Hmm</span>
-                    </label>
-                  </p>
-                  <p>
-                    <label>
-                      <input name="group1" type="radio" />
-                      <span>Still here</span>
-                    </label>
-                  </p>
-                  <p>
-                    <label>
-                      <input name="group1" type="radio" />
-                      <span>Finally, got cha</span>
-                    </label>
-                  </p>
-                </form>
+                {{/each}}
               </div>
 
               <div class="btns-container">
+
                 <a
-                  href="#"
-                  id="btn--add-to-cart"
-                  class="btn-active btn"
-                >Filter</a>
-                <a
-                  href="#"
+                  href="/products"
                   id="btn--view-details"
-                  class="btn-inactive btn"
+                  class="btn-active btn"
                 >Reset</a>
               </div>
             </div>
@@ -141,6 +81,7 @@
                         <span class="card-tag">NEW</span>
                         <span class="card-title">{{{this.product_name}}}</span>
                         <p>
+                          this is note product
                           {{{this.note}}}
                         </p>
                         <span class="card-price">{{{formatLongString
