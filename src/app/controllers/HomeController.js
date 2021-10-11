@@ -16,6 +16,7 @@ class HomeController {
   index(req, res, next) {
     res.clearCookie('message');
     res.clearCookie('errorConfirm');
+   req.session.views = 20
     let queryArticle = Article.find({
       article_status: 1
     })

@@ -184,6 +184,7 @@ class AuthController {
     res.clearCookie('userName');
     res.clearCookie('accountType');
     res.clearCookie('author');
+    res.clearCookie('totalQty');
     res.redirect('/');
   }
 }
