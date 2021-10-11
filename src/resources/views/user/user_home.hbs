@@ -4,8 +4,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="./css/reset.css" />
-    <link rel="stylesheet" href="./css/main.css" />
-    <link rel="stylesheet" href="./css/products.css" />
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
@@ -99,43 +97,43 @@
         </div>
         <section class="products-section primary-color">
           <h2 class="title">Best Sellers</h2>
-        
-           <section
-        class="carousel js-flickity section-grid"
-        data-flickity='{ "groupCells": true }'
-      >
-      {{#each products}}
-        <div class="carousel-cell card card_slide">
-             <a href="#" class="card-content">
-                    <div class="card-image" style="height :38%">
-                      <img src="../uploads/{{{this.image}}}" />
-                    </div>
-                    <span class="card-tag">NEW</span>
-                    <span class="card-title">{{this.product_name}}</span>
-                    <p>
-                      {{this.note}}
-                    </p>
-                    <span class="card-price">{{{formatLongString (formatCurrency this.unit_price)}}}</span>
-                  </a>
-
-                  <div class="btns-container">
-                    <a href="#" id="btn--add-to-cart" class="btn-active btn"
-                      >Add to cart</a
-                    >
-                    <a href="#" id="btn--view-details" class="btn-inactive btn"
-                      >Details</a
-                    >
-                  </div>
-        
-
+        </section>
         </div>
-     {{/each}}
+          <section
+          class="carousel js-flickity section-grid"
+          data-flickity='{ "groupCells": true }'
+          >
+        {{#each products}}
+          <div class="carousel-cell card card_slide">
+              <div class="card-image">
+                <img src="../uploads/{{{this.image}}}" />
+              </div>
+            <a href="#" class="card-content">
+              <span class="card-tag">10% off</span>
+              <span class="card-title">{{this.product_name}}</span>
+              <span class="card-brief">
+                {{this.note}}
+              </span>
+              <span class="card-price">{{{formatLongString (formatCurrency this.unit_price)}}}</span>
+            </a>
+            <div class="btns-container">
+              <a href="#" id="btn--add-to-cart" class="btn-active btn"
+                >Add to cart</a
+              >
+              <a href="#" id="btn--view-details" class="btn-inactive btn"
+                >Details</a
+              >
+            </div>
+          </div>
+      {{/each}}
      
       </section>
+      <div class="container">
+      <section class="products-section primary-color">
           <h6 class="more"><a href="/products">Browse more...</a></h6>
         </section>
-        <section class="news-section primary-color">
-          <h2 class="title">Keep You up to date</h2>
+        <section class="articles-section primary-color">
+          <h2 class="title">Recent Articles</h2>
           <div class="section-grid">
             <div class="row">
               {{#each articles}}
@@ -166,14 +164,12 @@
           ></iframe>
         </div>
       </div>
+      </div>
     </main>
-    <div id="cart-container" class="shopping-cart-container hidden">
-      <span id="close-btn">X</span>
-      <h1>Cart</h1>
-      <h4>Your cart is empty!</h4>
-    </div>
+
   {{>footer}}
 
     <script src="./script/main.js"></script>
+    <script src="./script/homepage.js"></script>
   </body>
 </html>

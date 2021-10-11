@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const ArticleSchema = new Schema(
@@ -9,14 +9,14 @@ const ArticleSchema = new Schema(
     image: String,
     author: String,
   },
-  { timestamps: true },
+  { timestamps: true }
 );
 ArticleSchema.query.sortable = function (req) {
-  if (req.query.hasOwnProperty('_sort')) {
+  if (req.query.hasOwnProperty("_sort")) {
     return this.sort({
       [req.query.column]: req.query.type,
     });
   }
   return this;
 };
-module.exports = mongoose.model('Article', ArticleSchema);
+module.exports = mongoose.model("Article", ArticleSchema);
