@@ -5,10 +5,12 @@ const upload = multer({
     dest: 'src/public/uploads/'
 });
 const homeController = require('../app/controllers/HomeController');
-const authMiddlewares = require('../app/middlewares/AuthMiddlewares');
+const authMiddlewares_user = require('../app/middlewares/AuthMiddlewares_user');
 
+router.get('/:product_name', homeController.productsDetailPage);
+router.get('/about/view', homeController.aboutPage);
 router.get('/', homeController.index);
-router.get('/products', homeController.productPage);
-router.get('/:list_id', homeController.productsFilterPage)
+
+
 
 module.exports = router;

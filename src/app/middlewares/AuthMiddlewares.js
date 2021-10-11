@@ -12,6 +12,7 @@ class AuthMiddlewares {
       }
       res.locals.userName = req.cookies.userName;
       res.locals.email = req.cookies.userEmail;
+      res.locals.author = req.cookies.author;
       next();
     });
   }

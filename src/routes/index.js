@@ -1,6 +1,8 @@
 const storeRouter = require('./store');
 const adminRouter = require('./admin');
 const authRouter = require('./auth');
+const newsRouter = require('./news');
+const goodsRouter = require('./goods');
 const articleRouter = require('./article');
 const homeRouter = require('./home');
 const listRouter = require('./list');
@@ -11,6 +13,7 @@ const promotion_detailRouter = require('./promotion_detail');
 const promotion_detail_updateRouter = require('./promotion_detailUpdate');
 const orderRouter = require('./order');
 const authMiddlewares = require('../app/middlewares/AuthMiddlewares');
+const authMiddlewares_user = require('../app/middlewares/AuthMiddlewares_user');
 
 function router(app) {
   app.use('/list', listRouter);
@@ -20,10 +23,12 @@ function router(app) {
   app.use('/article', articleRouter);
   app.use('/auth', authRouter);
   app.use('/review', reviewRouter);
-  app.use('/admin', adminRouter);
+  app.use('/admin',authMiddlewares.index, adminRouter);
   app.use('/order', orderRouter);
   app.use('/promotionDetail', promotion_detailRouter);
   app.use('/promotionDetailUpdate', promotion_detail_updateRouter);
-  app.use('/', homeRouter);
+  app.use('/goods',authMiddlewares_user.index,goodsRouter);
+  app.use('/news',authMiddlewares_user.index,newsRouter);
+  app.use('/',authMiddlewares_user.index, homeRouter);
 }
 module.exports = router;

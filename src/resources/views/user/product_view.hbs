@@ -45,20 +45,21 @@
         </h2>
         <div class="products-container">
           <div class="left">
-            <div class="card">
-              <div href="#" class="card-content">
+            <div class="card" style="min-height: 0vh">
+              <div href="#" class="card-content" >
                 <span class="card-title">Categories</span>
+
+                
                 {{#each lists}}
                   <p>
-                    <a href="/{{this._id}}"><h6>{{this.list_name}}</h6></a>
+                    <a href="/goods/{{this._id}}"><h6>{{this.list_name}}</h6></a>
                   </p>
                 {{/each}}
               </div>
 
               <div class="btns-container">
-
                 <a
-                  href="/products"
+                  href="/goods"
                   id="btn--view-details"
                   class="btn-active btn"
                 >Reset</a>
@@ -70,11 +71,11 @@
               <div class="row">
                 {{#each products}}
                   <div class="col s12 m4">
-                    <div class="card" style="">
+                    <div class="card " style="min-height: 0vh">
                       <a href="#" class="card-content">
-                        <div class="card-image">
-                          <img
-                            style="height:25%"
+                        <div class="card-image"  style="height:30%">
+                          <img 
+                          
                             src="../uploads/{{{this.image}}}"
                           />
                         </div>
@@ -95,10 +96,10 @@
                           id="btn--add-to-cart"
                           class="btn-active btn"
                         >Add to cart</a>
-                        <a
-                          href="#"
+                        <a 
+                          href="/{{this.product_name}}"
                           id="btn--view-details"
-                          class="btn-inactive btn"
+                          class="btn-inactive btn waves-effect waves-light btn modal-trigger show_detail"
                         >Details</a>
                       </div>
                     </div>
@@ -155,7 +156,22 @@
           <div class="container">© 2021 Copyright by Nhan Dang</div>
         </div>
       </footer>
+
     </main>
+    {{!-- modal product_detail --}}
+     
+  <script>
+ $(document).ready(function(){
+    $(".show_detail").on("click", function(){
+        //var dataId = $(this).attr("data-id");
+         // $(".delete-agree").attr("href", "/account/delete/"+dataId); 
+        var dataName = $(this).attr("data-name");
+        var dataNote = $(this).attr("data-name");
+        var dataName = $(this).attr("data-name");
+       var dataName = $(this).attr("data-name");
+    });
+});
+</script>
     <script src="./script/main.js"></script>
   </body>
 </html>

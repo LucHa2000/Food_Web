@@ -28,47 +28,27 @@ class HomeController {
           articles: mutipleMongooseToObject(articles.slice(0, 3)),
           products: mutipleMongooseToObject(products.slice(0, 6)),
 
-        }, );
-
-      })
-  }
-  productPage(req, res, next) {
-
-
-    let queryList = List.find({
-
-    })
-    let queryProduct = Product.find({
-      product_status: 1
-    })
-    Promise.all([queryList, queryProduct]).then(
-      ([lists, products]) => {
-        res.render('user/product_view', {
-          lists: mutipleMongooseToObject(lists),
-          products: mutipleMongooseToObject(products),
 
         }, );
 
       })
   }
-  productsFilterPage(req, res, next) {
-    let queryList = List.find({
 
-    })
-    let queryProduct = Product.find({
-      product_status: 1,
-      list_id: req.params.list_id
-    })
-    Promise.all([queryList, queryProduct]).then(
-      ([lists, products]) => {
-        res.render('user/product_view', {
-          lists: mutipleMongooseToObject(lists),
-          products: mutipleMongooseToObject(products),
 
-        }, );
-
+  productsDetailPage(req, res, next) {
+    Product.findOne({
+        product_name: req.params.product_name,
+        product_status: 1
       })
-
+      .then((products) => {
+        res.render('user/product_detail', {
+          products: mongooseToObject(products)
+        })
+      })
+      .catch(next)
+  }
+  aboutPage(req, res, next) {
+    res.render('user/about_view')
   }
 }
 module.exports = new HomeController();

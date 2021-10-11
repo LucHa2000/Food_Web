@@ -1,6 +1,6 @@
 <nav id="navbar" class="navbar">
   <a href="/" class="navbar-brand">
-    <img src="./images/pills.svg" alt="" class="logo" />
+    <img src="../img/pills.svg" alt="" class="logo" />
     medicale
   </a>
   <a href="#" data-target="mobile-demo" class="nav-link sidenav-trigger"><i
@@ -9,19 +9,13 @@
   <div id="nav-mobile" class="left hide-on-med-and-down">
     <ul class="navbar-nav">
       <li class="nav-item">
-        <a href="/products" class="nav-link">Our Products</a>
+        <a href="/goods" class="nav-link">Our Products</a>
       </li>
       <li class="nav-item">
-        <a href="./news.html" class="nav-link">News</a>
+        <a href="/news" class="nav-link">News</a>
       </li>
       <li class="nav-item">
-        <a href="./about-us.html" class="nav-link">About Us</a>
-      </li>
-      <li class="nav-item">
-        <a href="/auth" class="nav-link">Login</a>
-      </li>
-      <li class="nav-item">
-        <a href="/auth/signup_email" class="nav-link">Signup</a>
+        <a href="/about/view" class="nav-link">About Us</a>
       </li>
     </ul>
   </div>
@@ -30,6 +24,31 @@
     <a href="./cart.html" id="cart-btn" class="nav-link material-icons">
       shopping_bag
     </a>
-    <a href="#" class="nav-link material-icons"> person </a>
+
+    <div class="auth_user" style="display: flex">
+
+      {{#if author}}
+        <a
+          class="nav-link dropdown-trigger btn"
+          href="#"
+          data-target="dropdown1"
+        >
+          <img
+            style="height:100%"
+            class="circle"
+            src="https://bigpicturelabs.io/img/team/1.jpg"
+          />
+        </a>
+      {{else}}
+        <a href="/auth" class="nav-link">Login</a>
+        <a href="/auth/signup_email" class="nav-link">Signup</a>
+      {{/if}}
+      <!-- Dropdown Structure -->
+    </div>
   </div>
 </nav>
+<ul id="dropdown1" class="dropdown-content">
+  <li><a href="">Account</a></li>
+  <li><a href="">Order </a></li>
+  <li><a href="/auth/logout">Logout </a></li>
+</ul>
