@@ -21,10 +21,11 @@
   </div>
   <div class="right">
     <a href="#" class="nav-link material-icons"> search </a>
-    <a href="/cart" id="cart-btn" class="nav-link material-icons">
+    {{!-- <a href="/cart" id="cart-btn" class="nav-link material-icons">
       shopping_bag
-    </a>
-     <span href="/auth" class="nav-link">{{totalQty}}</span>
+    </a> --}}
+    <a href="/cart" id="cart-btn" class="nav-link material-icons"> shopping_bag </a>
+     <span href="/auth" class="nav-link">{{session.cart.totalQty}}</span>
     <div class="auth_user" style="display: flex">
 
       {{#if author}}

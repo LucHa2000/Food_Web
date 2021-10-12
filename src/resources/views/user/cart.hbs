@@ -17,324 +17,46 @@
 </head>
 
 <body>
-  <nav id="navbar" class="navbar sticky">
-    <a href="./index.html" class="navbar-brand">
-      <img src="./images/pills.svg" alt="" class="logo" />
-      medicale
-    </a>
-    <a href="#" data-target="mobile-demo" class="nav-link sidenav-trigger"><i class="material-icons">menu</i></a>
-    <div id="nav-mobile" class="left hide-on-med-and-down">
-      <ul class="navbar-nav">
-        <li class="nav-item">
-          <a href="./products.html" class="nav-link">Our Products</a>
-        </li>
-        <li class="nav-item">
-          <a href="./articles.html" class="nav-link">News</a>
-        </li>
-        <li class="nav-item">
-          <a href="#" class="nav-link">About Us</a>
-        </li>
-      </ul>
+{{>header}}
+      <div class="container" style="padding-top:80px"> 
+        <div class="row">
+           {{#each carts.products}} 
+      
+     <div class="card col s4 m4" style="display:flex;height:24%">
+    <div class="card-image waves-effect waves-block waves-light">
+      <img class="activator" src="../uploads/{{this.image}}" style="height:100%">
     </div>
-    <div class="right">
-      <a href="#" class="nav-link material-icons"> search </a>
-      <a href="#" id="cart-btn" class="nav-link material-icons">
-        shopping_bag
-      </a>
-      <a href="./userprofile.html" class="nav-link material-icons"> person </a>
-    </div>
-  </nav>
-  <main id="main " class="subpage-main">
-    <div class="container">
-      <div class="bag-container">
-        <div class="bag-main">
-          <!--bag Content-->
-          <div class="bag-content">
-            <div class="header-bagcontent">
-              <h1 class="rs-bag-header">Review your bag.</h1>
-              <span class="visuallyhidden" aria-live="polite"></span>
-              <div class="rs-bag-headermessage">
-                <span class="pd-util-weight-semibold">Free delivery and free returns.</span>
-              </div>
-            </div>
-            <div class="banner-bagcontent">
-              <div class="banner-icondetails">
-                <div class="banner-icondetails-icon">
-                  <img
-                    src="/images/iconHeader.png"
-                    alt="" width="82" height="82">
-                  <!--
-                  <img
-                    src="https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/applecard-logo-201910?wid=82&hei=82&fmt=jpeg&qlt=95&.v=1572631318807"
-                    alt="" width="82" height="82">-->
-                </div>
-                <div class="banner-content-as-icon">
-                  <p>Pay $83.25/mo.per month at 0% APR◊ for eligible items in your order when you choose Apple Card
-                    Monthly
-                    Installments at checkout.</p>
-                </div>
-              </div>
-            </div>
-            <ol class="item-bagcontent">
-              <li class="item-bagcontent-wrap">
-                <div class="iteminfo-row">
-                  <div class="iteminfo-image">
-                    <img class="relatedlink" width="400" height="400"
-                      src="/images/ophthalmologist-not-css.svg"
-                      alt="" aria-hidden="true" data-autom="bag-item-image">
-                  </div>
-                  <div class="iteminfo-content">
-                    <div class="rs-iteminfo-details">
-                      <div class="rs-iteminfo-title">
-                        <h2 class="rs-iteminfo-title-chile">
-                          <a href="/shop/product/MGND3LL/A/gold-apple-m1-chip-with-8-core-cpu-and-7-core-gpu-256gb">High quality Masks</a>
-                        </h2>
-                      </div>
-                      <div class="rs-quality-selector">
-                        <div class="rs-quality-selector-wrapper">
-                          <select class="rs-quantity-dropdown" id="itemQuantity" style="width: 3.35294rem;">
-                            <option value=" 1">1</option>
-                            <option value="2">2</option>
-                            <option value="3">3</option>
-                            <option value="4">4</option>
-                            <option value="5">5</option>
-                            <option value="6">6</option>
-                            <option value="7">7</option>
-                            <option value="8">8</option>
-                            <option value="9">9</option>
-                            <option value="10">10+</option>
-                          </select>
-                        </div>  
-                      </div>
-                      <div class="rs-iteminfo-price">
-                        <p>$100</p>
-                      </div>
-                      <div class="rs-remove">       
-                        <div class="remove-wrap">
-                        <button type="button" class=".btn-active-remove">Remove</button></div>
-                      </div>
-                    </div>
-                    <div class="rs-iteminfo-voucher">
-                      <div class="rs-iteminfo-voucher-wrap">
-                        <div class="rs-iteminfo-voucher-wrap-icon">
-                          <svg viewBox="0 0 25 25"
-                            class="icon" role="img"
-                            aria-hidden="true" width="25px" height="25px">
-                            <path fill="none" d="M0 0h25v25H0z"></path>
-                            <path
-                              d="M17.5 4h-10A3.5 3.5 0 004 7.5v10A3.5 3.5 0 007.5 21h10a3.5 3.5 0 003.5-3.5v-10A3.5 3.5 0 0017.5 4zm-10 1H12v4.414A5.537 5.537 0 0010.973 7.6 2.556 2.556 0 009.1 6.869a2.5 2.5 0 00-1.814.794 2.614 2.614 0 00.2 3.684A3.954 3.954 0 008.671 12H5V7.5A2.5 2.5 0 017.5 5zm4.271 6.846a11.361 11.361 0 01-3.6-1.231 1.613 1.613 0 01-.146-2.271 1.5 1.5 0 011.094-.476h.021a1.7 1.7 0 011.158.464 11.4 11.4 0 011.472 3.514zM5 17.5V13h6.64c-.653 1.149-2.117 3.2-4.4 3.568a.5.5 0 10.158.987A7.165 7.165 0 0012 14.318V20H7.5A2.5 2.5 0 015 17.5zM17.5 20H13v-5.7a7.053 7.053 0 004.6 3.259.542.542 0 00.074.005.5.5 0 00.072-.995c-2.194-.325-3.632-2.253-4.377-3.567H20v4.5A2.5 2.5 0 0117.5 20zm2.5-8h-3.735a4.1 4.1 0 001.251-.678 2.614 2.614 0 00.2-3.684 2.5 2.5 0 00-1.816-.793 2.634 2.634 0 00-1.872.732A5.537 5.537 0 0013 9.389V5h4.5A2.5 2.5 0 0120 7.5zm-6.77-.179a11.405 11.405 0 011.479-3.513 1.694 1.694 0 011.158-.464h.021a1.5 1.5 0 011.094.476 1.613 1.613 0 01-.146 2.271 11.366 11.366 0 01-3.606 1.23z">
-                            </path>
-                          </svg>
-                        </div>
-                        <div class="rs-iteminfo-voucher-wrap-content">
-                          <div>
-                            <span class="rs-iteminfo-voucher-titletext">Add a gift message or gift wrap</span>
-                          <div class="action">
-                            <button type="button" class=".btn-active-add">Add</button>
-                          </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>  
-                  </div>
-                </div>
-              </li>
-            </ol>
-            <!--Tổng phí-->
-            <div class="bag-summary">
-              <div class="wrap">
-                <div class="subtotal">
-                  <div class="lable">Subtotal</div>
-                  <div class="subtotal-value">$100</div>
-                </div>
-                <div class="shipping">
-                  <div class="lable">Shipping</div>
-                  <div class="shipping-value">FREE</div>
-                </div>
-                <div class="discount-voucher">
-                  <div class="lable">Discount voucher</div>
-                  <div class="vouchervalue">$8.00</div>
-                </div>
-                <div class="total">
-                  <div class="lable">Total</div>
-                  <div class="total-value">$92</div>
-                </div>
-              </div>
-            </div>
-            <!--Check out method-->
-            <div class="bag-paymentbutton">
-              <div class="wrap">
-              <!--<h2 class="acction-lable">How would you like to check out?</h2>--> 
-                <div class="bag-actions">
-                  <button class="btn-active-delivery btn-active" type="button">
-                    <span>Continue to Checkout</span>
-                  </button>
-                  <!--
-                  <div class="on-delivery">
-                    <div class="delivery-box">
-                      <div class="lable">Payment on delivery</div>
-                      <button class="btn-active-delivery" type="button">
-                        <span>Payment on delivery</span>
-                      </button>
-                    </div>
-                  </div>-->
-         <!--     <div class="on-card">
-                    <div class="card-box">
-                      <div class="lable">Credit/Debit Card</div>
-                      <button class="btn-active-card" type="button">
-                        <span>Credit/Debit Card</span>
-                      </button>
-                    </div>
-                  </div>-->
-                </div> 
-              </div>
-            </div>
-          <!--CHAT-->
-          <div class="bag-chat-content">
-          <div class="chat-box">
-            <p>Need some help? call 0337005464‑MY‑Medical.</p>
-          </div>
-          </div>
-          <!--Đề xuất-->
-          <div class="bag-recomendtions">
-            <div class="title">A few recommendations.</div>
-            <!--NHAN-->
-            <div class="section-grid">
-              <div class="row">
-                <div class="col s12 m4">
-                  <div class="card">
-                    <a href="#" class="card-content">
-                      <div class="card-image">
-                        <img src="./images/ophthalmologist-not-css.svg" />
-                      </div>
-                      <span class="card-tag">NEW</span>
-                      <span class="card-title">High quality Masks</span>
-                      <p>
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                        Esse, quidem.
-                      </p>
-                      <span class="card-price">$100</span>
-                    </a>
-    
-                    <div class="btns-container">
-                      <a href="#" id="btn--add-to-cart" class="btn-active btn">Add to cart</a>
-                      <a href="#" id="btn--view-details" class="btn-inactive btn">Details</a>
-                    </div>
-                  </div>
-                </div>
-                <div class="col s12 m4">
-                  <div class="card">
-                    <a href="#" class="card-content">
-                      <div class="card-image">
-                        <img src="./images/ophthalmologist-not-css.svg" />
-                      </div>
-                      <span class="card-tag">NEW</span>
-                      <span class="card-title">High quality Masks</span>
-                      <p>
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                        Esse, quidem.
-                      </p>
-                      <span class="card-price">$100</span>
-                    </a>
-    
-                    <div class="btns-container">
-                      <a href="#" id="btn--add-to-cart" class="btn-active btn">Add to cart</a>
-                      <a href="#" id="btn--view-details" class="btn-inactive btn">Details</a>
-                    </div>
-                  </div>
-                </div>
-                <div class="col s12 m4">
-                  <div class="card">
-                    <a href="#" class="card-content">
-                      <div class="card-image">
-                        <img src="./images/ophthalmologist-not-css.svg" />
-                      </div>
-                      <span class="card-tag">NEW</span>
-                      <span class="card-title">High quality Masks</span>
-                      <p>
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                        Esse, quidem.
-                      </p>
-                      <span class="card-price">$100</span>
-                    </a>
-    
-                    <div class="btns-container">
-                      <a href="#" id="btn--add-to-cart" class="btn-active btn">Add to cart</a>
-                      <a href="#" id="btn--view-details" class="btn-inactive btn">Details</a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="as-l-container rf-recommendations-footer">
-                <div class="button_wrap">
-                  <button type="button" class="as-buttonlink" data-analytics-title="show more products">Show more products
-                    <span class="material-icons down">
-                      expand_more
-                      </span>
-                  </button>
-                </div>
-              </div>
-          </div>
-          <!--Nỗi bật-->
-          <div class="bag-productspotlight">
-            <div class="background" >
-              <!--
-                <img width="980px" height="500px" src="/images/ousa-chea-gKUC4TMhOiY-unsplash (2).jpg" alt="">-->
-              </div>
-            <div class="info">
-              <div class="dd-billboard-info">
-                <h2 class="dd-billboard-header">
-                    New Arrivals
-                </h2>
-                <p class="dd-billboard-subcopy dd-compact-small-20">
-                    Check out the latest products.
-                </p>
-                <p class="dd-billboard-link">
-                    <a href="/shop/accessories/all/whats-new" data-feature-name="Astro Link" data-display-name="AOS: home/shop_accessories/all_accessories/whats_new" class="more">Shop
-                      <span class="material-icons rightt">
-                        chevron_right
-                        </span>
-                    </a>
-                </p>
-              </div>
-            </div>
-          </div>
+    <div class="card-content" style="">
+      <a href="/cart/delete/{{this._id}}">remove</a>
+      <span class="card-title activator grey-text text-darken-4">{{this.product_name}}<i class="material-icons right">more_vert</i></span>
+      <p><a href="#">{{this.unit_price}} $</a></p>
+      <form action="/cart/updateQty/{{this._id}}" Method="POST">
+
+       <input id="quantity" type="number" required=required class="validate" min="0" max="1000"name="quantity" value="{{this.quantity}}">
+          <label for="quantity">Quantity</label>
+            <button type="submit" >update</button>
+      </form>
         </div>
+  
+    <div class="card-reveal">
+      <span class="card-title grey-text text-darken-4">Card Title<i class="material-icons right">close</i></span>
+      <p>Here is some more information about this product that is only revealed once clicked on.</p>
+    </div>
+  </div>
+    {{else}}
+    <h5 class="center">Cart Empty</h5>
+    {{/each}}
+    
+        </div>
+
+        <div class="row">
+          <h5>Total Price : {{session.cart.totalPrice}}</h5>
+          <a class="waves-effect waves-light btn">check out</a>
+          </div>
+            
       </div>
-    </div>
-  </main>
-  <footer class="page-footer">
-    <div class="container">
-      <div class="row">
-        <div class="col l4 s12">
-          <p class="footer-title">Shop</p>
-          <ul>
-            <li><a class="" href="#!">Mask</a></li>
-            <li><a class="" href="#!">Handwash</a></li>
-            <li><a class="" href="#!">Automation</a></li>
-          </ul>
-        </div>
-        <div class="col l4 s12">
-          <p class="footer-title">News</p>
-          <ul>
-            <li><a class="" href="#!">Lastest News</a></li>
-            <li><a class="" href="#!">Coronavirus</a></li>
-            <li><a class="" href="#!">Vaccine</a></li>
-          </ul>
-        </div>
-        <div class="col l4 s12">
-          <p class="footer-title">About Medicale</p>
-          <ul>
-            <li><a class="" href="#!">Our team</a></li>
-            <li><a class="" href="#!">Contact Us</a></li>
-          </ul>
-        </div>
-      </div>
-    </div>
-    <div class="footer-copyright">
-      <div class="container">© 2021 Copyright by Phong Dinh</div>
-    </div>
-  </footer>
+    
+{{>footer}}
   <script src="./script/main.js"></script>
 </body>
 
