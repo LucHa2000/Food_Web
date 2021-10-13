@@ -24,21 +24,12 @@
     {{! <a href="/cart" id="cart-btn" class="nav-link material-icons">
       shopping_bag
     </a> }}
-    <a href="/cart" id="cart-btn" class="nav-link material-icons">
-      shopping_bag
-    </a>
-    <span
-      href="/auth"
-      class="nav-link"
-      style="position: relative;
-    right: 25px;
-    top: 8px;
-    left: 92x;
-    left: 615xpx;
-    border-radius: 27px;
-    height: -3%;
-    padding: 7px;"
-    >{{session.cart.totalProduct}}</span>
+    <div class="nav-cart">
+      <a href="/cart" id="cart-btn" class="nav-link material-icons">
+        shopping_bag
+      </a>
+      <span href="/auth" class="cart-bagde">{{session.cart.totalProduct}}</span>
+    </div>
     <div class="auth_user" style="display: flex">
 
       {{#if author}}
