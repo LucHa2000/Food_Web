@@ -17,7 +17,11 @@ class CartController {
             .then((addedProduct) => {
                 Cart.save(addedProduct);
                 req.session.cart = Cart.getCart()
-                res.redirect('back');
+                setTimeout(() => {
+                    res.redirect('back');
+                }, 1000);
+
+
             })
     }
     cartPage(req, res, next) {
@@ -33,18 +37,40 @@ class CartController {
         })
     }
     removeCart(req, res, next) {
+        req.session.cart.totalProduct = req.session.cart.totalProduct - 1 //delete Totalproduct
         let deleteProductAndTotalPrice = Cart.delete(req.params.id, req.session.cart.products)
         req.session.cart.totalPrice = req.session.cart.totalPrice - deleteProductAndTotalPrice //  deleteProductAndTotalPrice 
         req.session.cart.totalQty = req.session.cart.totalQty - 1 //delete Totalquantity
+
         res.redirect('back')
         // console.log(req.session.cart)
     }
     updateQtyCart(req, res, next) {
-        let priceOld = Cart.updatePrice(req.params.id, req.session.cart.products)
-        let newPrice = Cart.updateQtyCart(req.params.id, req.session.cart.products, req.body.quantity)
-        req.session.cart.totalPrice = req.session.cart.totalPrice - priceOld //  
-        req.session.cart.totalPrice = req.session.cart.totalPrice + newPrice //  
-        res.redirect('back')
+        Product.findById(req.params.id)
+            .then((product) => {
+                if (req.body.quantity > product.quantity) {
+                    res.render('admin/error_view', {
+                        message: 'The product in stock is not enough ! ',
+                    });
+                } else {
+                    let priceOld = Cart.updatePrice(req.params.id, req.session.cart.products)
+                    let newPrice = Cart.updateQtyCart(req.params.id, req.session.cart.products, req.body.quantity)
+                    req.session.cart.totalPrice = req.session.cart.totalPrice - priceOld //  
+                    req.session.cart.totalPrice = req.session.cart.totalPrice + newPrice //  
+                    res.redirect('back')
+                }
+
+
+            })
+        // req.body.quantity
+        // res.render('admin/error_view', {
+        //     message: 'The product in stock is not enough ! ',
+        //   });
+        // let priceOld = Cart.updatePrice(req.params.id, req.session.cart.products)
+        // let newPrice = Cart.updateQtyCart(req.params.id, req.session.cart.products, req.body.quantity)
+        // req.session.cart.totalPrice = req.session.cart.totalPrice - priceOld //  
+        // req.session.cart.totalPrice = req.session.cart.totalPrice + newPrice //  
+        // res.redirect('back')
     }
 
 

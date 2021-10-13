@@ -7,7 +7,8 @@ module.exports = class Cart {
             cart = {
                 products: [],
                 totalPrice: 0,
-                totalQty: 0
+                totalQty: 0,
+                totalProduct : 0
             };
         }
 
@@ -18,6 +19,7 @@ module.exports = class Cart {
         } else { //not exist
             product.quantity = 1;
             cart.products.push(product);
+            cart.totalProduct ++
         }
 
         cart.totalPrice += product.unit_price;

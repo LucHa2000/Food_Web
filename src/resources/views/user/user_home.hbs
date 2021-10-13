@@ -117,10 +117,9 @@
               <span class="card-price">{{{formatLongString (formatCurrency this.unit_price)}}}</span>
             </a>
             <div class="btns-container">
-              <a href="#" id="btn--add-to-cart" class="btn-active btn"
-                >Add to cart</a
-              >
-              <a href="#" id="btn--view-details" class="btn-inactive btn"
+                <a onclick="M.toast({html: 'Item has been put in the cart !', classes: 'rounded',displayLength:2000})"  href="/cart/{{{this._id}}}" id="btn--add-to-cart" class="btn-active btn"
+                >Add to cart</a>
+              <a href="/{{this.product_name}}" id="btn--view-details" class="btn-inactive btn"
                 >Details</a
               >
             </div>

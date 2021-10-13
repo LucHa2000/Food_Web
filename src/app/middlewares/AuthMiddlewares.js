@@ -2,11 +2,13 @@ var nodemailer = require('nodemailer'); //sendEmailConfirm
 const Account = require('../models/Account');
 class AuthMiddlewares {
   index(req, res, next) {
-    if (!req.cookies.userId || req.cookies.accountType == 1) {
+    if (!req.cookies.userId || req.cookies.accountType == 0) {
       res.redirect('/auth');
       return;
     }
-    Account.find({ _id: req.cookies.userId }).then((accounts) => {
+    Account.find({
+      _id: req.cookies.userId
+    }).then((accounts) => {
       if (!accounts) {
         return;
       }

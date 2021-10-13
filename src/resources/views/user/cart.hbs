@@ -16,7 +16,7 @@
   <body>
     {{>header}}
       <main id="main" class="subpage-main">
-        <div class="container cart-container""> 
+        <div class="container cart-container"> 
           <h2 class="title">Review your cart</h2>
           <h4 class="subtitle">Free delivery and free returns.</h4>
           <div class="row">
@@ -28,7 +28,7 @@
                 <div class="card-content">
                   <span class="card-title">{{this.product_name}}</span>
                   <form class="card-quantity" action="/cart/updateQty/{{this._id}}" Method="POST">
-                    <input style="text-align: center;" onchange="this.form.get('quantity').value > 0 ? this.form.submit()" id="quantity" type="number" required=required class="validate" min="1" max="1000" name="quantity" value="{{this.quantity}}">
+                    <input style="text-align: center;" onchange="this.value > 0 ? this.form.submit() : this.form.get('quantity').value = 1" id="quantity" type="number" required=required class="validate" min="1" max="1000" name="quantity" value="{{this.quantity}}">
                       {{!-- <div class="btns-container">
                         <button class="btn btn-active" type="submit" >Update</button>
                       </div> --}}
@@ -50,9 +50,21 @@
             <div class="row">
               <h5 class="subtotal"><span>Subtotal</span><span> {{formatCurrency session.cart.totalPrice}}</span></h5>
               <h4 class="total"><span>Total</span><span> {{formatCurrency session.cart.totalPrice}}</span></h5>
-              <div style="margin-top: 20px; text-align: right;">
-                <a class="btn btn-active">Continue to checkout</a>
+              {{!-- checkout or login --}}
+               <div class="checkout_login">
+                   {{#if author}}
+                      <div style="margin-top: 20px; text-align: right;">
+                   <a href="/checkout/view"class="btn btn-active">Continue to checkout</a>
+                     </div>
+                   {{else}}
+                      <div style="margin-top: 20px; text-align: right;">
+                <a href='/auth' class="btn btn-active">please sign in to checkout</a>
+                     </div>
+                   {{/if}}
+                  
+                   
               </div>
+             
             </div>
         </div>
       {{>footer}}
