@@ -69,14 +69,14 @@
               <div class="row">
                 {{#each products}}
                   <div class="col s12 m4">
-                    <div class="card " style="min-height: 0vh">
+                    <div class="card">
                         <div class="card-image">
                           <img 
                           
                             src="../uploads/{{{this.image}}}"
                           />
                         </div>
-                      <a href="#" class="card-content">
+                      <a href="/{{this.product_name}}" class="card-content">
                         <span class="card-tag">NEW</span>
                         <span class="card-title">{{{this.product_name}}}</span>
                         <span class="card-brief">
