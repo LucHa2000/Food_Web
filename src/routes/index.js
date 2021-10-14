@@ -17,6 +17,7 @@ const checkoutRouter = require('./checkout');
 const authMiddlewares = require('../app/middlewares/AuthMiddlewares');
 const authMiddlewares_user = require('../app/middlewares/AuthMiddlewares_user');
 const cartMiddlewares = require('../app/middlewares/CartMiddlewares');
+const user_accountRouter = require('./user_account');
 
 function router(app) {
   app.use('/list', listRouter);
@@ -34,6 +35,7 @@ function router(app) {
   app.use('/news', cartMiddlewares.index, authMiddlewares_user.index, newsRouter);
   app.use('/cart', cartMiddlewares.index, authMiddlewares_user.index, cartRouter);
   app.use('/checkout', cartMiddlewares.index, authMiddlewares_user.index, checkoutRouter);
+  app.use('/user_account', cartMiddlewares.index, authMiddlewares_user.index, user_accountRouter);
   app.use('/', cartMiddlewares.index, authMiddlewares_user.index, homeRouter);
 }
 module.exports = router;

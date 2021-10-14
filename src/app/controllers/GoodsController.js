@@ -14,12 +14,10 @@ const {
 
 class GoodsController {
     index(req, res, next) {
-        let queryList = List.find({
-
-        })
+        let queryList = List.find({})
         let queryProduct = Product.find({
             product_status: 1
-        })
+        }) 
         Promise.all([queryList, queryProduct]).then(
             ([lists, products]) => {
                 res.render('user/product_view', {

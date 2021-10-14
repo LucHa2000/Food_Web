@@ -1,0 +1,81 @@
+{{>header}}
+<div class="container" style="margin-top:100px">
+   <div class="row">
+    <div class="col s3 m3">
+       <div class="collection">
+        <a href="/user_account/view" class="collection-item  active">Account Settings</a>
+        <a href="/user_account/view_order" class="collection-item">Order</a>
+        <a href="/auth/logout" class="collection-item">Logout</a>
+      
+      </div>
+    </div>
+      <div class="col s9 m9 paper_container z-depth-1">
+           <form class=" col s12"  method="POST" action="/account/{{accounts._id}}/edit?_method=PATCH">
+  
+      <div class="row">
+        <div class="input-field col s12 ">
+          <input  id="full_name" type="text" class="validate" name="full_name" value="{{accounts.full_name}}">
+          <label for="full_name">Name</label>
+        </div>
+      </div>
+          <input type="Number"  hidden name="account_status" value="{{accounts.account_status}}">
+          <input type="Number"  hidden name="accountType" value="{{accounts.accountType}}">
+         
+    
+    <div class="row">
+        <div class="input-field col s12 ">
+
+          <input id="email" type="email" class="validate" name="email" value="{{accounts.email}}" required="required">
+          <label for="email">Email</label>
+            <span class="helper-text" data-error="This field cannot be left blank" data-success=""></span>
+        </div>
+      </div>
+        
+    {{!-- <div class="row">
+        <div class="file-field input-field col s6">
+       <img src="../uploads/{{products.avatar}}" alt="" class="responsive-img list-img">
+       <br>
+      <div class="btn">
+        <span>File</span>
+        <input type="file" name="image">
+      </div>
+      <div class="file-path-wrapper">
+        <input class="file-path validate" type="text" value="{{products.image}}" name="img_old">
+      </div>
+    </div>
+      </div> --}}
+      <div class="row">
+        <div class="input-field col s12 ">
+          <input id="phone_number" type="tel" class="validate" name="phone_number" value="0{{accounts.phone_number}}" required="required">
+          <label for="phone_number">Phone Number</label>
+            <span class="helper-text" data-error="This field must be phone number" data-success=""></span>
+        </div>
+      </div>
+       <div class="row">
+        <div class="input-field col s12 ">
+          <input id="address" type="Text" class="validate" name="address" value="{{accounts.address}}">
+          <label for="address">Address</label>
+        </div>
+      </div>
+       <div class="row">
+        <div class="input-field col s12 ">
+        <input id="password"type="Text" class="validate" name="password" value="{{accounts.password}}" required="required"/>
+          <label for="password">Password</label>
+            <span class="helper-text" data-error="This field cannot be left blank" data-success=""></span>
+        </div>
+      </div>
+       <button onclick="" class="btn waves-effect waves-light" type="submit">Update
+    <i class="material-icons right">send</i>
+      </button>
+           </form>
+    </div>
+
+   </div>
+   
+    
+   </div>
+
+
+ 
+  
+  {{>footer}}

@@ -4,22 +4,22 @@
     <div class="row">
         <div class="col s6 m6">
                 <div class="row">
-        <form class="col s12">
+        <form class="col s12" method="POST" action="/checkout/order">
       <div class="row">
         <div class="input-field col s6">
-          <input  value="{{account.full_name}}" id="first_name" type="text" class="validate" name="full_name">
-          <label for="first_name">Full Name</label>
+          <input  value="{{account.full_name}}" id="full_name" type="text" class="validate" name="full_name">
+          <label for="full_name">Full Name</label>
         </div>
         <div class="input-field col s6">
-          <input id="phone_number" type="text"  value="{{account.phone_number}}"class="validate" name="phoneNumber">
+          <input id="phone_number" type="number"  value="{{account.phone_number}}"class="validate" name="phone_number">
           <label for="phone_number">Phone Number</label>
         </div>
       </div>
       <div class="row">
      <div class="input-field col s12">
-          <input id="phone_number" type="text" class="validate" name="address" value
+          <input id="delivery_address" type="text" class="validate" name="delivery_address" value
           ="{{account.address}}">
-          <label for="phone_number">Address</label>
+          <label for="delivery_address">Address</label>
         </div>
       </div>
       <div class="row">
@@ -36,12 +36,12 @@
       </div>
        <div class="row">
         <div class="input-field col s12">
-          <input id="email" type="email" class="validate" value="" name="note">
-          <label for="email">Note</label>
+          <input id="note" type="text" class="validate" value="" name="note">
+          <label for="note">Note</label>
         </div>
       </div>
       <div style="margin-top: 20px; text-align: right;">
-            <a href='/auth' class="btn btn-active">place an order</a>
+            <button type="submit" onclick="alert('Order Successful ')"  class="btn btn-active">place an order</button>
         </div>
                      </form>
                 </div>

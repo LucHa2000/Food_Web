@@ -2,7 +2,7 @@ var nodemailer = require('nodemailer'); //sendEmailConfirm
 const Account = require('../models/Account');
 class AuthMiddlewares {
   index(req, res, next) {
-    if (!req.cookies.userId || req.cookies.accountType == 0) {
+    if (!req.cookies.userId || req.cookies.accountType == 1) {
       res.redirect('/auth');
       return;
     }
@@ -12,6 +12,7 @@ class AuthMiddlewares {
       if (!accounts) {
         return;
       }
+
       res.locals.userName = req.cookies.userName;
       res.locals.email = req.cookies.userEmail;
       res.locals.author = req.cookies.author;

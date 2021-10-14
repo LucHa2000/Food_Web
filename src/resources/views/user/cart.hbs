@@ -35,7 +35,7 @@
                   </form>
                   <span id="originalPrice" class="card-price">{{formatCurrency this.unit_price}}</span>
                   <span id="discountedAmount" class="card-discount">5%</span>
-                  <a onclick="M.toast({html: 'Item has been removed!'})" href="/cart/delete/{{this._id}}">Remove</a>
+                  <a  class="btn_cancel modal-trigger"  data-id="{{{this._id}}}" data-target="modal1" href="#modal1" >Remove</a>
                 </div>
                 
               </div>
@@ -69,6 +69,26 @@
         </div>
       {{>footer}}
     </main>
-    <script src="./script/main.js"></script>
+
   </body>
+      <script src="./script/main.js"></script>   
+<div id="modal1" class="modal">
+    <div class="modal-content">
+      <h4 class="center">Remove Product</h4>
+      <p class="center">Do you really want to remove these product ? </p>
+    </div>
+    <div class="modal-footer">
+      <a class="modal-close waves-effect waves-green btn-flat delete-agree text-darken-2 red-text">Yes, do it</a>
+      <a class="modal-close waves-effect waves-green btn-flat  grey-text">No, cancel </a>
+    </div>
+  </div>    
+<script>
+ $(document).ready(function(){
+    $(".btn_cancel").on("click", function(){
+        var dataId = $(this).attr("data-id");
+          $(".delete-agree").attr("href", "/cart/delete/"+dataId)
+    });
+    
+});
+</script>
 </html>

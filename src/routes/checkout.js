@@ -8,7 +8,7 @@ const checkoutController = require('../app/controllers/CheckoutController');
 const authMiddlewares = require('../app/middlewares/AuthMiddlewares');
 
 router.get('/view', checkoutController.index);
-router.get('/order',checkoutController.order);
+router.post('/order',checkoutController.order);
 
 
 
