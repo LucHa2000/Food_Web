@@ -1,121 +1,251 @@
-      {{>header}} 
-     <div class="container" style="padding-top:100px;">
-       <div class="row">
-         <div class="col s6 m6">
-            <img src="../uploads/{{{products.image}}}" alt="image" style="height:50%">
-         </div>
-          <div class="col s6 m6">
-                 <div class="head_detailModal">
-                <h7>Best Sale</h7>
-                 <h4>{{{products.product_name}}}</h4>
-              </div>
-                 <div class="body_detailModal">
-             
-                 <h4>{{{products.note}}} </h4>
-                 <p>Availability: out of stock</p>
-                 <div class="cost_detail" style="display:flex;">
-                  <h5>{{{products.unit_price}}}$</h5>
-                 <h5 class="blue-grey-text text-lighten-3" style="margin-left:20px;text-decoration-line:line-through">30.0 $</h5>
-                 </div>
-            
-                    <div class="btns-container">
-                        <a onclick="M.toast({html: 'Item has been put in the cart !', classes: 'rounded',displayLength:2000})"
-                          href="/cart/{{{this._id}}}"
-                          id="btn--add-to-cart"
-                          class="btn-active btn"
-                        >Add to cart</a>
-                        <a
-                          href="#reviews"
-                          id="btn--view-details"
-                          class="btn-inactive btn waves-effect waves-light btn modal-trigger"
-                        >Reviews</a>
-                      </div>
-              </div>
-         </div>
-       </div>
-       <div id="reviews" class="">
+     <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./css/reset.css" />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/flickity@2/dist/flickity.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
+    />
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"
+      defer
+    ></script>
+    <script
+      src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"
+      defer
+    ></script>
 
-       <div class="row">
-         <div class="col s12 m12">
-                <div class="container_comment">          
-                 <h6>Ratings And Reviews</h6>
+    <script
+      src="https://kit.fontawesome.com/655396e8e6.js"
+      defer
+      crossorigin="anonymous"
+    ></script>
 
-           <form class="col s8">
-          <div class="row">
-        <div class="input-field col s6">
-          <i class="material-icons prefix">account_circle</i>
-          <input id="icon_prefix" type="text" class="validate">
-          <label for="icon_prefix">Message</label>
-          
-        </div>
-      </div>
-      <div class="row" style="margin-top:-20px">
-          <div class="range-field col s6">
-      <input type="range" id="range_start" min="0" max="5" />
-        <label for="range_start">Range Start</label>
-        </div>
-        <a  style="margin-top: -51px;" href="#"id="btn--add-to-cart"class="btn-active btn">Post</a>
-      </div>
-         
-    </form>
+    <title>{{{products.product_name}}}</title>
+  </head>
+  <body>
+    {{>header}} 
+    <main id="main" class="subpage-main product-details-main">
+      <div class="container">
+        <div class="product-details-container" >
+          <div class="left">
+            <div class="pd-name">{{{products.product_name}}}</div>
+            <div class="pd-price">{{{formatCurrency products.unit_price}}}</div>
+            <div class="pd-note">{{{products.note}}}</div>
+            <a onclick="M.toast({html: 'Item has been put in the cart !', classes: 'rounded',   displayLength:2000})" href="/cart/{{{this._id}}}" id="btn--add-to-cart" class="btn-active btn">Add to Cart</a>
+            <p class="help">Need some help? <a href="">Contact us</a></p>
           </div>
-         </div>
-        
-       </div>
+          <div class="right">
+            <div class="product-img">
+              <img src="../uploads/{{{products.image}}}" alt="image" >  
+            </div>
+          </div>
+        </div>
+        <h6 class="pd-title">Ratings And Reviews</h6>
+        <div id="reviews" class="pd-reviews">
+          <div class="left">
+            <div class="row">
+              <div class="col s12 m12">
+                <div class="container_comment">          
+                  <form class="col">
+                    <div class="row">
+                      <div class="input-field col">
+                        <i class="material-icons prefix">account_circle</i>
+                        <input id="icon_prefix" type="text" class="validate">
+                        <label for="icon_prefix">Message</label>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="range-field col ">
+                        <input type="range" id="range_start" min="0" max="5" />
+                        <label for="range_start">Range Start</label>
+                      </div>
+                    </div>
+                    <div class="btns-container">
+                      <a href="#" class="btn-active btn">Submit</a>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="right">
+            <div class="row">
+              <div class="col s12 m12 l12">
+                <h5 class="comment-user">Nhan Dang</h5>
+                <div class="comment-stars">
+                  <p> 
+                    <i class="material-icons">star</i>
+                    <i class="material-icons">star</i>
+                    <i class="material-icons">star</i>
+                  </p>
+                </div>
+                <p class="comment-content">Hello, I am Andrew Smith in this websites I purchased a product which is T-shirts and my online shopping experience is very good.</p>
+              </div>
+              <div class="col s12 m12 l12">
+                <h5 class="comment-user">Nhan Dang</h5>
+                <div class="comment-stars">
+                  <p> 
+                    <i class="material-icons">star</i>
+                    <i class="material-icons">star</i>
+                    <i class="material-icons">star</i>
+                  </p>
+                </div>
+                <p class="comment-content">Hello, I am Andrew Smith in this websites I purchased a product which is T-shirts and my online shopping experience is very good.</p>
+              </div>
+              <div class="col s12 m12 l12">
+                <h5 class="comment-user">Nhan Dang</h5>
+                <div class="comment-stars">
+                  <p> 
+                    <i class="material-icons">star</i>
+                    <i class="material-icons">star</i>
+                    <i class="material-icons">star</i>
+                  </p>
+                </div>
+                <p class="comment-content">Hello, I am Andrew Smith in this websites I purchased a product which is T-shirts and my online shopping experience is very good.</p>
+              </div>
+              <div class="col s12 m12 l12">
+                <h5 class="comment-user">Nhan Dang</h5>
+                <div class="comment-stars">
+                  <p> 
+                    <i class="material-icons">star</i>
+                    <i class="material-icons">star</i>
+                    <i class="material-icons">star</i>
+                  </p>
+                </div>
+                <p class="comment-content">Hello, I am Andrew Smith in this websites I purchased a product which is T-shirts and my online shopping experience is very good.</p>
+              </div>
+              <div class="col s12 m12 l12">
+                <h5 class="comment-user">Nhan Dang</h5>
+                <div class="comment-stars">
+                  <p> 
+                    <i class="material-icons">star</i>
+                    <i class="material-icons">star</i>
+                    <i class="material-icons">star</i>
+                  </p>
+                </div>
+                <p class="comment-content">Hello, I am Andrew Smith in this websites I purchased a product which is T-shirts and my online shopping experience is very good.</p>
+                
+              </div>
+            </div>
+            
+              
+              
+          </div>
+        </div>
+      </div>
+    </main>
+    {{>footer}}
+    <script src="./script/main.js"></script>
+  </body>
+</html>
+        {{!-- <div class="row">
+          <div class="col s6 m6">
+            <img src="../uploads/{{{products.image}}}" alt="image" style="height:50%">
+          </div>
+          <div class="col s6 m6">
+            <div class="head_detailModal">
+            <h7>Best Sale</h7>
+            <h4>{{{products.product_name}}}</h4>
+          </div>
+          <div class="body_detailModal">
+            <h4>{{{products.note}}} </h4>
+            <p>Availability: out of stock</p>
+            <div class="cost_detail" style="display:flex;">
+              <h5>{{{products.unit_price}}}$</h5>
+              <h5 class="blue-grey-text text-lighten-3" style="margin-left:20px;text-decoration-line:line-through">30.0 $</h5>
+            </div>
+            <div class="btns-container">
+              <a onclick="M.toast({html: 'Item has been put in the cart !', classes: 'rounded',displayLength:2000})"
+                href="/cart/{{{this._id}}}"
+                id="btn--add-to-cart"
+                class="btn-active btn"
+              >Add to cart</a>
+              <a
+                href="#reviews"
+                id="btn--view-details"
+                class="btn-inactive btn waves-effect waves-light btn modal-trigger"
+              >Reviews</a>
+            </div>
+          </div>
+        </div>
+        <div id="reviews" class="">
+        <div class="row">
+          <div class="col s12 m12">
+            <div class="container_comment">          
+              <h6>Ratings And Reviews</h6>
+              <form class="col s8">
+                <div class="row">
+                  <div class="input-field col s6">
+                    <i class="material-icons prefix">account_circle</i>
+                    <input id="icon_prefix" type="text" class="validate">
+                    <label for="icon_prefix">Message</label>
+                  </div>
+                </div>
+                <div class="row" style="margin-top:-20px">
+                  <div class="range-field col s6">
+                    <input type="range" id="range_start" min="0" max="5" />
+                    <label for="range_start">Range Start</label>
+                  </div>
+                  <a  style="margin-top: -51px;" href="#"id="btn--add-to-cart"class="btn-active btn">Post</a>
+                </div>
+             </form>
+            </div>
+          </div>
+        </div>
         <div class="row">
         <div class="user_comment right">
-            <div class="row">
-               <div class="col s4 m4">
-                  <p>John Doe</p>
-                    <p> 
-                    <i class="material-icons">star</i>
-                    <i class="material-icons">star</i>
-                    <i class="material-icons">star</i>
-                    </p>
-               </div>
-               <div class="col s8 m8">
-                 <p>
-Hello, I am Andrew Smith in this websites I purchased a product which is T-shirts and my online shopping experience is very good.</p>
-               </div>
+          <div class="row">
+            <div class="col s4 m4">
+              <p>John Doe</p>
+                <p> 
+                <i class="material-icons">star</i>
+                <i class="material-icons">star</i>
+                <i class="material-icons">star</i>
+                </p>
+              </div>
+              <div class="col s8 m8">
+                <p>Hello, I am Andrew Smith in this websites I purchased a product which is T-shirts and my online shopping experience is very good.</p>
+              </div>
             </div>
-        </div>
-         <div class="user_comment right">
-            <div class="row">
-               <div class="col s4 m4">
-                  <p>John Doe</p>
-                    <p> 
-                    <i class="material-icons">star</i>
-                    <i class="material-icons">star</i>
-                    <i class="material-icons">star</i>
-                    </p>
-               </div>
-               <div class="col s8 m8">
-                 <p>
-Hello, I am Andrew Smith in this websites I purchased a product which is T-shirts and my online shopping experience is very good.</p>
-               </div>
+          </div>
+        <div class="user_comment right">
+          <div class="row">
+            <div class="col s4 m4">
+              <p>John Doe</p>
+              <p> 
+              <i class="material-icons">star</i>
+              <i class="material-icons">star</i>
+              <i class="material-icons">star</i>
+              </p>
             </div>
-        </div>
-         <div class="user_comment right">
-            <div class="row">
-               <div class="col s4 m4">
-                  <p>John Doe</p>
-                    <p> 
-                    <i class="material-icons">star</i>
-                    <i class="material-icons">star</i>
-                    <i class="material-icons">star</i>
-                    </p>
-               </div>
-               <div class="col s8 m8">
-                 <p>
-Hello, I am Andrew Smith in this websites I purchased a product which is T-shirts and my online shopping experience is very good.</p>
-               </div>
+            <div class="col s8 m8">
+              <p>Hello, I am Andrew Smith in this websites I purchased a product which is T-shirts and my online shopping experience is very good.</p>
             </div>
+          </div>
         </div>
-      </div>
-       </div>
-     </div>
- 
-   
-
-
- {{>footer}}
+        <div class="user_comment right">
+          <div class="row">
+            <div class="col s4 m4">
+              <p>John Doe</p>
+                <p> 
+                <i class="material-icons">star</i>
+                <i class="material-icons">star</i>
+                <i class="material-icons">star</i>
+              </p>
+            </div>
+            <div class="col s8 m8">
+              <p>Hello, I am Andrew Smith in this websites I purchased a product which is T-shirts and my online shopping experience is very good.</p>
+            </div>
+          </div>
+        </div> --}}
