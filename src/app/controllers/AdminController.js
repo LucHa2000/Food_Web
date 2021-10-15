@@ -46,6 +46,7 @@ class AdminController {
     req.body.product_status = 1;
     req.body.review_id = [];
     req.body.orderDetail_id = [];
+    req.body.promotion_rate = 0;
     req.body.promotionDetails = defaultId;
     req.body.list_id = listID;
     const newProduct = new Product(req.body);

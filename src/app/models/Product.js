@@ -5,6 +5,7 @@ const ProductSchema = new Schema({
   unit_price: Number,
   quantity: Number,
   image: String,
+  promotion_rate: Number,
   note: String,
   product_status: Number,
   list_id: {
@@ -15,10 +16,10 @@ const ProductSchema = new Schema({
     type: Schema.Types.ObjectId,
     ref: 'PromotionDetail',
   },
-  promotion_id: [{
+  promotion_id: {
     type: Schema.Types.ObjectId,
     ref: 'Promotion',
-  }, ],
+  },
   orderDetails: [{
     type: Schema.Types.ObjectId,
     ref: 'Order_detail',

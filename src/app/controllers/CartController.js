@@ -26,14 +26,15 @@ class CartController {
     cartPage(req, res, next) {
 
         var carts = req.session.cart
-        if (!carts) {
-            res.render('user/cart', {
-                carts: null
-            })
-        }
-        res.render('user/cart', {
-            carts: req.session.cart
-        })
+        console.log(carts)
+        // if (!carts) {
+        //     res.render('user/cart', {
+        //         carts: null
+        //     })
+        // }
+        // res.render('user/cart', {
+        //     carts: req.session.cart
+        // })
     }
     removeCart(req, res, next) {
         req.session.cart.totalProduct = req.session.cart.totalProduct - 1 //delete Totalproduct

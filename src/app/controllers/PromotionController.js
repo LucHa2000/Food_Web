@@ -31,6 +31,8 @@ class PromotionController {
 
     if (nowDate > req.body.start_date && nowDate < req.body.end_date) {
       req.body.promotion_status = 1;
+
+
     } else {
       //schedule update status
 
@@ -136,6 +138,7 @@ class PromotionController {
                 },
                 req.body,
               ).then(() => {
+
                 console.log('Promotion Close At : ' + timeEnd);
               });
             });
@@ -145,7 +148,7 @@ class PromotionController {
         const job3 = schedule.scheduleJob(timeEnd, function () {
           req.body.promotion_status = 0;
           Promotion.updateOne({
-              _id: newPromotion.id,
+              _id: req.params.id,
             },
             req.body,
           ).then(() => {
@@ -214,8 +217,9 @@ class PromotionController {
         var newPromotionProduct = new PromotionDetail(req.body);
         newPromotionProduct.save();
         //push promotionDetail in product
-        products.promotionDetails  = newPromotionProduct.id;
-        products.promotion_id.push(req.cookies.promotion_id);
+        products.promotion_rate = newPromotionProduct.promotion_rate;
+        products.promotionDetails = newPromotionProduct.id;
+        products.promotion_id = req.cookies.promotion_id;
         products.save();
         //push promotionDetail in promotion
         Promotion.findOne({
@@ -244,6 +248,7 @@ class PromotionController {
   }
   //Update promotion Detail \ Patch[/:id/edit]
   promotionDetailUpdate(req, res, next) {
+
     Product.findOne({
       product_name: req.body.product_name,
     }).then((products) => {
@@ -252,13 +257,32 @@ class PromotionController {
           message: 'The product in stock is not enough ! ',
         });
       } else {
-        res.req.promotion_id = req.cookies.promotion_id;
+        var rate = req.body.promotion_rate;
+        // res.req.promotion_id = req.cookies.promotion_id;
         PromotionDetail.updateOne({
             _id: req.params.id,
           },
           req.body,
         ).then(() => {
-          res.redirect(`/promotionDetail/${req.cookies.promotion_id}?Page=1`);
+          //product
+          req.body.promotion_rate = rate
+          // req.body.promotion_id = '61692b2af3493f5480cdedef'
+          // req.body.promotionDetails = '61692b2af3493f5480cdedef'
+          Product.updateOne({
+                promotionDetails: req.params.id,
+              },
+              // $pull: {
+              //   promotionDetails: req.params.id,
+              // },
+              // $pull: {
+              //   promotion_id: req.cookies.promotion_id,
+              // },
+              req.body
+            )
+            .then(() => {
+              res.redirect(`/promotionDetail/${req.cookies.promotion_id}?Page=1`);
+            })
+
         });
 
       }
@@ -276,17 +300,20 @@ class PromotionController {
         },
       }, )
       .then(() => {
-
+        req.body.promotion_rate = 0
+        req.body.promotion_id = '61692b2af3493f5480cdedef'
+        req.body.promotionDetails = '61692b2af3493f5480cdedef'
         Product.updateOne({
-            promotionDetails: req.params.id,
-          }, {
-            $pull: {
               promotionDetails: req.params.id,
             },
-            $pull: {
-              promotion_id: req.cookies.promotion_id,
-            },
-          }, )
+            // $pull: {
+            //   promotionDetails: req.params.id,
+            // },
+            // $pull: {
+            //   promotion_id: req.cookies.promotion_id,
+            // },
+            req.body
+          )
           .then(() => {
 
             PromotionDetail.deleteOne({
