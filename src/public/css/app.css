@@ -1212,3 +1212,110 @@ section .more {
   line-height: 1.2;
   text-align: justify;
 }
+
+/* ------------------ user account ------------------ */
+.account-settings-page .container {
+  background-color: #fff !important;
+  display: block;
+  border-radius: 18px;
+  padding-bottom: 100px;
+  width: 1100px !important;
+}
+
+.account-settings-page .container .title {
+  display: block;
+  width: 100%;
+  text-align: center;
+  font-weight: 900;
+  font-size: 1.5em;
+  letter-spacing: 0.1;
+  color: var(--primary-color);
+}
+
+.account-settings-page .container .hero-bg {
+  background: url("./../images/pexels-karolina-grabowska-4386366.jpg");
+  width: 100%;
+  height: 200px;
+  background-position: center;
+  background-size: cover;
+}
+
+.main-account-settings-container .d-flex {
+  display: flex;
+  padding: 0 50px;
+  flex-direction: row;
+}
+
+.main-account-settings-container .left {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--border-color);
+  height: 100%;
+  flex: 2;
+}
+
+.main-account-settings-container .left .user-pf-img {
+  display: block;
+  text-align: center;
+  margin-top: 20px;
+}
+
+.main-account-settings-container .left .user-pf-img img {
+  width: 100%;
+  height: 100px;
+  aspect-ratio: auto 100% / 100px;
+  border-radius: 50%;
+}
+
+.main-account-settings-container .left .first-child {
+  margin-top: 20px;
+}
+
+.main-account-settings-container .left a {
+  padding: 20px !important;
+  color: var(--secondary-color);
+  font-weight: 600;
+  font-size: 0.9em;
+}
+
+.main-account-settings-container .left .is-active {
+  background-color: var(--btn-active);
+  color: #fff;
+}
+
+.main-account-settings-container .right {
+  flex: 8;
+  width: 100%;
+  padding: 0 50px;
+}
+
+.main-account-settings-container .right .row {
+  margin-top: 40px;
+}
+
+.main-account-settings-container .right .row:first-child {
+  margin-top: 20px;
+}
+
+.main-account-settings-container .right .row .lbl-notation {
+  display: flex;
+  justify-content: space-between;
+}
+
+.main-account-settings-container .right .row .lbl-notation span {
+  font-size: 0.8em;
+  font-weight: 600;
+  color: var(--secondary-color);
+}
+
+.main-account-settings-container .right .row .lbl-notation .notation {
+  opacity: 0.5;
+}
+
+.main-account-settings-container .right .row input {
+  border: 1px solid var(--border-color);
+  border-radius: 5px;
+  padding: 10px;
+  box-sizing: border-box;
+  font-size: 1em;
+}
