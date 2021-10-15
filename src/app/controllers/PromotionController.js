@@ -214,7 +214,7 @@ class PromotionController {
         var newPromotionProduct = new PromotionDetail(req.body);
         newPromotionProduct.save();
         //push promotionDetail in product
-        products.promotionDetails.push(newPromotionProduct.id);
+        products.promotionDetails  = newPromotionProduct.id;
         products.promotion_id.push(req.cookies.promotion_id);
         products.save();
         //push promotionDetail in promotion
