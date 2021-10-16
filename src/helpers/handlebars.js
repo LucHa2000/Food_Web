@@ -41,4 +41,16 @@ module.exports = {
   formatLongString: (str) => {
     return str.length > 10 ? str.slice(0, 9).concat("...") : str;
   },
+
+  emitCardTitle: (str) => {
+    return str.length > 40 ? str.slice(0, 40).concat("...") : str;
+  },
+
+  displayPromotion: (per) => {
+    return per != 0 ? per + "% off" : "";
+  },
+
+  hasDiscount: (ori, dis) => {
+    // return ori == dis ? formatCurrency ori : "";
+  },
 };
