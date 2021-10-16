@@ -2,10 +2,8 @@ const multer = require('multer');
 const upload = multer({
   dest: 'src/public/uploads/',
 });
-
 const Product = require('../models/Product');
 const List = require('../models/List');
-
 const {
   mutipleMongooseToObject
 } = require('../../util/mongoose');
@@ -26,11 +24,12 @@ class StoreController {
         var listID = req.body.list_id;
         // get listID
         req.body.image = req.file.path.split('\\').slice(3).join();
-        req.body.product_status = 1;
-        req.body.review_id = [];
-        req.body.orderDetails = [];
-        req.body.promotion_id = [];
-        req.body.promotionDetails = [];
+        req.body.product_status = 1
+        req.body.reviews = []
+        req.body.orderDetails = []
+        req.body.promotion_id = '6aabc2aa1dbefa15b4aa5ddf'
+        req.body.promotionDetails = '6aabc2aa1dbefa15b4aa5ddf'
+        req.body.promotion_rate = 0
         req.body.list_id = listID;
         const newProduct = new Product(req.body);
         // get dataProduct
@@ -50,7 +49,6 @@ class StoreController {
     } else {
       req.body.image = req.body.img_old;
     }
-
     Product.updateOne({
           _id: req.params.id,
         },
@@ -88,8 +86,7 @@ class StoreController {
         },
         req.body,
       )
-      .then((prodcuts) => res.redirect('back'))
-
+      .then(() => res.redirect('back'))
       .catch(next);
   }
 }

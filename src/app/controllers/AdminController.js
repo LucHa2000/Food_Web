@@ -37,28 +37,6 @@ class AdminController {
       })
       .catch(next);
   }
-  //[POST]
-  productStore(req, res, next) {
-
-    var listID = req.body.list_id;
-    // get listID
-    req.body.image = req.file.path.split("\\").slice(3).join();
-    req.body.product_status = 1;
-    req.body.reviews = [];
-    req.body.orderDetails = [];
-    req.body.promotion_rate = 0;
-    req.body.promotionDetails = '6aabc2aa1dbefa15b4aa5ddf';
-    req.body.list_id = listID;
-    let newProduct = new Product(req.body);
-    // get dataProduct
-    List.findById(listID).then((lists) => {
-      newProduct.save();
-      lists.product_id.push(newProduct._id);
-      lists.save();
-      res.redirect("/admin");
-    });
-    res.redirect("/admin");
-  }
   updateProductPage(req, res, next) {
     let ListQuery = List.find();
     let ProductQuery = Product.findOne({

@@ -14,12 +14,6 @@ router.get('/product', adminController.index);
 router.get('/list', adminController.listPage);
 router.get('/order', adminController.orderPage);
 router.get('/:id', adminController.updateProductPage);
-router.post(
-  '/productStore',
-  upload.single('image'),
-  adminController.productStore,
-);
-
 router.get('/', adminController.statisticsPage);
 
 module.exports = router;
