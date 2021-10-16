@@ -22,7 +22,7 @@ const ProductSchema = new Schema({
   },
   orderDetails: [{
     type: Schema.Types.ObjectId,
-    ref: 'Order_detail',
+    ref: 'OrderDetail',
   }, ],
   reviews: [{
     type: Schema.Types.ObjectId,

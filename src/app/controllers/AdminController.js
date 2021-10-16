@@ -39,17 +39,17 @@ class AdminController {
   }
   //[POST]
   productStore(req, res, next) {
-    let defaultId = '6aabc2aa1dbefa15b4aa5ddf';
+
     var listID = req.body.list_id;
     // get listID
     req.body.image = req.file.path.split("\\").slice(3).join();
     req.body.product_status = 1;
-    req.body.review_id = [];
-    req.body.orderDetail_id = [];
+    req.body.reviews = [];
+    req.body.orderDetails = [];
     req.body.promotion_rate = 0;
-    req.body.promotionDetails = defaultId;
+    req.body.promotionDetails = '6aabc2aa1dbefa15b4aa5ddf';
     req.body.list_id = listID;
-    const newProduct = new Product(req.body);
+    let newProduct = new Product(req.body);
     // get dataProduct
     List.findById(listID).then((lists) => {
       newProduct.save();
