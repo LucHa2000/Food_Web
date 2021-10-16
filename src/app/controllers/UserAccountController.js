@@ -4,6 +4,9 @@ const upload = multer({
 });
 const Product = require('../models/Product');
 const Order = require('../models/Order');
+
+const Account = require('../models/Account');
+
 const Order_Detail = require('../models/OrderDetail');
 const Cart = require('../models/Cart')
 const {
@@ -77,7 +80,26 @@ class UserAccountController {
       .catch(next);
   }
   index(req, res, next) {
-    res.render('user/user_account')
+    Account.findOne({
+        _id: req.cookies.userId
+      })
+      .then((account) => {
+        console.log(account)
+        res.render('user/user_account', {
+          account: mongooseToObject(account)
+        })
+
+      })
+
+  }
+  updateAccount(req, res, next) {
+    Account.updateOne({
+          _id: req.params.id,
+        },
+        req.body,
+      )
+      .then(() => res.redirect('back'))
+      .catch(next);
   }
   detailOrder(req, res, next) {
     let queryInfoOrder = Order.findOne({

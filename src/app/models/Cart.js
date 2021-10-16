@@ -39,9 +39,7 @@ module.exports = class Cart {
     static delete(productId, cart) {
         let finIndexOfProduct = cart.findIndex(cart => cart._id == productId);
         let findProduct = cart.find(cart => cart._id == productId);
-        // if (finIndexOfProduct == 0) {
-        //     cart = []
-        // }
+
         cart.splice(finIndexOfProduct, 1)
         return findProduct.unit_price * findProduct.quantity
     }

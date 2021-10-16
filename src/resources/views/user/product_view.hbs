@@ -79,10 +79,10 @@
                       <a href="/{{this.product_name}}" class="card-content">
                         <span class="card-tag">Discount : {{this.promotion_rate}}%</span>
                         <span class="card-title">{{{this.product_name}}}</span>
-                        <span class="card-brief">
+                        {{!-- <span class="card-brief">
                       
                           {{{this.note}}}
-                        </span>
+                        </span> --}}
                         <div class="cost" style="display:flex;justify-content: space-evenly">
                           <span class="card-price">{{{formatLongString
                             (formatCurrency (discountCost this.unit_price  this.promotion_rate ))

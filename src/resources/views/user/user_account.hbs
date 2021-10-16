@@ -46,7 +46,7 @@
             <div class="d-flex">
               <div class="left">
                 <div class="user-pf-img">
-                  <img src="" alt="">
+                  <img src="https://th.bing.com/th/id/R.22770dc6386fd8a268bb10d36f2a7f77?rik=sRUyHyu4RMa66Q&riu=http%3a%2f%2frealidadessperiodico.com%2fwp-content%2fuploads%2f2020%2f06%2favtars.jpg&ehk=Nzd2s%2ffmQV9WOnxDgQNhbkQUzVIv0OdzIFYWWoTg140%3d&risl=&pid=ImgRaw&r=0" alt="">
                 </div>
                 <span class="user-fullname">{{accounts.full_name}}</span>
 
@@ -55,21 +55,21 @@
                 <a href="/auth/logout" class="collection-item">Logout</a>
               </div>
               <div class="right">
-                <form class="col s12"  method="POST" action="/account/{{accounts._id}}/edit?_method=PATCH">
+                <form class="col s12"  method="POST" action="/user_account/update/{{account._id}}/edit?_method=PATCH">
                   <div class="row">
                     <div class="col s6 m6 ">
                       <div class="lbl-notation">
                         <span>Name</span>
                         <span class="notation">How do you want to be called?</span>
                       </div>
-                      <input  id="full_name" type="text" class="validate" name="full_name" value="{{accounts.full_name}}">
+                      <input  id="full_name" type="text" class="validate" name="full_name" value="{{account.full_name}}">
                     </div>
                     <div class=" col s6 m6 ">
                       <div class="lbl-notation">
                         <span>Phone</span>  
                         <span class="notation">For keeping in touch</span>
                       </div>
-                      <input id="phone_number" type="tel" class="validate" name="phone_number" value="0{{accounts.phone_number}}" required="required">
+                      <input id="phone_number" type="tel" class="validate" name="phone_number" value="0{{account.phone_number}}" required="required">
                       <span class="helper-text" data-error="This field must be phone number" data-success=""></span>
                     </div>
                   </div>
@@ -79,8 +79,17 @@
                         <span>Email</span>
                         <span class="notation">For logging in</span>
                       </div>
-                      <input type="email" class="validate" name="email" value="{{accounts.email}}" required="required">
+                      <input type="email" class="validate" name="email" value="{{account.email}}" required="required">
                       <span class="helper-text" data-error="This field cannot be left blank" data-success=""></span>
+                    </div>
+                  </div>
+                    <div class="row">
+                    <div class=" col s12 m12 ">
+                      <div class="lbl-notation">
+                        <span>Password</span>
+                        <span class="notation">For logging in</span>
+                      </div>
+                      <input id="password" type="password" class="validate" name="password" value="{{account.password}}">
                     </div>
                   </div>
                   <div class="row">
@@ -89,7 +98,7 @@
                         <span>Address</span>
                         <span class="notation">For receiving your orders</span>
                       </div>
-                      <input id="address" type="Text" class="validate" name="address" value="{{accounts.address}}">
+                      <input id="address" type="Text" class="validate" name="address" value="{{account.address}}">
                     </div>
                   </div>
                   {{!-- <div class="row">
@@ -100,7 +109,7 @@
                       <span class="helper-text" data-error="This field cannot be left blank" data-success=""></span>
                     </div>
                   </div> --}}
-                  <button onclick="" class="btn btn-active" type="submit">Update</button>
+                  <button onclick="return confirm('Are you sure update ?')" class="btn btn-active" type="submit">Update</button>
                 </form>
                 {{!-- <div class="danger">
                   <span>Delete account</span>

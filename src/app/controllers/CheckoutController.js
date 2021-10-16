@@ -33,6 +33,7 @@ class CheckoutController {
     }
     order(req, res, next) {
         //save Order
+
         req.body.order_status = 1
         req.body.orderDetail_id = []
         let newOrder = new Order(req.body)
@@ -44,6 +45,7 @@ class CheckoutController {
             arr[i].order_id = newOrder._id
             arr[i].promotion_rate = 0
         }
+
         OrderDetail.insertMany(arr)
 
         res.clearCookie('connect.sid')

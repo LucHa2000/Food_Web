@@ -18,50 +18,56 @@ class CartController {
             .then((addedProduct) => {
                 Cart.save(addedProduct);
                 req.session.cart = Cart.getCart()
-                setTimeout(() => {
-                    res.redirect('back');
-                }, 1000);
-
+                res.redirect('back');
             })
+            .catch(next)
     }
     cartPage(req, res, next) {
 
+
+        // res.render('user/cart', {
+        //     carts: req.session.cart
+        // })
+        // console.log(req.session.cart)
+        console.log(req.session.cart)
         if (req.session.cart == undefined) {
             res.render('user/cart', {
                 carts: null
             })
-            // res.send('empty')
-            return
-            console.log('khogn ton tai')
-        }
-        let carts = req.session.cart.products
-        let totalDiscountCost = req.session.cart.discountCost
-        for (let i = 0; i < carts.length; i++) {
-            Promotion.findOne({
-                    _id: carts[i].promotion_id
-                }, {
-                    promotion_status: 1
-                })
-                .then((promotion) => {
-                    if (promotion) {
-                        if (promotion.promotion_status === 0) {
-                            carts[i].promotion_rate = 0
-                        }
-                        let discountCost = carts[i].unit_price * carts[i].quantity - ((carts[i].unit_price * carts[i].quantity) * (carts[i].promotion_rate / 100))
-                        req.session.cart.discountCost += discountCost
+        } else {
+            let carts = req.session.cart.products
 
-                        res.render('user/cart', {
-                            carts: req.session.cart
-                        })
-                    }
-
-                    res.render('user/cart', {
-                        carts: req.session.cart
+            for (let i = 0; i < carts.length; i++) {
+                Promotion.findOne({
+                        _id: carts[i].promotion_id
+                    }, {
+                        promotion_status: 1
                     })
-                })
-                .catch(next)
+                    .then((promotion) => {
+                        if (promotion) {
+                            if (promotion.promotion_status === 0) {
+                                carts[i].promotion_rate = 0
+                            }
+                            // let discountCost = carts[i].unit_price * carts[i].quantity - ((carts[i].unit_price * carts[i].quantity) * (carts[i].promotion_rate / 100))
+                            // req.session.cart.discountCost += discountCost
 
+                            res.render('user/cart', {
+                                carts: req.session.cart
+                            })
+                        }
+
+
+                        // if (req.session.cart == undefined) {
+                        //     res.render('user/cart', {
+                        //         carts: null
+                        //     })
+                        // }
+                    })
+                    .catch(next)
+
+            }
         }
+
 
     }
     removeCart(req, res, next) {
@@ -90,10 +96,10 @@ class CartController {
             })
     }
     removeAllCart(req, res, next) {
-        
-            res.clearCookie('connect.sid') 
-            res.redirect('back')
-        
+
+        res.clearCookie('connect.sid')
+        res.redirect('back')
+
 
     }
 
