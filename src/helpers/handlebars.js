@@ -1,6 +1,6 @@
 var moment = require("moment");
 module.exports = {
-  discountCost: (a, b) => a - (a * b) / 100,
+  discountCost: (a, b) => (a == 0 ? b : a),
   convertDate: (a) => moment(a).format("MMMM Do YYYY, h:mm:ss a"),
   sum: (a) => (a == a ? a + 1 : a), //create helpers
   accType: (a) => (a == 1 ? "User " : "Admin"),

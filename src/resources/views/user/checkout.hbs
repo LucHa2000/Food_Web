@@ -66,7 +66,7 @@
                       </div> --}}
                   </form>
                   <span id="originalPrice" class="card-price">{{formatCurrency this.unit_price}}</span>
-                  <span id="discountedAmount" class="card-discount">5%</span>
+                  <span id="discountedAmount" class="card-discount">{{{this.promotion_rate}}}</span>
                   <a onclick="M.toast({html: 'Item has been removed!'})" href="/cart/delete/{{this._id}}">Remove</a>
                 </div>
                 
@@ -81,7 +81,7 @@
             <hr />
             <div class="row">
               <h5 class="subtotal" style="display: initial"><span>Subtotal:  </span><span> {{formatCurrency session.cart.totalPrice}}</span></h5>
-              <h4 class="total" style="display:flow-root"><span>Total:   </span><span>{{formatCurrency session.cart.totalPrice}}</span></h5>
+              <h4 class="total" style="display:flow-root"><span>Total:   </span><span>{{formatCurrency session.cart.discountCost}}</span></h5>
               {{!-- checkout or login --}}
              
             </div>

@@ -2,6 +2,7 @@ const multer = require('multer');
 const upload = multer({
     dest: 'src/public/uploads/'
 });
+const Promotion = require('../models/Promotion')
 const Product = require('../models/Product');
 const Cart = require('../models/Cart')
 const {
@@ -25,23 +26,52 @@ class CartController {
     }
     cartPage(req, res, next) {
 
-        var carts = req.session.cart
-        console.log(carts)
-        // if (!carts) {
-        //     res.render('user/cart', {
-        //         carts: null
-        //     })
-        // }
-        // res.render('user/cart', {
-        //     carts: req.session.cart
-        // })
+        if (req.session.cart == undefined) {
+            res.render('user/cart', {
+                carts: null
+            })
+            // res.send('empty')
+            return
+            console.log('khogn ton tai')
+        }
+        let carts = req.session.cart.products
+        let totalDiscountCost = req.session.cart.discountCost
+        for (let i = 0; i < carts.length; i++) {
+            Promotion.findOne({
+                    _id: carts[i].promotion_id
+                }, {
+                    promotion_status: 1
+                })
+                .then((promotion) => {
+                    if (promotion) {
+                        if (promotion.promotion_status === 0) {
+                            carts[i].promotion_rate = 0
+                        }
+                        let discountCost = carts[i].unit_price * carts[i].quantity - ((carts[i].unit_price * carts[i].quantity) * (carts[i].promotion_rate / 100))
+                        req.session.cart.discountCost += discountCost
+
+                        res.render('user/cart', {
+                            carts: req.session.cart
+                        })
+                    }
+
+                    res.render('user/cart', {
+                        carts: req.session.cart
+                    })
+                })
+                .catch(next)
+
+        }
+
     }
     removeCart(req, res, next) {
+        // console.log(req.session.cart)
         req.session.cart.totalProduct = req.session.cart.totalProduct - 1 //delete Totalproduct
         let deleteProductAndTotalPrice = Cart.delete(req.params.id, req.session.cart.products)
         req.session.cart.totalPrice = req.session.cart.totalPrice - deleteProductAndTotalPrice //  deleteProductAndTotalPrice 
         req.session.cart.totalQty = req.session.cart.totalQty - 1 //delete Totalquantity
         res.redirect('back')
+
     }
     updateQtyCart(req, res, next) {
         Product.findById(req.params.id)
@@ -58,6 +88,13 @@ class CartController {
                     res.redirect('back')
                 }
             })
+    }
+    removeAllCart(req, res, next) {
+        
+            res.clearCookie('connect.sid') 
+            res.redirect('back')
+        
+
     }
 
 

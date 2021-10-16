@@ -19,7 +19,9 @@
         <div class="container cart-container"> 
           <h2 class="title">Review your cart</h2>
           <h4 class="subtitle">Free delivery and free returns.</h4>
+           {{!-- <h2 class="subtitle"><a href="/cart/clearAll">Clear All</a></h2> --}}
           <div class="row">
+           
             {{#each carts.products}} 
               <div class="card col s12 m12">
                 <div class="card-image">
@@ -34,8 +36,8 @@
                       </div> --}}
                   </form>
                   <span id="originalPrice" class="card-price">{{formatCurrency this.unit_price}}</span>
-                  <span id="discountedAmount" class="card-discount">5%</span>
-                  <a  class="btn_cancel modal-trigger"  data-id="{{{this._id}}}" data-target="modal1" href="#modal1" >Remove</a>
+                  <span id="discountedAmount" class="card-discount">{{this.promotion_rate}}%</span>
+                    <a   class=" " href="/cart/delete/{{this._id}}" onclick="return confirm('Are you sure remove this product ?')" >Remove</a>
                 </div>
                 
               </div>
@@ -49,7 +51,7 @@
             <hr />
             <div class="row">
               <h5 class="subtotal"><span>Subtotal</span><span> {{formatCurrency session.cart.totalPrice}}</span></h5>
-              <h4 class="total"><span>Total</span><span> {{formatCurrency session.cart.totalPrice}}</span></h5>
+              <h4 class="total"><span>Total</span><span> {{formatCurrency session.cart.discountCost}} </span></h5>
               {{!-- checkout or login --}}
                <div class="checkout_login">
                    {{#if author}}
@@ -72,10 +74,10 @@
 
   </body>
       <script src="./script/main.js"></script>   
-<div id="modal1" class="modal">
+ {{!-- <div id="modal1" class="modal">
     <div class="modal-content">
-      <h4 class="center">Remove Product</h4>
-      <p class="center">Do you really want to remove these product ? </p>
+      <h4 class="center">Delete Sale Product</h4>
+      <p class="center">Do you really want to delete these records ? This process cannot be undone</p>
     </div>
     <div class="modal-footer">
       <a class="modal-close waves-effect waves-green btn-flat delete-agree text-darken-2 red-text">Yes, do it</a>
@@ -84,11 +86,10 @@
   </div>    
 <script>
  $(document).ready(function(){
-    $(".btn_cancel").on("click", function(){
+    $(".btn_delete").on("click", function(){
         var dataId = $(this).attr("data-id");
           $(".delete-agree").attr("href", "/cart/delete/"+dataId)
     });
-    
 });
-</script>
+</script> --}}
 </html>

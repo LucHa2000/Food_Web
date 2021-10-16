@@ -6,8 +6,9 @@ const upload = multer({
 });
 const cartController = require('../app/controllers/CartController');
 const cartMiddlewares = require('../app/middlewares/CartMiddlewares');
-router.get('/:id',cartController.index)
-router.get('/delete/:id',cartController.removeCart)
-router.post('/updateQty/:id',cartController.updateQtyCart)
-router.get('/',cartController.cartPage)
+router.get('/:id', cartController.index)
+router.get('/delete/:id', cartController.removeCart)
+router.get('/clearAll', cartController.removeAllCart)
+router.post('/updateQty/:id', cartController.updateQtyCart)
+router.get('/', cartController.cartPage)
 module.exports = router;
