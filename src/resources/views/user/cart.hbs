@@ -30,7 +30,7 @@
                 <div class="card-content">
                   <span class="card-title">{{this.product_name}}</span>
                   <form class="card-quantity" action="/cart/updateQty/{{this._id}}" Method="POST">
-                    <input style="text-align: center;" onchange="this.value > 0 ? this.form.submit() : this.form.get('quantity').value = 1" id="quantity" type="number" required=required class="validate" min="1" max="1000" name="quantity" value="{{this.quantity}}">
+                    <input style="text-align: center;" onchange="this.value > 0 ? this.form.submit() : this.form.get('quantity').value = 1" id="quantity" type="number" required=required class="p-quantity validate" min="1" max="1000" name="quantity" value="{{this.quantity}}">
                       {{!-- <div class="btns-container">
                         <button class="btn btn-active" type="submit" >Update</button>
                       </div> --}}
@@ -51,7 +51,7 @@
             <hr />
             <div class="row">
               <h5 class="subtotal"><span>Subtotal</span><span> {{formatCurrency session.cart.totalPrice}}</span></h5>
-              <h4 class="total"><span>Total</span><span> {{formatCurrency session.cart.discountCost}} </span></h5>
+              <h4 class="total"><span>Total</span><span class="total-price"> {{formatCurrency session.cart.discountCost}} </span></h5>
               {{!-- checkout or login --}}
                <div class="checkout_login">
                    {{#if author}}
@@ -74,6 +74,7 @@
 
   </body>
       <script src="./script/main.js"></script>   
+      <script src="./script/calcTotal.js"></script>
  {{!-- <div id="modal1" class="modal">
     <div class="modal-content">
       <h4 class="center">Delete Sale Product</h4>
