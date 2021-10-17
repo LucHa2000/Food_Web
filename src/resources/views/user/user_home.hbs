@@ -110,7 +110,7 @@
                 <img src="../uploads/{{{this.image}}}" />
               </div>
             <a href="/{{this.product_name}}" class="card-content">
-              <span class="card-tag">10% off</span>
+              <span class="card-tag">{{displayPromotion this.promotion_rate}}</span>
               <span class="card-title">{{this.product_name}}</span>
               <span class="card-brief">
                 {{this.note}}

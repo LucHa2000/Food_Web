@@ -32,9 +32,6 @@ class GoodsController {
                     // })
                     // console.log(products)
                     for (let i = 0; i < products.length; i++) {
-
-
-                        // console.log("ket thuc")
                         Promotion.findOne({
                                 _id: products[i].promotion_id
                             }, {
@@ -61,7 +58,7 @@ class GoodsController {
 
 
                                 }
-                                // console.log(products[products.length - 1])
+
                             })
 
                             .catch(next)

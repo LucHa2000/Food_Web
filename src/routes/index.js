@@ -13,8 +13,10 @@ const promotionRouter = require('./promotion');
 const promotion_detailRouter = require('./promotion_detail');
 const promotion_detail_updateRouter = require('./promotion_detailUpdate');
 const orderRouter = require('./order');
+const commentRouter = require('./comment');
 const checkoutRouter = require('./checkout');
 const authMiddlewares = require('../app/middlewares/AuthMiddlewares');
+
 const authMiddlewares_user = require('../app/middlewares/AuthMiddlewares_user');
 const cartMiddlewares = require('../app/middlewares/CartMiddlewares');
 const user_accountRouter = require('./user_account');
@@ -28,6 +30,7 @@ function router(app) {
   app.use('/auth', authRouter);
   app.use('/review', reviewRouter);
   app.use('/admin', authMiddlewares.index, adminRouter);
+
   app.use('/order', orderRouter);
   app.use('/promotionDetail', promotion_detailRouter);
   app.use('/promotionDetailUpdate', promotion_detail_updateRouter);
@@ -36,6 +39,7 @@ function router(app) {
   app.use('/cart', cartMiddlewares.index, authMiddlewares_user.index, cartRouter);
   app.use('/checkout', cartMiddlewares.index, authMiddlewares_user.index, checkoutRouter);
   app.use('/user_account', cartMiddlewares.index, authMiddlewares_user.index, user_accountRouter);
+  app.use('/comment', cartMiddlewares.index, authMiddlewares_user.index, commentRouter);
   app.use('/', cartMiddlewares.index, authMiddlewares_user.index, homeRouter);
 }
 module.exports = router;

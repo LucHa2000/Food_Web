@@ -9,7 +9,6 @@ module.exports = class Cart {
                 totalPrice: 0,
                 totalQty: 0,
                 totalProduct: 0,
-                discountCost: 0
             };
         }
 
@@ -25,8 +24,6 @@ module.exports = class Cart {
 
         cart.totalPrice += product.unit_price;
         cart.totalQty++
-
-
     }
 
     static getCart() {

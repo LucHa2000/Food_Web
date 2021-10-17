@@ -40,9 +40,14 @@
         <div class="product-details-container" >
           <div class="left">
             <div class="pd-name">{{{products.product_name}}}</div>
+             {{!-- <span class="card-tag">{{displayPromotion product.promotion_rate}}</span> --}}
             <div class="pd-price">{{{formatCurrency products.unit_price}}}</div>
             <div class="pd-note">{{{products.note}}}</div>
-            <a onclick="M.toast({html: 'Item has been put in the cart !', classes: 'rounded',   displayLength:2000})" href="/cart/{{{this._id}}}" id="btn--add-to-cart" class="btn-active btn">Add to Cart</a>
+            <a onclick="M.toast({html: 'Item has been put in the cart !', classes: 'rounded',displayLength:2000})"
+                          href="/cart/{{{products._id}}}"
+                          id="btn--add-to-cart"
+                          class="btn-active btn"
+                        >Add to cart</a>
             <p class="help">Need some help? <a href="">Contact us</a></p>
           </div>
           <div class="right">
@@ -52,97 +57,80 @@
           </div>
         </div>
         <h6 class="pd-title">Ratings And Reviews</h6>
+  
         <div id="reviews" class="pd-reviews">
+        {{#if author}}
           <div class="left">
             <div class="row">
               <div class="col s12 m12">
                 <div class="container_comment">          
-                  <form class="col">
+                  <form class="col" action="/comment/{{userName}}" method="POST">
+                   <input hidden id="icon_prefix" type="text" class="validate" value="{{{products.product_name}}}" name="product_name">
+          
                     <div class="row">
                       <div class="input-field col">
                         <i class="material-icons prefix">account_circle</i>
-                        <input id="icon_prefix" type="text" class="validate">
+                        <input id="icon_prefix" type="text" class="validate" name="content">
                         <label for="icon_prefix">Message</label>
                       </div>
                     </div>
                     <div class="row">
                       <div class="range-field col ">
-                        <input type="range" id="range_start" min="0" max="5" />
+                        <input type="range" id="range_start" min="0" max="5" name="star_no" />
                         <label for="range_start">Range Start</label>
                       </div>
                     </div>
                     <div class="btns-container">
-                      <a href="#" class="btn-active btn">Submit</a>
+                      <button onclick="alert('Review successful !')" href="#" class="btn-active btn" type="submit">Submit</button>
                     </div>
                   </form>
                 </div>
               </div>
             </div>
           </div>
+          {{else}}
+          <a href="/auth">Login For Comment</a>
+            {{/if}}
           <div class="right">
+              <div class="row">
+              <div class="col s12 m12 l12">
+                <h5 class="comment-user">Nhan Dang</h5>
+                <div class="comment-stars">
+                  <p> 
+                    <i class="material-icons">star</i>
+                    <i class="material-icons">star</i>
+                    <i class="material-icons">star</i>
+                  </p>
+                </div>
+                <p class="comment-content">Hello, I am Andrew Smith in this websites I purchased a product which is T-shirts and my online shopping experience is very good.</p>
+              </div>
+           
+            </div>
+            {{#each reviews}}
             <div class="row">
               <div class="col s12 m12 l12">
-                <h5 class="comment-user">Nhan Dang</h5>
+                <h5 class="comment-user">{{this.full_name}}</h5>
+                 
                 <div class="comment-stars">
-                  <p> 
-                    <i class="material-icons">star</i>
-                    <i class="material-icons">star</i>
-                    <i class="material-icons">star</i>
+                  
+                  <p>
+                      <p>{{this.star_no}}</p>
+                      {{!-- <i class="material-icons">star</i> --}}
+               
                   </p>
+               
                 </div>
-                <p class="comment-content">Hello, I am Andrew Smith in this websites I purchased a product which is T-shirts and my online shopping experience is very good.</p>
+              
+                <p class="comment-content">{{this.content}}</p>
               </div>
-              <div class="col s12 m12 l12">
-                <h5 class="comment-user">Nhan Dang</h5>
-                <div class="comment-stars">
-                  <p> 
-                    <i class="material-icons">star</i>
-                    <i class="material-icons">star</i>
-                    <i class="material-icons">star</i>
-                  </p>
-                </div>
-                <p class="comment-content">Hello, I am Andrew Smith in this websites I purchased a product which is T-shirts and my online shopping experience is very good.</p>
-              </div>
-              <div class="col s12 m12 l12">
-                <h5 class="comment-user">Nhan Dang</h5>
-                <div class="comment-stars">
-                  <p> 
-                    <i class="material-icons">star</i>
-                    <i class="material-icons">star</i>
-                    <i class="material-icons">star</i>
-                  </p>
-                </div>
-                <p class="comment-content">Hello, I am Andrew Smith in this websites I purchased a product which is T-shirts and my online shopping experience is very good.</p>
-              </div>
-              <div class="col s12 m12 l12">
-                <h5 class="comment-user">Nhan Dang</h5>
-                <div class="comment-stars">
-                  <p> 
-                    <i class="material-icons">star</i>
-                    <i class="material-icons">star</i>
-                    <i class="material-icons">star</i>
-                  </p>
-                </div>
-                <p class="comment-content">Hello, I am Andrew Smith in this websites I purchased a product which is T-shirts and my online shopping experience is very good.</p>
-              </div>
-              <div class="col s12 m12 l12">
-                <h5 class="comment-user">Nhan Dang</h5>
-                <div class="comment-stars">
-                  <p> 
-                    <i class="material-icons">star</i>
-                    <i class="material-icons">star</i>
-                    <i class="material-icons">star</i>
-                  </p>
-                </div>
-                <p class="comment-content">Hello, I am Andrew Smith in this websites I purchased a product which is T-shirts and my online shopping experience is very good.</p>
-                
-              </div>
+           
             </div>
-            
+            {{/each}}
               
               
           </div>
         </div>
+      
       </div>
     </main>
     {{>footer}}

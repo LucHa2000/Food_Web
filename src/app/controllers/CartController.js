@@ -23,14 +23,7 @@ class CartController {
             .catch(next)
     }
     cartPage(req, res, next) {
-
-
-        // res.render('user/cart', {
-        //     carts: req.session.cart
-        // })
-        // console.log(req.session.cart)
-        console.log(req.session.cart)
-        if (req.session.cart == undefined) {
+        if (req.session.cart === undefined) {
             res.render('user/cart', {
                 carts: null
             })
@@ -48,35 +41,33 @@ class CartController {
                             if (promotion.promotion_status === 0) {
                                 carts[i].promotion_rate = 0
                             }
-                            // let discountCost = carts[i].unit_price * carts[i].quantity - ((carts[i].unit_price * carts[i].quantity) * (carts[i].promotion_rate / 100))
-                            // req.session.cart.discountCost += discountCost
-
+                            res.render('user/cart', {
+                                carts: req.session.cart
+                            })
+                        } else {
                             res.render('user/cart', {
                                 carts: req.session.cart
                             })
                         }
-
-
-                        // if (req.session.cart == undefined) {
-                        //     res.render('user/cart', {
-                        //         carts: null
-                        //     })
-                        // }
                     })
                     .catch(next)
-
             }
         }
-
-
     }
     removeCart(req, res, next) {
         // console.log(req.session.cart)
-        req.session.cart.totalProduct = req.session.cart.totalProduct - 1 //delete Totalproduct
-        let deleteProductAndTotalPrice = Cart.delete(req.params.id, req.session.cart.products)
-        req.session.cart.totalPrice = req.session.cart.totalPrice - deleteProductAndTotalPrice //  deleteProductAndTotalPrice 
-        req.session.cart.totalQty = req.session.cart.totalQty - 1 //delete Totalquantity
-        res.redirect('back')
+        if (req.session.cart.totalProduct == 1) {
+            res.clearCookie('connect.sid')
+            res.redirect('/cart')
+        } else {
+
+            req.session.cart.totalProduct = req.session.cart.totalProduct - 1 //delete Totalproduct
+            let deleteProductAndTotalPrice = Cart.delete(req.params.id, req.session.cart.products)
+            req.session.cart.totalPrice = req.session.cart.totalPrice - deleteProductAndTotalPrice //  deleteProductAndTotalPrice 
+            req.session.cart.totalQty = req.session.cart.totalQty - 1 //delete Totalquantity
+            res.redirect('/cart')
+        }
+
 
     }
     updateQtyCart(req, res, next) {
