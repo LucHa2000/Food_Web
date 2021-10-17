@@ -51,6 +51,8 @@ module.exports = {
   },
 
   displayStarNo: (starNo) => {
-    return starNo * "⭐";
+    let stars = "";
+    for (let i = 0; i < starNo; i++) stars += "star ";
+    return stars;
   },
 };

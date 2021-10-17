@@ -1,6 +1,6 @@
 {{>header_admin}}
  
-<div class="create-container admin_main">
+<div class="create-container">
     <div class="container ">
       <div class="title_block">
       <h5 class="">Order Detail</h5>
@@ -9,7 +9,13 @@
      <i class="material-icons">arrow_back</i>
    
     </a>
-       
+  <div class="row">
+          <div class="col s12 m12" style="text-align: right;">
+            <span class="li-total">
+              <span>Total: </span><span class="total-price" style="font-size: 2em; font-weight: 600;"></span>
+            </span>
+          </div>
+  </div>     
  <div class="  paper_container z-depth-1">
      {{>search}} 
       <table class="centered responsive-table right highlight " >
@@ -29,9 +35,9 @@
             <tr>
                 <td>{{sum @index}}</td>
                 <td>{{{this.product_name}}}</td>
-                <td>{{{this.quantity}}}</td>
-                <td>{{{formatLongString (formatCurrency this.unit_price)}}}</td>
-                <td>{{{ this.promotion_rate}}}%</td>
+                <td class="p-quantity">{{{this.quantity}}}</td>
+                <td class="card-price">{{{formatLongString (formatCurrency this.unit_price)}}}</td>
+                <td class="card-discount">{{{ this.promotion_rate}}}%</td>
                 
            </tr>
            
@@ -51,4 +57,31 @@
  </div>
     </div>
   </div>
+<script>
+    const productQuantites = document.querySelectorAll(".p-quantity");
+        const productPrices = document.querySelectorAll(".card-price");
+        const cartDiscounts = document.querySelectorAll(".card-discount");
+        let totalPrice = 0,
+          quantity,
+          prices,
+          price,
+          discounts,
+          discount,
+          discountedPrice = 0;
+        for (let i = 0; i < productQuantites.length; i++) {
+          quantity = Number(productQuantites[i].textContent);
+          prices = productPrices[i].textContent.match(/\d+/g);
+          price = Number(prices[0]) + Number(`0.${prices[1]}`);
+          discounts = cartDiscounts[i].textContent.match(/\d+/g);
+          discount = Number(discounts[0]);
+          totalPrice += quantity * price * (1 - discount / 100);
+          //   console.log(quantiy);
+          //   console.log(price);
+          discountedPrice += quantity * price * (discount / 100);
+          console.log(quantity, price, discount);
+        }
 
+        console.log(totalPrice);
+        document.querySelector(".total-price").innerHTML = `$${totalPrice}`;
+        document.querySelector(".discounted-price").innerHTML = `$${discountedPrice}`;
+  </script>
