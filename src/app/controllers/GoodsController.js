@@ -17,7 +17,6 @@ const {
 class GoodsController {
     index(req, res, next) {
         let queryPromotion = Promotion.find({})
-
         let queryList = List.find({})
         let queryProduct = Product.find({
             product_status: 1
@@ -27,10 +26,6 @@ class GoodsController {
             .then(
 
                 ([lists, products]) => {
-                    // products.push({
-                    //     kethuc: 'theend'
-                    // })
-                    // console.log(products)
                     for (let i = 0; i < products.length; i++) {
                         Promotion.findOne({
                                 _id: products[i].promotion_id
@@ -46,33 +41,16 @@ class GoodsController {
                                         lists: mutipleMongooseToObject(lists),
                                         products: mutipleMongooseToObject(products),
                                     }, )
+                                } else {
 
-
-                                    // else {
-
-                                    //     res.render('user/product_view', {
-                                    //         lists: mutipleMongooseToObject(lists),
-                                    //         products: mutipleMongooseToObject(products),
-                                    //     }, )
-                                    // }
-
-
+                                    res.render('user/product_view', {
+                                        lists: mutipleMongooseToObject(lists),
+                                        products: mutipleMongooseToObject(products),
+                                    }, )
                                 }
-
                             })
-
                             .catch(next)
-
                     }
-
-                    // res.render('user/product_view', {
-                    //     lists: mutipleMongooseToObject(lists),
-                    //     products: mutipleMongooseToObject(  tempProduct),
-
-                    // }, )
-
-
-
                 })
             .catch(next)
     }

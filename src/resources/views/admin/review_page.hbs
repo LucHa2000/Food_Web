@@ -18,7 +18,7 @@
             <th>Star{{{sortable 'star_no' _sort}}}</th>
             <th>Content{{{sortable 'content' _sort}}}</th>
             <th>Product{{{sortable 'product_name' _sort}}}</th>
-            <th>User Email {{{sortable 'account_email' _sort}}}</th>
+            <th>Name {{{sortable 'full_name' _sort}}}</th>
             <th>Status</th>
              <th>Created At
               {{{sortable 'createdAt' _sort}}}
@@ -34,7 +34,7 @@
                 <td>{{{this.star_no}}}</td>
                 <td>{{{this.content}}}</td>
                 <td>{{{this.product_name}}}</td>
-                <td>{{{this.account_email}}}</td>
+                <td>{{{this.full_name}}}</td>
                 <td class="{{{ status this.review_status}}}">{{{ status this.review_status}}}</td>
                 <td>{{{ convertDate this.createdAt}}}</td>     
                 <td>  
