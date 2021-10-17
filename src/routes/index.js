@@ -36,7 +36,7 @@ function router(app) {
   app.use('/promotionDetailUpdate', promotion_detail_updateRouter);
   app.use('/goods', cartMiddlewares.index, authMiddlewares_user.index, goodsRouter);
   app.use('/news', cartMiddlewares.index, authMiddlewares_user.index, newsRouter);
-  app.use('/cart', cartMiddlewares.index, authMiddlewares_user.index, cartRouter);
+  app.use('/cart', authMiddlewares_user.index, cartRouter);
   app.use('/checkout', cartMiddlewares.index, authMiddlewares_user.index, checkoutRouter);
   app.use('/user_account', cartMiddlewares.index, authMiddlewares_user.index, user_accountRouter);
   app.use('/comment', cartMiddlewares.index, authMiddlewares_user.index, commentRouter);

@@ -39,115 +39,33 @@
       <div class="container">
         <header class="container-header">
           <h2 class="title">Make your dailies informative.</h2>
-          <div class="input-field col s6 articles-search">
+          {{!-- <div class="input-field col s6 articles-search">
             <input id="search" type="text" class="validate" />
             <label for="search">Search...</label>
             <a href="#" class="material-icons"> search </a>
-          </div>
+          </div> --}}
         </header>
         <div class="articles-container">
           <div class="main-articles-container">
             <div class="section-grid">
               <div class="row">
+                {{#each articles}}
                 <div class="col s12 m12 l6">
-                  <a href="#" class="card">
+                  <a href="/news/{{this._id}}" class="card">
                     <div class="card-image">
-                      <img src="./images/ophthalmologist-not-css.svg" />
+                      <img src="../uploads/{{{this.image}}}" />
                     </div>
                     <div class="card-content">
-                      <span class="card-date">October 11 2021</span>
-                      <span class="card-title">Covid-19 in Vietnam </span>
+                      <span class="card-date">{{{convertDate this.createdAt}}}</span>
+                      <span class="card-title">{{{this.title}}}</span>
                       <span class="card-brief"
-                        >Lorem, ipsum dolor sit amet consectetur adipisicing
-                        elit. Ab, quae. Voluptatibus error, nobis pariatur
-                        laudantium omnis facilis blanditiis tenetur
-                        veniam.</span
+                        >{{{formatLongString this.content}}}</span
                       >
-                      <div class="card-author">By Nhan Dang</div>
+                      <div class="card-author">{{{ this.author}}}</div>
                     </div>
                   </a>
                 </div>
-                <div class="col s12 m12 l6">
-                  <a href="#" class="card">
-                    <div class="card-image">
-                      <img src="./images/ophthalmologist-not-css.svg" />
-                    </div>
-                    <div class="card-content">
-                      <span class="card-date">October 11 2021</span>
-                      <span class="card-title"
-                        >Covid-19 in Vietnam: New wave tally nears 804,000</span
-                      >
-                      <span class="card-brief"
-                        >Lorem, ipsum dolor sit amet consectetur adipisicing
-                        elit.
-                      </span>
-                      <div class="card-author">By Nhan Dang</div>
-                    </div>
-                  </a>
-                </div>
-                <div class="col s12 m12 l6">
-                  <a href="#" class="card">
-                    <div class="card-image">
-                      <img src="./images/ophthalmologist-not-css.svg" />
-                    </div>
-                    <div class="card-content">
-                      <span class="card-date">October 11 2021</span>
-                      <span class="card-title"
-                        >Covid-19 in Vietnam: New wave tally nears 804,000</span
-                      >
-                      <span class="card-brief"
-                        >Lorem, ipsum dolor sit amet consectetur adipisicing
-                        elit. Ab, quae. Voluptatibus error, nobis pariatur
-                        laudantium omnis facilis blanditiis tenetur
-                        veniam.</span
-                      >
-                      <div class="card-author">By Nhan Dang</div>
-                    </div>
-                  </a>
-                </div>
-                <div class="col s12 m12 l6">
-                  <a href="#" class="card">
-                    <div class="card-image">
-                      <img src="./images/ophthalmologist-not-css.svg" />
-                    </div>
-                    <div class="card-content">
-                      <span class="card-date">October 11 2021</span>
-                      <span class="card-title"
-                        >Covid-19 in Vietnam: New wave tally nears 804,000</span
-                      >
-                      <span class="card-brief"
-                        >Lorem, ipsum dolor sit amet consectetur adipisicing
-                        elit. Ab, quae. Voluptatibus error, nobis pariatur
-                        laudantium omnis facilis blanditiis tenetur
-                        veniam.</span
-                      >
-                      <div class="card-author">By Nhan Dang</div>
-                    </div>
-                  </a>
-                </div>
-                <div class="col s12 m12 l6">
-                  <a href="#" class="card">
-                    <div class="card-image">
-                      <img src="./images/ophthalmologist-not-css.svg" />
-                    </div>
-                    <div class="card-content">
-                      <span class="card-date">October 11 2021</span>
-                      <span class="card-title"
-                        >Lorem ipsum, dolor sit amet consectetur adipisicing
-                        elit. Dicta odit exercitationem sit magnam adipisci,
-                        architecto fugit? Esse vero quaerat veritatis.</span
-                      >
-                      <span class="card-brief"
-                        >Lorem ipsum dolor sit amet consectetur adipisicing
-                        elit. Eius aperiam totam obcaecati dolore excepturi quis
-                        labore voluptate, ipsum modi ut sequi, accusamus impedit
-                        tempore accusantium harum et. Quae, inventore
-                        culpa?</span
-                      >
-                      <div class="card-author">By Nhan Dang</div>
-                    </div>
-                  </a>
-                </div>
+               {{/each}}
               </div>
             </div>
           </div>

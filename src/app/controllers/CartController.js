@@ -57,7 +57,15 @@ class CartController {
     removeCart(req, res, next) {
         // console.log(req.session.cart)
         if (req.session.cart.totalProduct == 1) {
+            // req.session.destroy(err => {
+            //     if (err) return next(err)
+            //     res.status(200).send('logged out')
+            // })
             res.clearCookie('connect.sid')
+            req.session = null;
+
+            // req.session.destroy()
+            // console.log(req.session)
             res.redirect('/cart')
         } else {
 
@@ -65,7 +73,7 @@ class CartController {
             let deleteProductAndTotalPrice = Cart.delete(req.params.id, req.session.cart.products)
             req.session.cart.totalPrice = req.session.cart.totalPrice - deleteProductAndTotalPrice //  deleteProductAndTotalPrice 
             req.session.cart.totalQty = req.session.cart.totalQty - 1 //delete Totalquantity
-            res.redirect('/cart')
+            res.redirect('back')
         }
 
 

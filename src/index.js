@@ -26,6 +26,8 @@ app.use(
     saveUninitialized: true,
     store: MongoStore.create({
       mongoUrl: "mongodb://localhost:27017/MedicalDB",
+      autoRemove: 'native',
+      autoRemoveInterval: 5
     }),
     cookie: {
       secure: !true,

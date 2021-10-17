@@ -8,7 +8,7 @@ const newsController = require('../app/controllers/NewsController');
 const authMiddlewares = require('../app/middlewares/AuthMiddlewares');
 
 router.get('/', newsController.index);
-
+router.get('/:id', newsController.newsDetail);
 
 
 module.exports = router;
