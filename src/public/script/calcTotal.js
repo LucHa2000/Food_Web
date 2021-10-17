@@ -15,6 +15,8 @@ for (let i = 0; i < productQuantites.length; i++) {
   totalPrice += quantity * price * (1 - discount / 100);
   //   console.log(quantiy);
   //   console.log(price);
+  console.log(quantity, price, discount);
 }
 
+console.log(totalPrice);
 document.querySelector(".total-price").innerHTML = `$${totalPrice}`;

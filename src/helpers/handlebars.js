@@ -50,7 +50,7 @@ module.exports = {
     return per != 0 ? per + "% off" : "";
   },
 
-  hasDiscount: (ori, dis) => {
-    // return ori == dis ? formatCurrency ori : "";
+  displayStarNo: (starNo) => {
+    return starNo * "⭐";
   },
 };
