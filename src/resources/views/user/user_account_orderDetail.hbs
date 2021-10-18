@@ -1,31 +1,50 @@
 {{>header}}
  
-<div class="create-container admin_main">
-    <div class="container ">
-      <div class="title_block">
-      <h4 class="">Order Detail</h4>
-      </div>
- <a href="/user_account/view_order" data-target="" class="sidenav-trigger btn-floating pulse cyan">
+<div class="create-container">
+    <div class="container " style="margin-top: 80px;">
+      <a href="/user_account/view_order" data-target="" class="sidenav-trigger btn-floating pulse cyan">
      <i class="material-icons">arrow_back</i>
    
     </a>
-    <div class="info_order">
+      <div class="title_block">
+      <h4 class="">Order Detail</h4>
+      </div>
+ 
+    <div class="info_order order-detail">
         <ul>
-          <li>
-            Name : {{order.full_name}}
-          </li>
-            <li>
-            Phone Number : 0{{order.phone_number}}
-          </li>
-            <li>
-            Address : {{order.delivery_address}}
-          </li>
-          <li>
-            Note : {{order.note}}
-          </li>
-          <li>
-            Total : 
-          </li>
+          <div class="row">
+            <div class="col s6 m6 l6">
+              <li>
+                <span class="li-name">Name: </span><span class="li-value">{{order.full_name}}</span>
+              </li>
+            </div>
+            <div class="col s12 m6">
+              <li>
+                <span class="li-name">Phone: </span><span class="li-value">{{order.phone_number}}</span>
+              </li>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col s12 m12">
+              <li>
+                <span class="li-name">Address: </span><span class="li-value">{{order.delivery_address}}</span>
+              </li>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col s12 m12">
+              <li>
+                <span class="li-name">Note: </span><span class="li-value">{{order.note}}</span>
+              </li>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col s12 m12" style="text-align: right;">
+              <li class="li-total">
+                <span class="li-name">Total: </span><span class="li-value total-price"></span>
+              </li>
+            </div>
+          </div>
         </ul>
     </div>
  <div class="  paper_container z-depth-1">
@@ -47,9 +66,9 @@
             <tr>
                 <td>{{sum @index}}</td>
                 <td>{{{this.product_name}}}</td>
-                <td>{{{this.quantity}}}</td>
-                <td>{{{formatLongString (formatCurrency this.unit_price)}}}</td>
-                <td>{{{ this.promotion_rate}}}%</td>
+                <td class="p-quantity">{{{this.quantity}}}</td>
+                <td class="card-price">{{{formatLongString (formatCurrency this.unit_price)}}}</td>
+                <td class="card-discount">{{{ this.promotion_rate}}}%</td>
                 
            </tr>
            
@@ -72,6 +91,34 @@
     </div>
  
   </div>
+  <script>
+    const productQuantites = document.querySelectorAll(".p-quantity");
+        const productPrices = document.querySelectorAll(".card-price");
+        const cartDiscounts = document.querySelectorAll(".card-discount");
+        let totalPrice = 0,
+          quantity,
+          prices,
+          price,
+          discounts,
+          discount,
+          discountedPrice = 0;
+        for (let i = 0; i < productQuantites.length; i++) {
+          quantity = Number(productQuantites[i].textContent);
+          prices = productPrices[i].textContent.match(/\d+/g);
+          price = Number(prices[0]) + Number(`0.${prices[1]}`);
+          discounts = cartDiscounts[i].textContent.match(/\d+/g);
+          discount = Number(discounts[0]);
+          totalPrice += quantity * price * (1 - discount / 100);
+          //   console.log(quantiy);
+          //   console.log(price);
+          discountedPrice += quantity * price * (discount / 100);
+          console.log(quantity, price, discount);
+        }
+
+        console.log(totalPrice);
+        document.querySelector(".total-price").innerHTML = `$${totalPrice}`;
+        document.querySelector(".discounted-price").innerHTML = `$${discountedPrice}`;
+  </script>
 
 
 

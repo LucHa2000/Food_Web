@@ -36,7 +36,7 @@
   <body>
     {{>header}} 
     <main id="main" class="subpage-main product-details-main">
-      <div class="container">
+      <div class="container" style="padding-bottom: 100px;">
         <div class="product-details-container" >
           <div class="left">
             <div class="pd-name">{{{products.product_name}}}</div>
@@ -58,7 +58,7 @@
         </div>
         <h6 class="pd-title">Ratings And Reviews</h6>
   
-        <div id="reviews" class="pd-reviews">
+        <div id="reviews" class="pd-reviews" ">
         {{#if author}}
           <div class="left">
             <div class="row">
@@ -94,7 +94,7 @@
           <a href="/auth">Login For Comment</a>
             {{/if}}
           <div class="right">
-              <div class="row">
+              {{!-- <div class="row">
               <div class="col s12 m12 l12">
                 <h5 class="comment-user">Nhan Dang</h5>
                 <div class="comment-stars">
@@ -107,7 +107,7 @@
                 <p class="comment-content">Hello, I am Andrew Smith in this websites I purchased a product which is T-shirts and my online shopping experience is very good.</p>
               </div>
            
-            </div>
+            </div> --}}
             {{#each reviews}}
             <div class="row">
               <div class="col s12 m12 l12">
@@ -116,7 +116,7 @@
                 <div class="comment-stars">
                   
                   <p>
-                      <p>Star : <span class="star-no">{{displayStarNo this.star_no}}</span></p>
+                      <p><span class="star-no material-icons">{{displayStarNo this.star_no}}</span></p>
                       {{!-- <i class="material-icons">star</i> --}}
                
                   </p>
