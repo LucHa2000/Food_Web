@@ -55,18 +55,20 @@ class CartController {
         }
     }
     removeCart(req, res, next) {
-        // console.log(req.session.cart)
-        if (req.session.cart.totalProduct == 1) {
-            // req.session.destroy(err => {
-            //     if (err) return next(err)
-            //     res.status(200).send('logged out')
-            // })
-            res.clearCookie('connect.sid')
-            req.session = null;
 
-            // req.session.destroy()
-            // console.log(req.session)
-            res.redirect('/cart')
+        if (req.session.cart.totalProduct == 1) {
+            if (req.session) {
+                // delete session object
+                req.session.destroy(function (err) {
+                    if (err) {
+                        return next(err);
+                    } else {
+                        req.session = null;
+                        console.log("logout successful");
+                        return res.redirect('/');
+                    }
+                });
+            }
         } else {
 
             req.session.cart.totalProduct = req.session.cart.totalProduct - 1 //delete Totalproduct

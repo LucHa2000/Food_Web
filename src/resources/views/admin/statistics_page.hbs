@@ -12,17 +12,20 @@
       </div>
       <div class="col s6">
             <h5 class="center">Pick Statistics</h5>
-      
-           <div class="col s6">
-              <input type="datetime-local" id="end_date" name="end_date" required="required">
+        <form action="/admin/PickStatisticsPage" Method="POST">
+             <div class="col s6">
+              <input type="datetime-local" id="end_date" name="start_date" required="required">
         <span class="helper-text" data-error="This field cannot be left blank">Start Date*</span>
            <input type="datetime-local" id="end_date" name="end_date" required="required">
         <span class="helper-text" data-error="This field cannot be left blank">End Date*</span> 
- 
            </div>
+         <button type="submit" class="waves-effect waves-light btn center"><i class="material-icons right">filter_list</i>search</button>
+          <a href="/admin" class="waves-effect waves-light btn center"><i class="material-icons right">filter_list</i>Reset</a>
+        </form>
+        
                  <div class="col s6 center">
                    <br>
-                    <a class="waves-effect waves-light btn center"><i class="material-icons right">filter_list</i>search</a>
+             
         <div class="">Venue: 200.10$</div>
          <div class="">Quantity: 20</div>
       
@@ -35,37 +38,28 @@
         <thead>
           <tr>           
             <th>No</th>   
-          
-            <th>Product{{{sortable 'product_name' _sort}}}</th>
-          
-            <th>Quantity {{{sortable 'quantity' _sort}}}</th>
+            <th>Product</th>
+            <th>Quantity </th>
            <th>Price</th>
+            <th>Date</th>
            
           
           </tr>
         </thead>
         <tbody id="myTable">
-              {{#each reviews}}
+              {{#each  orderDetails }}
             <tr>
                 <td>{{sum @index}}</td>
-                <td>{{{this.star_no}}}</td>
-                <td>{{{this.content}}}</td>
                 <td>{{{this.product_name}}}</td>
-                <td>{{{this.account_email}}}</td>
-                <td class="{{{ status this.review_status}}}">{{{ status this.review_status}}}</td>
+                <td>{{{this.quantity}}}</td>
+                <td>{{{formatLongString (formatCurrency this.unit_price)}}}</td>
                 <td>{{{ convertDate this.createdAt}}}</td>     
-                <td>  
-                  <a href="" class="btn btn-small  yellow darken-4  "><i class="material-icons">details</i></a> 
-                  <a href="/review/{{{this.review_status}}}/{{{this._id}}}" class="btn btn-small  blue lighten-2 blue-grey {{btnStatus this.review_status}} "><i class="material-icons">{{btnStatus this.review_status}}</i></a>
-          
-                    <a  data-id="{{{this._id}}}" class="waves-effect waves-light btn  btn-small  modal-trigger btn_delete red" href="#modal1"><i class="material-icons">delete</i></a>
-                </td>
             </tr>
            
              {{else}}
                 <tr>
-                  <td colspan="6" class="center text-center">
-                     Empty
+                  <td colspan="5" class="center text-center">
+                     Empty Product
                   </td>
                 </tr>
    
@@ -77,7 +71,7 @@
       </div>
   
      <div class="row">
-      <div class="col s6">  
+      <div class="col s6 push-l3">  
            <h5 class="center">Top Product</h5>
           <canvas id="product_Chart"></canvas>   
       </div>

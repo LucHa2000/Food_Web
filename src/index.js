@@ -22,15 +22,16 @@ app.set("trust proxy", 1); // trust first proxy
 app.use(
   session({
     secret: "keyboard cat",
-    resave: false,
+    resave: true,
     saveUninitialized: true,
     store: MongoStore.create({
       mongoUrl: "mongodb://localhost:27017/MedicalDB",
-      autoRemove: 'native',
-      autoRemoveInterval: 5
+      // autoRemove: 'native',
+      // autoRemoveInterval: 10
     }),
     cookie: {
-      secure: !true,
+      maxAge: 180 * 60 * 1000,
+      secure: false
     },
   })
 );

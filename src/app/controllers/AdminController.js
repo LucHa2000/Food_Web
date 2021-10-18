@@ -4,6 +4,7 @@ const upload = multer({
   dest: "src/public/uploads/",
 });
 const Account = require("../models/Account");
+const OrderDetail = require("../models/OrderDetail");
 const Product = require("../models/Product");
 const Promotion = require("../models/Promotion");
 const List = require("../models/List");
@@ -153,7 +154,29 @@ class AdminController {
     });
   }
   statisticsPage(req, res, next) {
-    res.render("admin/statistics_page");
+    OrderDetail.find({})
+      .then((orderDetails) => {
+        res.render("admin/statistics_page", {
+          orderDetails: mutipleMongooseToObject(orderDetails)
+        })
+
+      })
+
+  }
+  PickStatisticsPage(req, res, next) {
+    OrderDetail.find({
+        createdAt: {
+          $gte: req.body.start_date,
+          $lt: req.body.end_date
+        }
+      })
+      .then((orderDetails) => {
+        res.render("admin/statistics_page", {
+          orderDetails: mutipleMongooseToObject(orderDetails)
+        })
+
+      })
+    
   }
 }
 module.exports = new AdminController();

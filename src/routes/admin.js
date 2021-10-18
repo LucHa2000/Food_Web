@@ -14,6 +14,7 @@ router.get('/product', adminController.index);
 router.get('/list', adminController.listPage);
 router.get('/order', adminController.orderPage);
 router.get('/:id', adminController.updateProductPage);
+router.post('/PickStatisticsPage', adminController.PickStatisticsPage)
 router.get('/', adminController.statisticsPage);
 
 module.exports = router;

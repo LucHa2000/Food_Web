@@ -103,7 +103,8 @@ class UserAccountController {
   }
   detailOrder(req, res, next) {
     let queryInfoOrder = Order.findOne({
-      account_id: req.cookies.userId
+      account_id: req.cookies.userId,
+      _id: req.params.id
     })
     let queryOrderDetail = Order_Detail.find({
       order_id: req.params.id

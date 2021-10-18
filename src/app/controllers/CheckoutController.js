@@ -43,7 +43,7 @@ class CheckoutController {
 
         for (let i = 0; i < arr.length; i = i + 1) {
             arr[i].order_id = newOrder._id
-            arr[i].promotion_rate = 0
+            // arr[i].promotion_rate = 0
         }
 
         OrderDetail.insertMany(arr)
