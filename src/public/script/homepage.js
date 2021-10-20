@@ -1,7 +1,7 @@
 // ----------------------------- Text typing animation -------------
 
 // List of sentences
-const sentences = ["Hello", "Xin chào", "Bonjour", "Hola", "Nǐ hǎo", "Olá"];
+const sentences = ['Hello', 'Xin chào', 'Bonjour', 'Hola', 'Nǐ hǎo', 'Olá'];
 
 // Current sentence being processed
 let sentence = 0;
@@ -11,10 +11,10 @@ let sentenceIndex = 0;
 
 let _INTERVAL_VAL;
 
-const mainHeaderTitleEl = document.querySelector("#main-header-title");
+const mainHeaderTitleEl = document.querySelector('#main-header-title');
 
 // CursorEl element
-const cursorEl = document.querySelector("#cursor");
+const cursorEl = document.querySelector('#cursor');
 
 // Implements typing effect
 function Type() {
@@ -26,7 +26,7 @@ function Type() {
   // If full sentence has been displayed then start to delete the sentence after some time
   if (text === sentences[sentence]) {
     // Hide the cursorEl
-    cursorEl.style.display = "none";
+    cursorEl.style.display = 'none';
 
     clearInterval(_INTERVAL_VAL);
     setTimeout(function () {
@@ -43,7 +43,7 @@ function Delete() {
   sentenceIndex--;
 
   // If sentence has been deleted then start to display the next sentence
-  if (text === "") {
+  if (text === '') {
     clearInterval(_INTERVAL_VAL);
 
     // If current sentence was last then display the first one, else move to the next
@@ -54,7 +54,7 @@ function Delete() {
 
     // Start to display the next sentence after some time
     setTimeout(function () {
-      cursorEl.style.display = "inline-block";
+      cursorEl.style.display = 'inline-block';
       _INTERVAL_VAL = setInterval(Type, 100);
     }, 200);
   }
@@ -79,8 +79,8 @@ function currentSlide(n) {
 
 function showSlides(n) {
   var i;
-  var slides = document.getElementsByClassName("mySlides");
-  var dots = document.getElementsByClassName("dot");
+  var slides = document.getElementsByClassName('mySlides');
+  var dots = document.getElementsByClassName('dot');
   if (n > slides.length) {
     slideIndex = 1;
   }
@@ -88,11 +88,11 @@ function showSlides(n) {
     slideIndex = slides.length;
   }
   for (i = 0; i < slides.length; i++) {
-    slides[i].style.display = "none";
+    slides[i].style.display = 'none';
   }
   for (i = 0; i < dots.length; i++) {
-    dots[i].className = dots[i].className.replace(" active-slide", "");
+    dots[i].className = dots[i].className.replace(' active-slide', '');
   }
-  slides[slideIndex - 1].style.display = "block";
-  dots[slideIndex - 1].className += " active-slide";
+  slides[slideIndex - 1].style.display = 'block';
+  dots[slideIndex - 1].className += ' active-slide';
 }

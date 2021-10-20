@@ -26,8 +26,8 @@
                  <div class="col s6 center">
                    <br>
              
-        <div class="">Venue: 200.10$</div>
-         <div class="">Quantity: 20</div>
+        <div class="">Revenue: <span class="total-price"></span></div>
+         <div class="">Quantity: <span class="total-quantity"></div>
       
                  </div>
                  
@@ -51,8 +51,8 @@
             <tr>
                 <td>{{sum @index}}</td>
                 <td>{{{this.product_name}}}</td>
-                <td>{{{this.quantity}}}</td>
-                <td>{{{formatLongString (formatCurrency this.unit_price)}}}</td>
+                <td class="p-quantity">{{{this.quantity}}}</td>
+                <td class="card-price">{{{formatLongString (formatCurrency this.unit_price)}}}</td>
                 <td>{{{ convertDate this.createdAt}}}</td>     
             </tr>
            
@@ -119,5 +119,27 @@
   'rgba(153, 102, 255, 1)', 'rgba(255, 159, 64, 1)' ], borderWidth: 1 }] } ,
   })
 
+  const productQuantites = document.querySelectorAll(".p-quantity");
+  const productPrices = document.querySelectorAll(".card-price");
+  let totalPrice = 0, 
+    totalQuantity = 0,
+    quantity,
+    prices,
+    price;
+  for (let i = 0; i < productQuantites.length; i++) {
+    quantity = Number(productQuantites[i].textContent);
+    prices = productPrices[i].textContent.match(/\d+/g);
+    price = Number(prices[0]) + Number(`0.${prices[1]}`);
+    totalPrice += quantity * price;
+    totalQuantity += quantity;
+    //   console.log(quantiy);
+    //   console.log(price);
+  }
+
+  console.log(totalPrice);
+  document.querySelector(".total-price").innerHTML = `$${totalPrice}`;
+  document.querySelector(".total-quantity").innerHTML = `$${totalQuantity}`;
+
 </script>
+        
 {{>footer_admin}}

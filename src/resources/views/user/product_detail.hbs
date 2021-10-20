@@ -42,6 +42,8 @@
             <div class="pd-name">{{{products.product_name}}}</div>
              {{!-- <span class="card-tag">{{displayPromotion product.promotion_rate}}</span> --}}
             <div class="pd-price">{{{formatCurrency products.unit_price}}}</div>
+          
+ 
             <div class="pd-note">{{{products.note}}}</div>
             <a onclick="M.toast({html: 'Item has been put in the cart !', classes: 'rounded',displayLength:2000})"
                           href="/cart/{{{products._id}}}"

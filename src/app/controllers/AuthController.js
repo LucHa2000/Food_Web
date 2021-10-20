@@ -75,7 +75,7 @@ class AuthController {
       req.body.address = '';
       req.body.account_status = 1;
       req.body.accountType = 1;
-      req.body.email = req.cookies.email;
+      req.body.email = req.session.email
       const newAccount = new Account(req.body);
       newAccount.save();
 
@@ -88,13 +88,14 @@ class AuthController {
 
   pageCode(req, res, next) {
     res.clearCookie('error');
+    res.cookie('code', req.cookies.code);
     res.render('auth/confirmEmail_view', {
       error: req.cookies.error,
       message: req.cookies.message,
     });
   }
   confirmCode(req, res, next) {
-    if (req.body.code == req.cookies.code) {
+    if (req.body.code == req.session.code) {
       res.render('auth/signup');
     } else {
       res.clearCookie('message');
@@ -123,8 +124,10 @@ class AuthController {
           text: Random,
         };
         transporter.sendMail(mailMessage, function (error, data) {});
-        res.cookie('code', Random);
-        res.cookie('email', req.body.confirmEmail);
+        //res.cookie('code', Random);
+        req.session.code = Random
+        // res.cookie('email', req.body.confirmEmail);
+        req.session.email = req.body.confirmEmail
         res.cookie('message', 'Check your email');
         res.redirect('/auth/pageCode');
       } else {

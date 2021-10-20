@@ -4,12 +4,8 @@ const upload = multer({
 });
 const Product = require('../models/Product');
 const List = require('../models/List');
-const {
-  mutipleMongooseToObject
-} = require('../../util/mongoose');
-const {
-  mongooseToObject
-} = require('../../util/mongoose');
+const { mutipleMongooseToObject } = require('../../util/mongoose');
+const { mongooseToObject } = require('../../util/mongoose');
 
 class StoreController {
   productAdd(req, res, next) {
@@ -24,12 +20,12 @@ class StoreController {
         var listID = req.body.list_id;
         // get listID
         req.body.image = req.file.path.split('\\').slice(3).join();
-        req.body.product_status = 1
-        req.body.reviews = []
-        req.body.orderDetails = []
-        req.body.promotion_id = '6aabc2aa1dbefa15b4aa5ddf'
-        req.body.promotionDetails = '6aabc2aa1dbefa15b4aa5ddf'
-        req.body.promotion_rate = 0
+        req.body.product_status = 1;
+        req.body.reviews = [];
+        req.body.orderDetails = [];
+        req.body.promotion_id = '6aabc2aa1dbefa15b4aa5ddf';
+        req.body.promotionDetails = '6aabc2aa1dbefa15b4aa5ddf';
+        req.body.promotion_rate = 0;
         req.body.list_id = listID;
         const newProduct = new Product(req.body);
         // get dataProduct
@@ -49,22 +45,26 @@ class StoreController {
     } else {
       req.body.image = req.body.img_old;
     }
-    Product.updateOne({
-          _id: req.params.id,
-        },
-        req.body,
-      )
+    Product.updateOne(
+      {
+        _id: req.params.id,
+      },
+      req.body,
+    )
       .then(() => res.redirect('/admin/product?Page=1'))
       .catch(next);
   }
   deleteProduct(req, res, next) {
-    List.updateOne({
+    List.updateOne(
+      {
         _id: req.params.list_id,
-      }, {
+      },
+      {
         $pull: {
           product_id: req.params.id,
         },
-      }, )
+      },
+    )
       .then(() => {
         Product.deleteOne({
           _id: req.params.id,
@@ -81,11 +81,12 @@ class StoreController {
     } else {
       req.body.product_status = 1;
     }
-    Product.updateOne({
-          _id: req.params.id,
-        },
-        req.body,
-      )
+    Product.updateOne(
+      {
+        _id: req.params.id,
+      },
+      req.body,
+    )
       .then(() => res.redirect('back'))
       .catch(next);
   }

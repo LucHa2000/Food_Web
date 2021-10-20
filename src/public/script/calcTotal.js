@@ -1,6 +1,6 @@
-const productQuantites = document.querySelectorAll(".p-quantity");
-const productPrices = document.querySelectorAll(".card-price");
-const cartDiscounts = document.querySelectorAll(".card-discount");
+const productQuantites = document.querySelectorAll('.p-quantity');
+const productPrices = document.querySelectorAll('.card-price');
+const cartDiscounts = document.querySelectorAll('.card-discount');
 let totalPrice = 0,
   quantity,
   prices,
@@ -19,4 +19,4 @@ for (let i = 0; i < productQuantites.length; i++) {
 }
 
 console.log(totalPrice);
-document.querySelector(".total-price").innerHTML = `$${totalPrice}`;
+document.querySelector('.total-price').innerHTML = `$${totalPrice}`;

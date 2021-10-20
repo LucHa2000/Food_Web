@@ -7,7 +7,7 @@ class AuthMiddlewares {
       return;
     }
     Account.find({
-      _id: req.cookies.userId
+      _id: req.cookies.userId,
     }).then((accounts) => {
       if (!accounts) {
         return;

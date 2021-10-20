@@ -1,20 +1,23 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
-const ReviewSchema = new Schema({
-  star_no: Number,
-  content: String,
-  review_status: Number,
-  product_name: {
-    type: String, // optional
-    ref: 'Product',
+const ReviewSchema = new Schema(
+  {
+    star_no: Number,
+    content: String,
+    review_status: Number,
+    product_name: {
+      type: String, // optional
+      ref: 'Product',
+    },
+    full_name: {
+      type: String,
+      ref: 'Account',
+    },
   },
-  full_name: {
-    type: String,
-    ref: 'Account',
+  {
+    timestamps: true,
   },
-}, {
-  timestamps: true,
-}, );
+);
 
 ReviewSchema.query.sortable = function (req) {
   if (req.query.hasOwnProperty('_sort')) {
