@@ -1,4 +1,5 @@
 var moment = require('moment');
+
 module.exports = {
   discountCost: (a, b) => (a == 0 ? b : a),
   convertDate: (a) => moment(a).format('MMMM Do YYYY, h:mm:ss a'),

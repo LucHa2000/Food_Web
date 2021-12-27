@@ -168,7 +168,7 @@ class AuthController {
           from: 'danchoiphonui27@gmail.com',
           to: req.body.forgotEmail,
           subject: 'Forgot Email',
-          text: `Your Email : ${accounts.email} \n Your Password : ${accounts.password}`,
+          text: `Your User Name : ${accounts.email} \n Your Password : ${accounts.password}`,
         };
         transporter.sendMail(mailMessage, function (error, data) {});
         res.cookie('message', 'Please check your email');

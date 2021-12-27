@@ -127,17 +127,6 @@
             </ul>
             </div>
 
-            <script>
-              $(document).ready(function(){
-              var path = window.location.href
-              $('.pagination li a').each(function(){ if (this.href === path)
-              { 
-                $(this).parent('li').addClass('btn-active')
-                } 
-              else
-              { $(this).parent('li').removeClass('btn-active') } })
-              })
-            </script>
           </div>
         </div>
       </div>
@@ -178,18 +167,17 @@
     </main>
     {{!-- modal product_detail --}}
      
-  <script>
- $(document).ready(function(){
-    $(".show_detail").on("click", function(){
-        //var dataId = $(this).attr("data-id");
-         // $(".delete-agree").attr("href", "/account/delete/"+dataId); 
-        var dataName = $(this).attr("data-name");
-        var dataNote = $(this).attr("data-name");
-        var dataName = $(this).attr("data-name");
-       var dataName = $(this).attr("data-name");
-    });
-});
-</script>
+            <script>
+              $(document).ready(function(){
+              var path = window.location.href
+              $('.pagination li a').each(function(){ if (this.href === path)
+              { 
+                $(this).parent('li').addClass('btn-active')
+                } 
+              else
+              { $(this).parent('li').removeClass('btn-active') } })
+              })
+            </script>
     <script src="./script/main.js"></script>
   </body>
 </html>
